@@ -1,15 +1,21 @@
+
 import { createContext } from 'react';
 
 type settingsType = {
   language: string,
-  libras: boolean
+  setLanguage: (value: string) => void, 
+  libras: boolean,
+  setLibras: (value: boolean) => void, 
 }
 
 export const defaultSettings: settingsType = {
   language: 'pt-br',
-  libras: false
+  setLanguage: () => {},
+  libras: false,
+  setLibras: () => {},
 };
 
 const SettingsContext = createContext(defaultSettings);
+
 
 export default SettingsContext;
