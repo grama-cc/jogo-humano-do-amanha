@@ -1,18 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import Home from 'components/container/Home/Home';
+
+import SettingsContext, { defaultSettings } from './context/settingsContext';
 
 function App() {
-  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Humano do Amanhã
-        </p>
-      </header>
-    </div>
+    <SettingsContext.Provider value={defaultSettings}>
+      <div className="App">
+        <p>Humano do Amanhã</p>
+        <Home/>
+      </div>
+    </SettingsContext.Provider>
+    
   );
 }
 
