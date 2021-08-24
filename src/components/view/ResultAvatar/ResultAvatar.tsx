@@ -2,11 +2,14 @@ import React from 'react';
 
 type ResultAvatarProps = {
   avatar: string;
+  avatarName: string;
 }
 
-const ResultAvatar: React.FC<ResultAvatarProps> = () => {
+const ResultAvatar: React.FC<ResultAvatarProps> = ({ avatar, avatarName }) => {
   return (
-    <div></div>
+    <>
+      <img src={avatar} alt={avatarName} />
+    </>
   );
 }
 

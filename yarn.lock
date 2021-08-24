@@ -1615,6 +1615,20 @@
     lz-string "^1.4.4"
     pretty-format "^26.6.2"
 
+"@testing-library/dom@^8.1.0":
+  version "8.1.0"
+  resolved "https://registry.yarnpkg.com/@testing-library/dom/-/dom-8.1.0.tgz#f8358b1883844ea569ba76b7e94582168df5370d"
+  integrity sha512-kmW9alndr19qd6DABzQ978zKQ+J65gU2Rzkl8hriIetPnwpesRaK4//jEQyYh8fEALmGhomD/LBQqt+o+DL95Q==
+  dependencies:
+    "@babel/code-frame" "^7.10.4"
+    "@babel/runtime" "^7.12.5"
+    "@types/aria-query" "^4.2.0"
+    aria-query "^4.2.2"
+    chalk "^4.1.0"
+    dom-accessibility-api "^0.5.6"
+    lz-string "^1.4.4"
+    pretty-format "^27.0.2"
+
 "@testing-library/jest-dom@^5.11.4":
   version "5.14.1"
   resolved "https://registry.yarnpkg.com/@testing-library/jest-dom/-/jest-dom-5.14.1.tgz#8501e16f1e55a55d675fe73eecee32cdaddb9766"
@@ -1638,10 +1652,10 @@
     "@babel/runtime" "^7.12.5"
     "@testing-library/dom" "^7.28.1"
 
-"@testing-library/user-event@^12.1.10":
-  version "12.8.3"
-  resolved "https://registry.yarnpkg.com/@testing-library/user-event/-/user-event-12.8.3.tgz#1aa3ed4b9f79340a1e1836bc7f57c501e838704a"
-  integrity sha512-IR0iWbFkgd56Bu5ZI/ej8yQwrkCv8Qydx6RzwbKz9faXazR/+5tvYKsZQgyXJiwgpcva127YO6JcWy7YlCfofQ==
+"@testing-library/user-event@^13.2.1":
+  version "13.2.1"
+  resolved "https://registry.yarnpkg.com/@testing-library/user-event/-/user-event-13.2.1.tgz#7a71a39e50b4a733afbe2916fa2b99966e941f98"
+  integrity sha512-cczlgVl+krjOb3j1625usarNEibI0IFRJrSWX9UsJ1HKYFgCQv9Nb7QAipUDXl3Xdz8NDTsiS78eAkPSxlzTlw==
   dependencies:
     "@babel/runtime" "^7.12.5"
 
@@ -8834,7 +8848,7 @@ pretty-format@^26.0.0, pretty-format@^26.6.0, pretty-format@^26.6.2:
     ansi-styles "^4.0.0"
     react-is "^17.0.1"
 
-pretty-format@^27.0.0, pretty-format@^27.0.6:
+pretty-format@^27.0.0, pretty-format@^27.0.2, pretty-format@^27.0.6:
   version "27.0.6"
   resolved "https://registry.yarnpkg.com/pretty-format/-/pretty-format-27.0.6.tgz#ab770c47b2c6f893a21aefc57b75da63ef49a11f"
   integrity sha512-8tGD7gBIENgzqA+UBzObyWqQ5B778VIFZA/S66cclyd5YkFLYs2Js7gxDKf0MXtTc9zcS7t1xhdfcElJ3YIvkQ==

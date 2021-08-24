@@ -6,3 +6,10 @@ export type QuestionType = {
   options: Option[];
   answer?: Option;
 }
+
+export type Result = {
+  id: string,
+  avatar: string,
+  name: string,
+  text: string,
+}
