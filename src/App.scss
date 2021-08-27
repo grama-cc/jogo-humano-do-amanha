@@ -1,38 +1,96 @@
-.App {
-  text-align: center;
+@mixin reset-margin-paddding {
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@mixin font-inherit {
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+html {
+  overflow-x: hidden;
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+  body {
+    @include reset-margin-paddding;
+    font-family: SoehneLeicht, sans-serif;
+    overflow-x: hidden;
+    position: relative;
+    width: 100vw;
 
-.App-link {
-  color: #61dafb;
-}
+    *,
+    *:before,
+    *:after {
+      box-sizing: border-box;
+    }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      @include font-inherit;
+      @include reset-margin-paddding;
+    }
+
+    p {
+      @include reset-margin-paddding;
+    }
+
+    blockquote {
+      @include reset-margin-paddding;
+    }
+
+    ul {
+      @include reset-margin-paddding;
+      list-style: none;
+
+      li {
+        @include reset-margin-paddding;
+        list-style: none;
+      }
+    }
+
+    a {
+      @include font-inherit;
+      text-decoration: none;
+    }
+
+    button {    
+      @include reset-margin-paddding;
+      appearance: button;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      overflow: visible;
+      text-transform: none;
+    }
+
+    input {
+      background: transparent;
+      border: none;
+      outline: none;
+      @include reset-margin-paddding;
+      @include font-inherit;
+    }
+
+    ::placeholder {
+      color: inherit;
+      opacity: 0.5;
+    }
+    
+    :-ms-input-placeholder {
+      color: inherit;
+      opacity: 0.5;
+    }
+    
+    ::-ms-input-placeholder {
+      color: inherit;
+      opacity: 0.5;
+    }
   }
 }

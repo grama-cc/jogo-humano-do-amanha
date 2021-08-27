@@ -22,10 +22,10 @@ const Quiz: React.FC = () => {
   }, [currentQuestion, questions])
 
   return (
-    <>
+    <main style={{ width: '100vw', height: '50vh', border: '1px solid black'}}>
       <Question question={MockQuestion} />
       <Options options={MockQuestion.options} onSelect={setAnswer} />
-    </>
+    </main>
   );
 }
 

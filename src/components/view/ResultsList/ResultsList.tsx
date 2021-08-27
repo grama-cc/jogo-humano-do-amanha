@@ -2,7 +2,7 @@ import React from 'react';
 import { Result } from '../../../types/types'
 
 type ResultListProps = {
-  results: Result[];
+  results: Result;
 }
 
 const ResultsList: React.FC<ResultListProps> = ({ results }) => {
@@ -10,7 +10,7 @@ const ResultsList: React.FC<ResultListProps> = ({ results }) => {
     <ul>
       {results.map((item) => (
         <li key={item.id}>
-          <img src={item.avatar} alt={item.name} />
+          <img src={item.images[0]} alt={item.nome} />
         </li>
       ))}
     </ul>
