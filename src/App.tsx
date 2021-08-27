@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './App.scss';
-import Home from 'components/container/Home/Home';
-
 import SettingsContext from './context/settingsContext';
+
+import Home from 'components/container/Home/Home';
 import Quiz from 'components/container/Quiz/Quiz';
 import Result from 'components/container/Result/Result';
 
