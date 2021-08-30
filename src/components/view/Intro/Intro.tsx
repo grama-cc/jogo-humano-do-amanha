@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
-import { WelcomeContent } from 'types/types';
 import SettingsContext from 'context/settingsContext';
 import Video from '../Video/Video';
+
+import globalStyles from 'globals.module.scss'
 
 type IntroProps = {
   titles: string[];
@@ -11,16 +12,15 @@ type IntroProps = {
 const Intro: React.FC<IntroProps> = ({ titles, video }) => {
   const { libras } = useContext(SettingsContext);
   return (
-    <>
-      {titles.map((item, index) => (
-        <h1 key={item} id={`${index}`}>
-          {item}
-        </h1>
-      ))}
-      {libras && (
+    <div className={globalStyles.content}>
+      {libras ? (
         <Video source={video} />
+      ) : (
+        <p>{titles.map(item => (
+          <li key={item}>{item}</li>
+        ))}</p>
       )}
-    </>
+    </div>
   );
 }
 

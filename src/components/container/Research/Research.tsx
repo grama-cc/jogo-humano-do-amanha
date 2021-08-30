@@ -1,10 +1,17 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useContext } from 'react';
 import ResearchQuestion from 'components/view/ResearchQuestion/ResearchQuestion';
 import ResearchOptions from 'components/view/ResearchOptions/ResearchOptions';
+
+import SettingsContext from 'context/settingsContext';
+import Menu from '../Menu/Menu';
+
+import styles from 'globals.module.scss'
+import LibrasToggle from '../LibrasToggle/LibrasToggle';
 
 const MOCK = [ '20-40 anos', '40-60 anos']
 
 const Research: React.FC = () => {
+  const { step, setStep } = useContext(SettingsContext);
   const [questions, setQuestions] = useState<string[]>([]);
   const [currentQuestion, setCurrentQuestions] = useState<number>(0);
 
@@ -13,12 +20,31 @@ const Research: React.FC = () => {
     updatedQuestions[currentQuestion] = value;
   
     setQuestions(updatedQuestions);
-  }, [currentQuestion, questions])
+  }, [currentQuestion, questions]);
+
+  const changeStep = () => {
+    setStep(step + 1)
+  };
+
+  const goBack = () => {
+    setStep(step - 1)
+  };
 
   return (
     <>
-      <ResearchQuestion question="Pergunta questionário" />
-      <ResearchOptions options={MOCK} onSelect={setAnswer} />
+    {step === 3 && (
+      <main className={styles.container}>
+        <Menu text="Texto" />
+        <ResearchQuestion question="Pergunta questionário" />
+        <div className={styles.sidebar}>
+          <ResearchOptions options={MOCK} onSelect={setAnswer} />
+          <div>
+            <button onClick={changeStep} style={{ display: 'block', marginBottom: '16px'}}>Próxima fase</button>
+          </div>
+        </div>
+        <LibrasToggle />
+      </main>
+    )}
     </>
   );
 }

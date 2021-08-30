@@ -5,7 +5,9 @@ type settingsType = {
   language: string,
   setLanguage: (value: string) => void, 
   libras: boolean,
-  setLibras: (value: boolean) => void, 
+  setLibras: (value: boolean) => void,
+  step: number,
+  setStep: (value: number) => void,
 }
 
 export const defaultSettings: settingsType = {
@@ -13,6 +15,8 @@ export const defaultSettings: settingsType = {
   setLanguage: () => {},
   libras: false,
   setLibras: () => {},
+  step: 0,
+  setStep: () => {},
 };
 
 const SettingsContext = createContext(defaultSettings);
