@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid black;
+  width: 60%;
+  height: inherit;
+}
+
+.sidebar {
+  width: 40%;
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.menu {
+  position: absolute;
+  top: 42px;
+  left: 64px;
+  height: fit-content;
+  min-height: 45vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.libras {
+  position: absolute;
+  bottom: 42px;
+  left: 64px;
+}

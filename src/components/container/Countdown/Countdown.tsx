@@ -5,17 +5,17 @@ import { WelcomeContent } from 'types/types'
 import SettingsContext from 'context/settingsContext';
 
 import Intro from 'components/view/Intro/Intro';
-import IntroSidebar from 'components/view/IntroSidebar/IntroSidebar';
 import LibrasToggle from '../LibrasToggle/LibrasToggle';
 
 import styles from 'globals.module.scss';
+import Menu from '../Menu/Menu';
 
 const MOCK = [
-  "Você já parou para pensar que tipo de humano será no futuro?",
-  "Você gostaria de viajar para Marte?"
+  "Bem-vindo!",
+  "Responda as sete perguntas usando:"
 ]
 
-const Home: React.FC = () => {
+const Countdown: React.FC = () => {
   const { step, setStep } = useContext(SettingsContext);
 
   const [welcome, setWelcome] = useState<WelcomeContent>();
@@ -38,16 +38,11 @@ const Home: React.FC = () => {
 
   return (
     <>
-      {(step === 0) && (
+      {(step === 1) && (
         <main className={styles.container}>
-          <Intro titles={MOCK} video={welcome?.pagina_bemvindo_libras_video.url} />
-          <IntroSidebar
-            aboutText="Sobre o jogo do amanhã"
-            aboutLink="/"
-            text="Responda as próximas sete perguntas e descubra quem você será no mundo do futuro"
-            ctaLabel="Jogar"
-            ctaAction={changeStep}
-          />
+          <Menu text="0" />
+          <Intro titles={MOCK} video={welcome?.pagina_carregando_contador_libras_video.url} />
+          <button onClick={changeStep}>Jogar</button>
           <LibrasToggle />
         </main>
       )}
@@ -55,4 +50,4 @@ const Home: React.FC = () => {
   );
 }
 
-export default Home;
+export default Countdown;
