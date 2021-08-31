@@ -33,14 +33,14 @@ const Countdown: React.FC = () => {
 	}, []);
 
   const changeStep = () => {
-    setStep(step + 1)
+    setStep('quiz')
   };
 
   return (
     <>
-      {(step === 1) && (
+      {(step === 'countdown') && (
         <main className={styles.container}>
-          <Menu text="0" />
+          <Menu text="0" prevStep={'home'} />
           <Intro titles={MOCK} video={welcome?.pagina_carregando_contador_libras_video.url} />
           <button onClick={changeStep}>Jogar</button>
           <LibrasToggle />

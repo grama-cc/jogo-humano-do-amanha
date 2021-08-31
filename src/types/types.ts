@@ -1,3 +1,7 @@
+// Steps
+
+export type Step = 'home' | 'countdown' | 'quiz' | 'research' | 'result'
+
 // Libras
 export type LibrasVideo = {
   alternativeText: string,
@@ -43,7 +47,7 @@ export type QuestionType = {
   answer?: Option;
 }
 
-export type Character = {
+export type HumanType = {
   __v: number,
   _id: string,
   character: string,
@@ -60,7 +64,7 @@ export type Character = {
   updatedAt: string,
 }
 
-export type Result = Character[]
+export type Result = HumanType[]
 
 export type HumanId = {
   tipo_de_humano: string,
@@ -84,7 +88,7 @@ export type AnswersList = {
   createdAt: string,
   updatedAt: string,
   __v: number,
-  tipo_de_humano: Character,
+  tipo_de_humano: HumanType,
   id: string,
 }
 

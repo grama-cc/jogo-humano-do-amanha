@@ -33,12 +33,12 @@ const Home: React.FC = () => {
 	}, []);
 
   const changeStep = () => {
-    setStep(step + 1)
+    setStep('countdown')
   };
 
   return (
     <>
-      {(step === 0) && (
+      {(step === 'home') && (
         <main className={styles.container}>
           <Intro titles={MOCK} video={welcome?.pagina_bemvindo_libras_video.url} />
           <IntroSidebar
