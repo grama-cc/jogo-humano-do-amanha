@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.scss';
-import SettingsContext from './context/settingsContext';
+import SettingsContext, { defaultHuman } from './context/settingsContext';
 import { HumanId, HumanType, Step } from 'types/types'
 
 import Home from 'components/container/Home/Home';
@@ -13,10 +13,30 @@ function App() {
   const [libras, setLibras] = useState<boolean>(false);
   const [language, setLanguage] = useState<string>("pt-br");
   const [step, setStep] = useState<Step>('home');
-  const [allHumanTypes, setAllHumanTypes] = useState<undefined[] | HumanType[]>([]);
+  const [allHumanTypes, setAllHumanTypes] = useState<HumanType[]>([]);
   const [humanId, setHumanId] = useState<string | HumanId>('');
   const [showAboutPopUp, setShowAboutPopUp] = useState<boolean>(false);
-  const value = { language, setLanguage, libras, setLibras, step, setStep, allHumanTypes, setAllHumanTypes, humanId, setHumanId, showAboutPopUp, setShowAboutPopUp };
+  const [resultAvatar, setResultAvatar] = useState<HumanType[]>([]);
+  const [resultsListHuman, setResultsListHuman] = useState<HumanType>(defaultHuman);
+
+  const value = { 
+    language,
+    setLanguage,
+    libras,
+    setLibras,
+    step,
+    setStep,
+    allHumanTypes,
+    setAllHumanTypes,
+    humanId,
+    setHumanId,
+    showAboutPopUp,
+    setShowAboutPopUp,
+    resultAvatar,
+    setResultAvatar,
+    resultsListHuman,
+    setResultsListHuman,
+  };
 
   return (
     <SettingsContext.Provider value={value}>
