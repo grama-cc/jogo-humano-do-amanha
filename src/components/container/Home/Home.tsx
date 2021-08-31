@@ -41,7 +41,7 @@ const Home: React.FC = () => {
     <>
       {(step === 'home') && (
         <main className={styles.container}>
-          <Intro titles={MOCK} video={welcome?.pagina_bemvindo_libras_video.url} />
+          <Intro titles={MOCK} videos={welcome ? [welcome?.pagina_bemvindo_libras_video.url] : null} />
           <IntroSidebar
             aboutText="Sobre o jogo do amanhã"
             text="Responda as próximas sete perguntas e descubra quem você será no mundo do futuro"
