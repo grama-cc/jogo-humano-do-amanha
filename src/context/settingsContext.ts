@@ -1,13 +1,17 @@
-
 import { createContext } from 'react';
+import { Step, HumanType, HumanId } from 'types/types';
 
 type settingsType = {
   language: string,
   setLanguage: (value: string) => void, 
   libras: boolean,
   setLibras: (value: boolean) => void,
-  step: number,
-  setStep: (value: number) => void,
+  step: Step,
+  setStep: (value: Step) => void,
+  allHumanTypes: HumanType[] | undefined[],
+  setAllHumanTypes: (value: HumanType[] | undefined[]) => void,
+  humanId: HumanId | string,
+  setHumanId: (value: HumanId | string) => void,
 }
 
 export const defaultSettings: settingsType = {
@@ -15,8 +19,12 @@ export const defaultSettings: settingsType = {
   setLanguage: () => {},
   libras: false,
   setLibras: () => {},
-  step: 0,
+  step: 'home',
   setStep: () => {},
+  allHumanTypes: [],
+  setAllHumanTypes: () => {},
+  humanId: '',
+  setHumanId: () => {},
 };
 
 const SettingsContext = createContext(defaultSettings);

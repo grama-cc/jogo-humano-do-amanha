@@ -28,21 +28,25 @@ const Quiz: React.FC = () => {
     setQuestions(updatedQuestions);
   }, [currentQuestion, questions]);
 
-  const changeStep = (value: number) => {
-    setStep(step + value)
+  const goToResearch = () => {
+    setStep('research')
+  };
+
+  const goToResult = () => {
+    setStep('result')
   };
 
   return (
     <>
-    {step === 2 && (
+    {step === 'quiz' && (
       <main className={styles.container}>
-        <Menu text="Quiz" />
+        <Menu text="Quiz" prevStep={'countdown'} />
         <Question question={MockQuestion} />
         <div className={styles.sidebar}>
           <Options options={MockQuestion.options} onSelect={setAnswer} />
           <div>
-            <button onClick={() => changeStep(2)} style={{ display: 'block', marginBottom: '16px'}}>Ir para resultado</button>
-            <button onClick={() => changeStep(1)} style={{ display: 'block', marginBottom: '16px'}}>Ir para questionário socioeconômico</button>
+            <button onClick={goToResult} style={{ display: 'block', marginBottom: '16px'}}>Ir para resultado</button>
+            <button onClick={goToResearch} style={{ display: 'block', marginBottom: '16px'}}>Ir para questionário socioeconômico</button>
           </div>
         </div>
         <LibrasToggle />

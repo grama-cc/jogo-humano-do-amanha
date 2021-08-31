@@ -23,18 +23,14 @@ const Research: React.FC = () => {
   }, [currentQuestion, questions]);
 
   const changeStep = () => {
-    setStep(step + 1)
-  };
-
-  const goBack = () => {
-    setStep(step - 1)
+    setStep('result')
   };
 
   return (
     <>
-    {step === 3 && (
+    {step === 'research' && (
       <main className={styles.container}>
-        <Menu text="Texto" />
+        <Menu text="Texto" prevStep={'quiz'} />
         <ResearchQuestion question="Pergunta questionário" />
         <div className={styles.sidebar}>
           <ResearchOptions options={MOCK} onSelect={setAnswer} />

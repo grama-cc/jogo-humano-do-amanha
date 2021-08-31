@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import { WelcomeContent, Result, HumanId, AnswersList } from 'types/types';
+import { WelcomeContent, Result, HumanId, AnswersList, HumanType } from 'types/types';
 
 const instance = axios.create({
 	baseURL: 'http://jogo-humano-do-amanha-api.herokuapp.com/',
@@ -18,8 +18,12 @@ export const Welcome = {
 	getWelcome: (): Promise<WelcomeContent> => requests.get('bemvindo'),
 };
 
-export const HumanType = {
+export const GetHumanType = {
 	getHumanType: (openness: string, character: string): Promise<Result> => requests.get(`?openness=${openness}&character=${character}`),
+};
+
+export const AllHumanTypes = {
+	getHumanTypes: (): Promise<HumanType> => requests.get('tipo-de-humanos'),
 };
 
 export const Answers = {

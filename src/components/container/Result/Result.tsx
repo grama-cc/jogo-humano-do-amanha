@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
+import { AllHumanTypes } from 'api';
 
 import SettingsContext from 'context/settingsContext';
 
@@ -34,12 +35,25 @@ const MOCK_DATA = [
 
 export default function Result() {
   const { step } = useContext(SettingsContext);
+  const [allHumans, setAllHumans] = useState<any>();
+  const [isError, setIsError] = useState<boolean>(false);
+
+  useEffect(() => {
+		AllHumanTypes.getHumanTypes()
+			.then((data) => {
+				setAllHumans(data);
+			})
+			.catch((err) => {
+				setIsError(true);
+			});
+		return () => {};
+	}, []);
 
   return (
     <>
-    {step === 4 && (
+    {step === 'result' && (
       <main className={styles.container}>
-        <Menu text={"Menu"} />
+        <Menu text={"Menu"} prevStep={'research'} />
         <div className={styles.content}>
           <ResultAvatar avatar={image} avatarName={'Resultado'} />
           <ResultsList results={MOCK_DATA} />
