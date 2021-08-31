@@ -12,6 +12,8 @@ type settingsType = {
   setAllHumanTypes: (value: HumanType[] | undefined[]) => void,
   humanId: HumanId | string,
   setHumanId: (value: HumanId | string) => void,
+  showAboutPopUp: boolean,
+  setShowAboutPopUp: (value: boolean) => void,
 }
 
 export const defaultSettings: settingsType = {
@@ -25,6 +27,8 @@ export const defaultSettings: settingsType = {
   setAllHumanTypes: () => {},
   humanId: '',
   setHumanId: () => {},
+  showAboutPopUp: false,
+  setShowAboutPopUp: () => {},
 };
 
 const SettingsContext = createContext(defaultSettings);

@@ -9,6 +9,7 @@ import IntroSidebar from 'components/view/IntroSidebar/IntroSidebar';
 import LibrasToggle from '../LibrasToggle/LibrasToggle';
 
 import styles from 'globals.module.scss';
+import About from 'components/view/About/About';
 
 const MOCK = [
   "Você já parou para pensar que tipo de humano será no futuro?",
@@ -16,7 +17,7 @@ const MOCK = [
 ]
 
 const Home: React.FC = () => {
-  const { step, setStep } = useContext(SettingsContext);
+  const { step, setStep, showAboutPopUp } = useContext(SettingsContext);
 
   const [welcome, setWelcome] = useState<WelcomeContent>();
 	const [isError, setIsError] = useState<boolean>(false);
@@ -43,12 +44,12 @@ const Home: React.FC = () => {
           <Intro titles={MOCK} video={welcome?.pagina_bemvindo_libras_video.url} />
           <IntroSidebar
             aboutText="Sobre o jogo do amanhã"
-            aboutLink="/"
             text="Responda as próximas sete perguntas e descubra quem você será no mundo do futuro"
             ctaLabel="Jogar"
             ctaAction={changeStep}
           />
           <LibrasToggle />
+          {showAboutPopUp && <About text={'Sobre o Jogo do Amanhã'} /> }
         </main>
       )}
     </>

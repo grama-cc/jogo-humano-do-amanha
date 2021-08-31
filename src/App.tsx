@@ -15,7 +15,8 @@ function App() {
   const [step, setStep] = useState<Step>('home');
   const [allHumanTypes, setAllHumanTypes] = useState<undefined[] | HumanType[]>([]);
   const [humanId, setHumanId] = useState<string | HumanId>('');
-  const value = { language, setLanguage, libras, setLibras, step, setStep, allHumanTypes, setAllHumanTypes, humanId, setHumanId };
+  const [showAboutPopUp, setShowAboutPopUp] = useState<boolean>(false);
+  const value = { language, setLanguage, libras, setLibras, step, setStep, allHumanTypes, setAllHumanTypes, humanId, setHumanId, showAboutPopUp, setShowAboutPopUp };
 
   return (
     <SettingsContext.Provider value={value}>
