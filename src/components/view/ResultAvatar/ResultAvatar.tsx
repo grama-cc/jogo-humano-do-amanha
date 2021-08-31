@@ -8,7 +8,11 @@ type ResultAvatarProps = {
 const ResultAvatar: React.FC<ResultAvatarProps> = ({ avatar, avatarName }) => {
   return (
     <>
-      <img src={avatar} alt={avatarName} style={{ width: '180px', height: '200px'}} />
+      {avatar ? (
+        <img src={avatar} alt={avatarName} style={{ width: '180px', height: '200px'}} />
+      ) : (
+        <p style={{ width: '180px', height: '200px'}} >RESULTADO: <span>{avatarName}</span></p>
+      )}
     </>
   );
 }

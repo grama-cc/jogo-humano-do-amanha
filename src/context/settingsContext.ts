@@ -1,6 +1,23 @@
 import { createContext } from 'react';
 import { Step, HumanType, HumanId } from 'types/types';
 
+export const defaultHuman = {
+  __v: 0,
+  _id: '',
+  character: '',
+  createdAt: '',
+  descricao: '',
+  humor: '',
+  id: '',
+  images: [''],
+  locale: '',
+  localizations: [''],
+  nome: '',
+  openness: '',
+  perfil: '',
+  updatedAt: '',
+}
+
 type settingsType = {
   language: string,
   setLanguage: (value: string) => void, 
@@ -8,12 +25,16 @@ type settingsType = {
   setLibras: (value: boolean) => void,
   step: Step,
   setStep: (value: Step) => void,
-  allHumanTypes: HumanType[] | undefined[],
-  setAllHumanTypes: (value: HumanType[] | undefined[]) => void,
+  allHumanTypes: HumanType[],
+  setAllHumanTypes: (value: HumanType[]) => void,
   humanId: HumanId | string,
   setHumanId: (value: HumanId | string) => void,
   showAboutPopUp: boolean,
   setShowAboutPopUp: (value: boolean) => void,
+  resultAvatar: HumanType[],
+  setResultAvatar: (value: HumanType[]) => void,
+  resultsListHuman: HumanType,
+  setResultsListHuman: (value: HumanType) => void,
 }
 
 export const defaultSettings: settingsType = {
@@ -29,6 +50,10 @@ export const defaultSettings: settingsType = {
   setHumanId: () => {},
   showAboutPopUp: false,
   setShowAboutPopUp: () => {},
+  resultAvatar: [],
+  setResultAvatar: () => {},
+  resultsListHuman: defaultHuman,
+  setResultsListHuman: () => {},
 };
 
 const SettingsContext = createContext(defaultSettings);

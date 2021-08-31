@@ -19,11 +19,11 @@ export const Welcome = {
 };
 
 export const GetHumanType = {
-	getHumanType: (openness: string, character: string): Promise<Result> => requests.get(`?openness=${openness}&character=${character}`),
+	getHumanType: (openness: string, character: string): Promise<HumanType[]> => requests.get(`tipo-de-humanos/?openness=${openness}&character=${character}`),
 };
 
 export const AllHumanTypes = {
-	getHumanTypes: (): Promise<HumanType> => requests.get('tipo-de-humanos'),
+	getHumanTypes: (): Promise<HumanType[]> => requests.get('tipo-de-humanos'),
 };
 
 export const Answers = {
