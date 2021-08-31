@@ -10,7 +10,7 @@ type MenuProps = {
 }
 
 const Menu: React.FC<MenuProps> = ({ text, prevStep }) => {
-  const { step, setStep } = useContext(SettingsContext);
+  const { setStep } = useContext(SettingsContext);
 
   const goBack = () => {
     setStep(prevStep);
