@@ -1,4 +1,4 @@
-import React, { useContext, useState, useMemo, memo } from 'react';
+import React, { useContext, useState, useMemo } from 'react';
 import SettingsContext from 'context/settingsContext';
 import Video from '../Video/Video';
 
@@ -44,6 +44,6 @@ const Intro: React.FC<IntroProps> = ({ title, question, videos, endedVideos }) =
       )}
     </div>
   );
-});
+};
 
 export default Intro;
