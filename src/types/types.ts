@@ -1,5 +1,4 @@
 // Steps
-
 export type Step = 'home' | 'countdown' | 'quiz' | 'research' | 'result'
 
 // Libras
@@ -32,6 +31,51 @@ export type WelcomeContent = {
   pagina_inicial_libras_video: LibrasVideo,
   pagina_jogar_libras_video: LibrasVideo[],
   published_at: string,
+  updatedAt: string,
+  __v: number,
+  _id: string,
+}
+
+// Screen Saver
+type CountdownContent = {
+  _id: string,
+  title: string,
+  option_yes: string,
+  subtitle: string,
+  option_maybe: string,
+  option_no: string,
+  __v: number,
+  id: string
+}
+
+type InitScreenSaver = {
+  _id: string,
+  title: string,
+  init_question: string,
+  init_button: string,
+  directions: string,
+  wellcome: CountdownContent
+  __v: number,
+  id: string,
+}
+
+export type ScreenSaverContent = {
+  _id: string,
+  published_at: string,
+  init_screen_saver: InitScreenSaver,
+  createdAt: string,
+  updatedAt: string,
+  __v: number,
+  id: string,
+}
+
+// About
+export type AboutText = {
+  createdAt: string,
+  description: string,
+  id: string,
+  published_at: string,
+  title: string,
   updatedAt: string,
   __v: number,
   _id: string,

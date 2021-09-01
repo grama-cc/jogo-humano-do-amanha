@@ -1,4 +1,4 @@
-import React, { useContext} from 'react';
+import React, { useContext, useCallback } from 'react';
 import SettingsContext from 'context/settingsContext';
 import { Step } from 'types/types';
 
@@ -12,9 +12,9 @@ type MenuProps = {
 const Menu: React.FC<MenuProps> = ({ text, prevStep }) => {
   const { setStep } = useContext(SettingsContext);
 
-  const goBack = () => {
-    setStep(prevStep);
-  };
+  const goBack = useCallback(() => {
+    setStep(prevStep)
+  }, [setStep, prevStep]);
 
   return (
     <nav className={styles.menu}>

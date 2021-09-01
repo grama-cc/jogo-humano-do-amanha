@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect, useRef, useCallback} from 'react';
-import { Welcome } from 'api'
-import { WelcomeContent} from 'types/types'
+import { Welcome, GetScreenSaver } from 'api'
+import { WelcomeContent, ScreenSaverContent } from 'types/types'
 
 import SettingsContext from 'context/settingsContext';
 
@@ -26,6 +26,7 @@ const Countdown: React.FC = () => {
   const [welcome, setWelcome] = useState<WelcomeContent | null>(null);
 	const [isError, setIsError] = useState<boolean>(false);
   const [counter, setCounter] = useState<number>(3);
+  const [screenSaver, setScreenSaver] = useState<ScreenSaverContent>();
   const [showWelcomeMessage, setShowWelcomeMessage] = useState<boolean>(true);
 
   const changeStep = useCallback(() => {
@@ -57,6 +58,14 @@ const Countdown: React.FC = () => {
       }).catch((err) => {
 				setIsError(true);
 			});
+
+      GetScreenSaver.getScreenSaver()
+      .then((data) => {
+        setScreenSaver(data);
+      })
+      .catch((err) => {
+        setIsError(true);
+      })
 	}, []);
 
   useEffect(() => {
@@ -73,7 +82,7 @@ const Countdown: React.FC = () => {
     }
   }, [step, libras, startTimer, resetState]);
 
-  
+  const screenSaverMessage = `${screenSaver?.init_screen_saver.wellcome.title} ${screenSaver?.init_screen_saver.wellcome.subtitle}`;
 
   return (
     <>
@@ -81,7 +90,7 @@ const Countdown: React.FC = () => {
         <main className={styles.container}>
           <Menu text="0" prevStep={'home'} />
           <Intro
-            titles={showWelcomeMessage ? MOCK: [counter.toString()]}
+            title={showWelcomeMessage ? screenSaverMessage : counter.toString()}
             videos={welcome ? [
               welcome?.pagina_inicial_libras_video.url,
               welcome?.pagina_carregando_contador_libras_video.url
