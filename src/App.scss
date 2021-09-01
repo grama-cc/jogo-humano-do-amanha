@@ -17,12 +17,32 @@ $orange: #FF5701;
 $darkOrange: #4D1A01;
 $lilac: #D591FF;
 
+
+// Font
 @font-face {
   font-family: 'Calibre';
   src:  url('./assets/fonts/Calibre-Bold.woff2') format('woff2'),
         url('./assets/fonts/Calibre-BoldItalic.woff2') format('woff2'),
         url('./assets/fonts/Calibre-Regular.woff2') format('woff2'),
 }
+
+// Responsive
+$small: 640px;
+$medium: 992px;
+$large: 1500px;
+$xlarge: 2000px;
+
+@function responsive($value1, $value2, $width1: 320, $width2: 1366) {
+  $x1: $width1;
+  $x2: $width2;
+  $y1: $value1;
+  $y2: $value2;
+  $a: ($y2 - $y1) / ($x2 - $x1);
+  $b: ($x2 * $y1 - $x1 * $y2) / ($x2 - $x1);
+  @return calc(#{$a * 100vw} + #{$b * 1px});
+}
+
+// Reset
 
 @mixin reset-margin-paddding {
   margin: 0;

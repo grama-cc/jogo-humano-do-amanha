@@ -1,0 +1,26 @@
+@import 'App.scss';
+
+.circleWrapper {
+  width: 30em;
+  height: 30em;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.blackBorder {
+  border: 1px solid $black;
+}
+
+.whiteBorder {
+  border: 1px solid $white;
+}
+
+@media (max-width: $small) {
+  .circleWrapper {
+    width: 315px;
+    height: 315px;
+  }
+}
+
