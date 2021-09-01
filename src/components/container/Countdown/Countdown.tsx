@@ -5,15 +5,11 @@ import { WelcomeContent, ScreenSaverContent } from 'types/types'
 import SettingsContext from 'context/settingsContext';
 
 import Intro from 'components/view/Intro/Intro';
+import Options from 'components/view/Options/Options';
 import LibrasToggle from '../LibrasToggle/LibrasToggle';
 
 import styles from 'globals.module.scss';
 import Menu from '../Menu/Menu';
-
-const MOCK = [
-  "Bem-vindo!",
-  "Responda as sete perguntas usando:"
-]
 
 const initialMessageTime = 5000;
 const countDownTime = 1500;
@@ -96,7 +92,8 @@ const Countdown: React.FC = () => {
               welcome?.pagina_carregando_contador_libras_video.url
             ] : null} 
             endedVideos={changeStep}/>
-          <button onClick={changeStep}>Jogar</button>
+          <Options onSelect={() => {}} options={['SIM', 'NAO', 'TALVEZ']}/>
+         
           <LibrasToggle />
         </main>
       )}

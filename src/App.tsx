@@ -16,7 +16,8 @@ function App() {
   const [allHumanTypes, setAllHumanTypes] = useState<HumanType[]>([]);
   const [humanId, setHumanId] = useState<string | HumanId>('');
   const [showAboutPopUp, setShowAboutPopUp] = useState<boolean>(false);
-  const [resultAvatar, setResultAvatar] = useState<HumanType[]>([]);
+  const [userId, setUserId] = useState<string>('');
+  const [resultAvatar, setResultAvatar] = useState<HumanType|null>(null);
   const [resultsListHuman, setResultsListHuman] = useState<HumanType>(defaultHuman);
 
   const value = { 
@@ -32,6 +33,8 @@ function App() {
     setHumanId,
     showAboutPopUp,
     setShowAboutPopUp,
+    userId,
+    setUserId,
     resultAvatar,
     setResultAvatar,
     resultsListHuman,

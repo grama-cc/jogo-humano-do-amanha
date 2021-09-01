@@ -14,6 +14,7 @@ type IntroProps = {
 }
 
 const Intro: React.FC<IntroProps> = ({ title, question, videos, endedVideos }) => {
+
   const { libras } = useContext(SettingsContext);
   const [currentVideo, setCurrentVideo] = useState<number>(0);
 
@@ -33,8 +34,6 @@ const Intro: React.FC<IntroProps> = ({ title, question, videos, endedVideos }) =
     } return '';
   }, [currentVideo, videos]);
 
-  console.log('source', currentVideoSource);
-
   return (
     <div className={globalStyles.content}>
       <Circle>
@@ -49,6 +48,6 @@ const Intro: React.FC<IntroProps> = ({ title, question, videos, endedVideos }) =
       </Circle>
     </div>
   );
-}
+};
 
 export default Intro;

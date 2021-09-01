@@ -12,10 +12,24 @@ import ResultsList from 'components/view/ResultsList/ResultsList';
 
 import styles from 'globals.module.scss';
 
-const MOCK_DATA = {
-  character: 'COLETIVISMO',
-  openness: 'CAUTELOSO',
-}
+const MOCK_DATA = 
+  {
+    __v: 0,
+    _id: '610d8ac6161e780015ce6152',
+    character: 'COLETIVISMO',
+    createdAt: '2021-08-06T19:17:26.897Z',
+    descricao: 'O mundo lhe parece confuso demais. Você quer mudar isso, mas às vezes desiste para NAO entrar numa briga. O seu sonho de futuro é viver como antigamente. Mas NAO se engane. Sonhar com o mundo ideal é tão importante quanto estar acordado para agir no momento presente.',
+    humor: 'FLEUMATICO',
+    id: '610d8ac6161e780015ce6152',
+    images: [Image],
+    locale: 'pt-BR',
+    localizations: ['localization'],
+    nome: 'NATUREBA SOSSEGADO',
+    openness: 'CAUTELOSO',
+    perfil: 'FECHADO',
+    updatedAt: '2021-08-12T17:59:33.906Z',
+  }
+;
 
 export default function Result() {
   const { step, setStep, allHumanTypes, setAllHumanTypes, resultAvatar, setResultAvatar, resultsListHuman } = useContext(SettingsContext);
@@ -32,7 +46,9 @@ export default function Result() {
 
     GetHumanType.getHumanType(MOCK_DATA.openness, MOCK_DATA.character)
       .then((avatar) => {
-        setResultAvatar(avatar);
+        if(avatar.length){
+          setResultAvatar(avatar[0]);
+        }
       })
       .catch((err) => {
         setIsError(true);
@@ -54,12 +70,12 @@ export default function Result() {
         <main className={styles.container}>
           <Menu text={"Menu"} prevStep={'research'} />
           <div className={styles.content} style={{ display: 'flex', flexDirection: 'column'}}>
-            <ResultAvatar avatar={resultAvatar[0].images[0]} avatarName={resultAvatar[0].nome} />
+            <ResultAvatar avatar={resultAvatar.images[0]} avatarName={resultAvatar.nome} />
             {allHumanTypes && <ResultsList results={allHumanTypes} />}
           </div>
           <div className={styles.sidebar}>
-            <ResultText title={resultAvatar[0].nome} text={resultAvatar[0].descricao} />
-            <ResultShare resultTitle={resultAvatar[0].nome} resultDescription={resultAvatar[0].descricao} />
+            <ResultText title={resultAvatar.nome} text={resultAvatar.descricao} />
+            <ResultShare resultTitle={resultAvatar.nome} resultDescription={resultAvatar.descricao} />
             <p>Conheça os outros humanos do amanhã</p>
             {resultsListHuman ? (
               <>
