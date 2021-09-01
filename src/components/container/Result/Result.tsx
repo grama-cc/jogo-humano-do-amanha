@@ -42,6 +42,8 @@ export default function Result() {
 
 	}, [setAllHumanTypes, setResultAvatar]);
 
+  if (!resultAvatar) return null;
+
   const goToResearch = () => {
     setStep('research');
   };
@@ -57,7 +59,7 @@ export default function Result() {
           </div>
           <div className={styles.sidebar}>
             <ResultText title={resultAvatar[0].nome} text={resultAvatar[0].descricao} />
-            <ResultShare link="/" />
+            <ResultShare resultTitle={resultAvatar[0].nome} resultDescription={resultAvatar[0].descricao} />
             <p>Conheça os outros humanos do amanhã</p>
             {resultsListHuman ? (
               <>
