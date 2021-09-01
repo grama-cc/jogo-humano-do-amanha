@@ -1,4 +1,4 @@
-import React, { useContext, useState, useMemo } from 'react';
+import React, { useContext, useState, useMemo, memo } from 'react';
 import SettingsContext from 'context/settingsContext';
 import Video from '../Video/Video';
 
@@ -12,6 +12,7 @@ type IntroProps = {
 }
 
 const Intro: React.FC<IntroProps> = ({ title, question, videos, endedVideos }) => {
+
   const { libras } = useContext(SettingsContext);
   const [currentVideo, setCurrentVideo] = useState<number>(0);
 
@@ -31,8 +32,6 @@ const Intro: React.FC<IntroProps> = ({ title, question, videos, endedVideos }) =
     } return '';
   }, [currentVideo, videos]);
 
-  console.log('source', currentVideoSource);
-
   return (
     <div className={globalStyles.content}>
       {libras ? (
@@ -45,6 +44,6 @@ const Intro: React.FC<IntroProps> = ({ title, question, videos, endedVideos }) =
       )}
     </div>
   );
-}
+});
 
 export default Intro;

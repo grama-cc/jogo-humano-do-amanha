@@ -1,4 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
+
 import { WelcomeContent, AboutText, HumanId, AnswersList, HumanType, ScreenSaverContent } from 'types/types';
 
 const instance = axios.create({
@@ -28,6 +29,15 @@ export const GetAbout = {
 
 export const GetHumanType = {
 	getHumanType: (openness: string, character: string): Promise<HumanType[]> => requests.get(`tipo-de-humanos/?openness=${openness}&character=${character}`),
+};
+
+export const QuizQuestions = {
+	getQuestion: (
+		pergunta:number,
+		resposta: string|null = null,
+		id: string|null = null,
+		alternativa: string|null = null
+	) => requests.get(`/quizz/?pergunta=${pergunta}&resposta=${resposta}&id=${id}&alterantiva=${alternativa}`),
 };
 
 export const AllHumanTypes = {

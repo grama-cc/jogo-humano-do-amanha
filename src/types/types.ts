@@ -82,13 +82,14 @@ export type AboutText = {
 }
 
 // Quiz
-export type Option = "yes" | "no" | "maybe"
+export type Option = "SIM" | "NAO" | "TALVEZ"
 
 export type QuestionType = {
   id: number;
-  title: string;
-  options: Option[];
-  answer?: Option;
+  texto: string;
+  resposta: string;
+  alternativa: string;
+  libras: string;
 }
 
 export type HumanType = {
