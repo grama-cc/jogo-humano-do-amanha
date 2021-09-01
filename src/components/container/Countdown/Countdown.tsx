@@ -11,11 +11,6 @@ import LibrasToggle from '../LibrasToggle/LibrasToggle';
 import styles from 'globals.module.scss';
 import Menu from '../Menu/Menu';
 
-const MOCK = [
-  "Bem-vindo!",
-  "Responda as sete perguntas usando:"
-]
-
 const initialMessageTime = 5000;
 const countDownTime = 1500;
 

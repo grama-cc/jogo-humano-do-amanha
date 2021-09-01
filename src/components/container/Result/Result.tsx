@@ -46,7 +46,9 @@ export default function Result() {
 
     GetHumanType.getHumanType(MOCK_DATA.openness, MOCK_DATA.character)
       .then((avatar) => {
-        setResultAvatar(avatar);
+        if(avatar.length){
+          setResultAvatar(avatar[0]);
+        }
       })
       .catch((err) => {
         setIsError(true);
@@ -68,12 +70,12 @@ export default function Result() {
         <main className={styles.container}>
           <Menu text={"Menu"} prevStep={'research'} />
           <div className={styles.content} style={{ display: 'flex', flexDirection: 'column'}}>
-            <ResultAvatar avatar={resultAvatar[0].images[0]} avatarName={resultAvatar[0].nome} />
+            <ResultAvatar avatar={resultAvatar.images[0]} avatarName={resultAvatar.nome} />
             {allHumanTypes && <ResultsList results={allHumanTypes} />}
           </div>
           <div className={styles.sidebar}>
-            <ResultText title={resultAvatar[0].nome} text={resultAvatar[0].descricao} />
-            <ResultShare resultTitle={resultAvatar[0].nome} resultDescription={resultAvatar[0].descricao} />
+            <ResultText title={resultAvatar.nome} text={resultAvatar.descricao} />
+            <ResultShare resultTitle={resultAvatar.nome} resultDescription={resultAvatar.descricao} />
             <p>Conheça os outros humanos do amanhã</p>
             {resultsListHuman ? (
               <>

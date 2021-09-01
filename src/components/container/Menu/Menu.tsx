@@ -1,4 +1,4 @@
-import React, { useContext, useCallback } from 'react';
+import React, { useContext } from 'react';
 import SettingsContext from 'context/settingsContext';
 import { Step } from 'types/types';
 
