@@ -13,10 +13,9 @@ import Options from 'components/view/Options/Options';
 import styles from 'globals.module.scss';
 
 const Quiz: React.FC = () => {
-  const { step, setStep } = useContext(SettingsContext);
+  const { step, setStep, userId, setUserId } = useContext(SettingsContext);
   const [questions, setQuestions] = useState<QuestionType[]>([]);
   const [currentQuestionIndex, setCurrentQuestionsIndex] = useState<number>(0);
-  const [userId, setUserId] = useState<string|null>(null);
   const [finished, setFinished]= useState<boolean>(false);
 
   const goToResearch = useCallback(() => {
@@ -34,13 +33,13 @@ const Quiz: React.FC = () => {
       setQuestions(updatedQuestions);
       setUserId(res.id);
     });
-  },[]);
+  },[currentQuestionIndex, questions, setUserId]);
 
   useEffect(() => {
     if(!questions.length){
       getInitialQuestion();
     }
-  }, [questions]);
+  }, [questions, getInitialQuestion]);
 
   const currentQuestion = useMemo(() => questions[currentQuestionIndex] || null, [currentQuestionIndex, questions]);
 
@@ -59,7 +58,7 @@ const Quiz: React.FC = () => {
       }
     });
     setCurrentQuestionsIndex(current => current + 1);
-  },[currentQuestionIndex, userId, questions, currentQuestion]);
+  },[currentQuestionIndex, userId, questions, currentQuestion, goToResearch]);
 
   const goToPreviousQuestion = useCallback(() => {
     const previousIndex = currentQuestionIndex - 1;
@@ -79,7 +78,7 @@ const Quiz: React.FC = () => {
         getNextQuestion();
       }
     }
-  }, [currentQuestionIndex, questions, getNextQuestion, finished]);
+  }, [currentQuestionIndex, questions, getNextQuestion, finished, goToResearch]);
 
   const setAnswer = useCallback((value) => {
     if(currentQuestion.resposta){
@@ -91,7 +90,7 @@ const Quiz: React.FC = () => {
       getNextQuestion(value);
     }
     
-  }, [currentQuestionIndex, questions, userId]);
+  }, [currentQuestionIndex, questions, currentQuestion, getNextQuestion, goToNextQuestion]);
 
   
 
