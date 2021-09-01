@@ -28,13 +28,13 @@ const Quiz: React.FC = () => {
     setQuestions(updatedQuestions);
   }, [currentQuestion, questions]);
 
-  const goToResearch = () => {
+  const goToResearch = useCallback(() => {
     setStep('research')
-  };
+  }, [setStep]);
 
-  const goToResult = () => {
+  const goToResult = useCallback(() => {
     setStep('result')
-  };
+  }, [setStep]);
 
   return (
     <>

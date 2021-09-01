@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, useCallback } from 'react';
 import { AllHumanTypes, GetHumanType } from 'api';
 
 import SettingsContext from 'context/settingsContext';
@@ -42,11 +42,11 @@ export default function Result() {
 
 	}, [setAllHumanTypes, setResultAvatar]);
 
-  if (!resultAvatar) return null;
+  const goToResearch = useCallback(() => {
+    setStep('research')
+  }, [setStep]);
 
-  const goToResearch = () => {
-    setStep('research');
-  };
+  if (!resultAvatar) return null;
 
   return (
     <>

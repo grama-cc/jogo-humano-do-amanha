@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import { WelcomeContent, Result, HumanId, AnswersList, HumanType } from 'types/types';
+import { WelcomeContent, AboutText, HumanId, AnswersList, HumanType, ScreenSaverContent } from 'types/types';
 
 const instance = axios.create({
 	baseURL: 'http://jogo-humano-do-amanha-api.herokuapp.com/',
@@ -14,8 +14,16 @@ const requests = {
 	put: (url: string, body: {}) => instance.put(url, body).then(responseBody),
 };
 
+export const GetScreenSaver = {
+	getScreenSaver: (): Promise<ScreenSaverContent> => requests.get('screen-saver'),
+};
+
 export const Welcome = {
 	getWelcome: (): Promise<WelcomeContent> => requests.get('bemvindo'),
+};
+
+export const GetAbout = {
+	getAbout: (): Promise<AboutText> => requests.get('about'),
 };
 
 export const GetHumanType = {

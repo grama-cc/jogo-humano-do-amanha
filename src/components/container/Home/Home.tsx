@@ -1,6 +1,6 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { Welcome } from 'api'
-import { WelcomeContent } from 'types/types'
+import React, { useContext, useState, useEffect, useCallback } from 'react';
+import { Welcome, GetAbout, GetScreenSaver } from 'api'
+import { WelcomeContent, AboutText, ScreenSaverContent } from 'types/types'
 
 import SettingsContext from 'context/settingsContext';
 
@@ -11,15 +11,12 @@ import LibrasToggle from '../LibrasToggle/LibrasToggle';
 import styles from 'globals.module.scss';
 import About from 'components/view/About/About';
 
-const MOCK = [
-  "Você já parou para pensar que tipo de humano será no futuro?",
-  "Você gostaria de viajar para Marte?"
-]
-
 const Home: React.FC = () => {
   const { step, setStep, showAboutPopUp } = useContext(SettingsContext);
 
   const [welcome, setWelcome] = useState<WelcomeContent>();
+  const [aboutContent, setAboutContent] = useState<AboutText>();
+  const [screenSaver, setScreenSaver] = useState<ScreenSaverContent>();
 	const [isError, setIsError] = useState<boolean>(false);
 
   useEffect(() => {
@@ -30,26 +27,48 @@ const Home: React.FC = () => {
 			.catch((err) => {
 				setIsError(true);
 			});
+
+      GetAbout.getAbout()
+        .then((data) => {
+          setAboutContent(data);
+        })
+        .catch((err) => {
+          setIsError(true);
+        });
+
+      GetScreenSaver.getScreenSaver()
+        .then((data) => {
+          setScreenSaver(data);
+        })
+        .catch((err) => {
+          setIsError(true);
+        })
 		return () => {};
 	}, []);
 
-  const changeStep = () => {
+  const changeStep = useCallback(() => {
     setStep('countdown')
-  };
+  }, [setStep]);
+
+  if (!aboutContent || !screenSaver) return null;
 
   return (
     <>
       {(step === 'home') && (
         <main className={styles.container}>
-          <Intro titles={MOCK} videos={welcome ? [welcome?.pagina_bemvindo_libras_video.url] : null} />
+          <Intro
+            title={screenSaver.init_screen_saver.title}
+            question={screenSaver.init_screen_saver.init_question}
+            videos={welcome ? [welcome?.pagina_bemvindo_libras_video.url] : null} 
+          />
           <IntroSidebar
-            aboutText="Sobre o jogo do amanhã"
-            text="Responda as próximas sete perguntas e descubra quem você será no mundo do futuro"
-            ctaLabel="Jogar"
+            aboutText={aboutContent.title}
+            text={screenSaver.init_screen_saver.directions}
+            ctaLabel={screenSaver.init_screen_saver.init_button}
             ctaAction={changeStep}
           />
           <LibrasToggle />
-          {showAboutPopUp && <About text={'Sobre o Jogo do Amanhã'} /> }
+          {showAboutPopUp && <About text={aboutContent.description} /> }
         </main>
       )}
     </>

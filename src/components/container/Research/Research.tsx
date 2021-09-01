@@ -22,9 +22,9 @@ const Research: React.FC = () => {
     setQuestions(updatedQuestions);
   }, [currentQuestion, questions]);
 
-  const changeStep = () => {
+  const changeStep = useCallback(() => {
     setStep('result')
-  };
+  }, [setStep]);
 
   return (
     <>

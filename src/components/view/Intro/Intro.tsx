@@ -5,12 +5,13 @@ import Video from '../Video/Video';
 import globalStyles from 'globals.module.scss'
 
 type IntroProps = {
-  titles: string[];
+  title: string,
+  question?: string;
   videos?: string[] | null;
   endedVideos?: () => void | undefined;
 }
 
-const Intro: React.FC<IntroProps> = ({ titles, videos, endedVideos }) => {
+const Intro: React.FC<IntroProps> = ({ title, question, videos, endedVideos }) => {
   const { libras } = useContext(SettingsContext);
   const [currentVideo, setCurrentVideo] = useState<number>(0);
 
@@ -37,9 +38,10 @@ const Intro: React.FC<IntroProps> = ({ titles, videos, endedVideos }) => {
       {libras ? (
         <Video source={currentVideoSource} onEnded={nextVideo}/>
       ) : (
-        <p>{titles.map(item => (
-          <li key={item}>{item}</li>
-        ))}</p>
+        <>
+          <p>{title}</p>
+          <h1>{question}</h1>
+        </>
       )}
     </div>
   );
