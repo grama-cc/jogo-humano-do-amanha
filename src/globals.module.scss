@@ -1,11 +1,11 @@
-
+@import 'App.scss';
 
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .content {
@@ -14,7 +14,7 @@
   align-items: center;
   border-right: 1px solid black;
   width: 60%;
-  height: inherit;
+  min-height: inherit;
 }
 
 .sidebar {
@@ -43,4 +43,14 @@
   position: absolute;
   bottom: 42px;
   left: 64px;
+}
+
+@media (max-width: $small) {
+  .container {
+    flex-direction: column;
+  }
+  .content {
+    width: 100%;
+    border-right: none;
+  }
 }

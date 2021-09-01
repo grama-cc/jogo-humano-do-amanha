@@ -1,6 +1,8 @@
 import React, { useContext, useState, useMemo } from 'react';
 import SettingsContext from 'context/settingsContext';
+
 import Video from '../Video/Video';
+import Circle from '../Circle/Circle';
 
 import globalStyles from 'globals.module.scss'
 
@@ -35,14 +37,16 @@ const Intro: React.FC<IntroProps> = ({ title, question, videos, endedVideos }) =
 
   return (
     <div className={globalStyles.content}>
-      {libras ? (
-        <Video source={currentVideoSource} onEnded={nextVideo}/>
-      ) : (
-        <>
-          <p>{title}</p>
-          <h1>{question}</h1>
-        </>
-      )}
+      <Circle>
+        {libras ? (
+          <Video source={currentVideoSource} onEnded={nextVideo}/>
+        ) : (
+          <div>
+            <p>{title}</p>
+            <h1>{question}</h1>
+          </div>
+        )}
+      </Circle>
     </div>
   );
 }
