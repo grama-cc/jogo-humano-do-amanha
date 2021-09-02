@@ -30,6 +30,9 @@ const Countdown: React.FC = () => {
   }, [setStep]);
 
   const resetState = useCallback(() => {
+    if(timerRef.current){
+      clearTimeout(timerRef.current);
+    }
     setShowWelcomeMessage(true);
     setCounter(3);
   }, []);
