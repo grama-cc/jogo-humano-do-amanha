@@ -1,8 +1,8 @@
 @import 'App.scss';
 
 .circleWrapper {
-  width: 30em;
-  height: 30em;
+  width: responsive(215, 500);
+  height: responsive(215, 500);
   border-radius: 50%;
   display: flex;
   justify-content: center;

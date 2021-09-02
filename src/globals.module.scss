@@ -22,9 +22,6 @@
   height: inherit;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
 }
 
 .menu {
@@ -48,9 +45,20 @@
 @media (max-width: $small) {
   .container {
     flex-direction: column;
+    justify-content: space-between;
   }
   .content {
     width: 100%;
     border-right: none;
+    min-height: 70vh;
+  }
+  .sidebar {
+    min-height: 30vh;
+    width: 100%;
+  }
+  .libras {
+    left: auto;
+    right: 36px;
+    bottom: 35vh;
   }
 }

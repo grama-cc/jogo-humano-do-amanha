@@ -1,6 +1,8 @@
+@import 'App.scss';
+
 .aboutWrapper {
   position: absolute;
-  background-color: transparent;
+  background-color:rgba(0,0,0,0.5);
   width: 100vw;
   height: 100vh;
   z-index: 2;
@@ -10,9 +12,49 @@
 }
 
 .aboutBox {
-  background-color: white;
-  width: 400px;
-  height: 300px;
-  border: 1px solid black;
+  background: $yellow;
+  height: 60vh;
+  width: 60vw;
+  border: 2px solid $black;
+  border-radius: 16px;
   opacity: 1;
+}
+
+.header {
+  padding-left: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid $black;
+}
+
+.close {
+  border-top-right-radius: 12px;
+  background-color: $black;
+  color: $white;
+  padding: 12px;
+  font-size: 16px;
+  line-height: 28px;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.text {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 300;
+  padding: 16px;
+}
+
+@media (max-width: $small) {
+  .aboutBox {
+    height: 80vh;
+    width: 85vw;
+    overflow: scroll;
+  }
 }
