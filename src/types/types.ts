@@ -137,3 +137,26 @@ export type AnswersList = {
   id: string,
 }
 
+//Research
+
+export type ProfileOption = {
+  id: string,
+  order: number,
+  text: string,
+  value: string,
+  __v: number,
+  __id: string,
+}
+
+export type ProfileQuestion = {
+  api_field: string,
+  id: string,
+  options: ProfileOption[],
+  order: number,
+  required: boolean,
+  text: string,
+  __v: number,
+  _id: string,
+  answer: string,
+}
+

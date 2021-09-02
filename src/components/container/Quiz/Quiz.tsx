@@ -98,7 +98,7 @@ const Quiz: React.FC = () => {
     <>
     {step === 'quiz' && (
       <main className={styles.container}>
-        <Menu prevStep={'countdown'} text={currentQuestionIndex.toString()} prevAction={goToPreviousQuestion}/>
+        <Menu prevStep={'countdown'} text={currentQuestionIndex.toString()} prevAction={currentQuestionIndex ? goToPreviousQuestion : null}/>
         <Question question={currentQuestion} />
         <div className={styles.sidebar}>
           <Options options={['SIM', 'NAO', 'TALVEZ']} onSelect={currentQuestion ? setAnswer :  () => {}} />
