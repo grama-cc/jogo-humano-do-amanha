@@ -1,0 +1,51 @@
+@import 'App.scss';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.title, .question {
+  font-weight: bold;
+  color: $white;
+  text-align: center;
+  z-index: 2;
+}
+
+.title {
+  text-transform: uppercase;
+  font-size: responsive(16, 24);
+  line-height: responsive(32, 32);
+}
+
+.question {
+  font-size: responsive(32, 80);
+  line-height: responsive(40, 74);
+  width: 120%;
+  margin-top: 16px;
+}
+
+.shadow {
+  position: absolute;
+  width: 40%;
+  z-index: 1;
+}
+
+@media (max-width: $small) {
+  .title {
+    font-size: 16px;
+    line-height: 32px;
+  }
+  .question {
+    font-size: 32px;
+    line-height: 40px;
+    max-width: 80%;
+    margin-top: 0;
+  }
+  .shadow {
+    display: none;
+  }
+}

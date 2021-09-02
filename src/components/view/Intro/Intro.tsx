@@ -4,7 +4,10 @@ import SettingsContext from 'context/settingsContext';
 import Video from '../Video/Video';
 import Circle from '../Circle/Circle';
 
-import globalStyles from 'globals.module.scss'
+import Shadow from 'assets/images/main-shadow.png';
+
+import globalStyles from 'globals.module.scss';
+import styles from './Intro.module.scss';
 
 type IntroProps = {
   title: string,
@@ -40,9 +43,10 @@ const Intro: React.FC<IntroProps> = ({ title, question, videos, endedVideos }) =
         {libras ? (
           <Video source={currentVideoSource} onEnded={nextVideo}/>
         ) : (
-          <div>
-            <p>{title}</p>
-            <h1>{question}</h1>
+          <div className={styles.wrapper}>
+            <p className={styles.title}>{title}</p>
+            <h1 className={styles.question}>{question}</h1>
+            <img className={styles.shadow} src={Shadow} alt="Jogo do amanhã" />
           </div>
         )}
       </Circle>

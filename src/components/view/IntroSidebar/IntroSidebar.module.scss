@@ -1,0 +1,60 @@
+@import 'App.scss';
+
+.about, .cta {
+  border-bottom: 1px solid $black;
+  border-top: 1px solid $black;
+}
+
+.about, .text {
+  color: $white;
+  font-weight: bold;
+}
+
+.about {
+  width: 100%;
+  font-size: responsive(24, 40);
+  line-height: responsive(28, 48);
+  height: 18vh;
+}
+
+.text {
+  display: flex;
+  height: 60vh;
+  font-size: responsive(24, 40);
+  line-height: responsive(24, 48);
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.cta {
+  background-color: $white;
+  width: 100%;
+  color: $black;
+  font-weight: bold;
+  height: 22vh;
+  font-size: responsive(40, 84);
+  line-height: responsive(40, 80);
+}
+
+@media (max-width: $small) {
+  .about, .cta {
+    border: 1px solid $black;
+    border-radius: 16px;
+  }
+  .about {
+    font-size: 24px;
+    line-height: 28px;
+    height: 10vh;
+  }
+  .text {
+    display: none;
+  }
+  .cta {
+    font-size: 40px;
+    line-height: 40px;
+    height: 20vh;
+  }
+}

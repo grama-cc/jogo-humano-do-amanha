@@ -4,12 +4,13 @@ import { WelcomeContent, AboutText, ScreenSaverContent } from 'types/types'
 
 import SettingsContext from 'context/settingsContext';
 
+import About from 'components/view/About/About';
 import Intro from 'components/view/Intro/Intro';
 import IntroSidebar from 'components/view/IntroSidebar/IntroSidebar';
 import LibrasToggle from '../LibrasToggle/LibrasToggle';
 
-import styles from 'globals.module.scss';
-import About from 'components/view/About/About';
+import globalStyles from 'globals.module.scss';
+import styles from './Home.module.scss';
 
 const Home: React.FC = () => {
   const { step, setStep, showAboutPopUp } = useContext(SettingsContext);
@@ -55,7 +56,7 @@ const Home: React.FC = () => {
   return (
     <>
       {(step === 'home') && (
-        <main className={styles.container}>
+        <main className={`${globalStyles.container} ${styles.home}`}>
           <Intro
             title={screenSaver.init_screen_saver.title}
             question={screenSaver.init_screen_saver.init_question}
@@ -67,8 +68,8 @@ const Home: React.FC = () => {
             ctaLabel={screenSaver.init_screen_saver.init_button}
             ctaAction={changeStep}
           />
-          <LibrasToggle />
-          {showAboutPopUp && <About text={aboutContent.description} /> }
+          <LibrasToggle blackIcon={true} />
+          {showAboutPopUp && <About title={aboutContent.title} text={aboutContent.description} /> }
         </main>
       )}
     </>
