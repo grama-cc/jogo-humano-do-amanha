@@ -1,0 +1,53 @@
+@import 'App.scss';
+
+.quizOption, .optionCountdown {
+  border-radius: 16px;
+  height: 30vh;
+  width: 100%;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  button {
+    font-size: responsive(40, 96);
+    line-height: responsive(64, 88);
+  }
+}
+
+.optionCountdown {
+  border: 1px solid $white;
+  opacity: 0;
+  &:first-of-type {
+    animation: showup 1.5s forwards;
+    animation-delay: 2s;
+  }
+  &:nth-of-type(2) {
+    animation: showup 1.5s forwards;
+    animation-delay: 3s;
+  }
+  &:nth-of-type(3) {
+    animation: showup 1.5s forwards;
+    animation-delay: 4s;
+  }
+  button {
+    color: $white;
+  }
+}
+
+@keyframes showup {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+@media (max-width: $small) {
+  .quizOption, .optionCountdown {
+    height: 9vh;
+    width: 95%;
+  }
+  .optionCountdown {
+    button {
+      font-size: 40px;
+      line-height: 64px;
+    }
+  }
+}

@@ -12,7 +12,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-right: 1px solid black;
+  border-right: 1px solid $black;
   width: 60%;
   min-height: inherit;
 }
@@ -34,12 +34,29 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+
+  button > img {
+    width: responsive(16, 52);
+    height: responsive(16, 52);
+  }
+
+  p {
+    font-weight: bold;
+    font-size: responsive(24, 40);
+    line-height: responsive(24, 40);
+    color: $lightGrey;  
+  }
 }
 
 .libras {
   position: absolute;
   bottom: 42px;
   left: 64px;
+
+  img {
+    width: responsive(30, 64);
+    height: responsive(30, 64);
+  }
 }
 
 @media (max-width: $small) {
@@ -60,5 +77,11 @@
     left: auto;
     right: 36px;
     bottom: 35vh;
+  }
+  .menu {
+    left: 36px;
+    min-height: 59vh;
+    font-size: 24px;
+    line-height: 24px;
   }
 }

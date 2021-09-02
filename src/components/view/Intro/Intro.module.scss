@@ -34,6 +34,35 @@
   z-index: 1;
 }
 
+.welcome {
+  color: $white;
+  font-weight: bold;
+  width: 80%;
+  text-align: center;
+  &:first-of-type {
+    font-size: responsive(32, 64);
+    line-height: responsive(30, 64);
+    margin-bottom: 8px;
+    animation: showup 1s forwards;
+  }
+  &:nth-of-type(2) {
+    font-size: responsive(24, 40);
+    line-height: responsive(24, 40);
+    animation: showup 2s forwards;
+  }
+}
+
+@keyframes showup {
+  0% {opacity: 0;}
+  50% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+@keyframes showupSlow {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
 @media (max-width: $small) {
   .title {
     font-size: 16px;

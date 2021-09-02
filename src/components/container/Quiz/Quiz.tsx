@@ -101,7 +101,7 @@ const Quiz: React.FC = () => {
         <Menu prevStep={'countdown'} text={currentQuestionIndex.toString()} prevAction={currentQuestionIndex ? goToPreviousQuestion : null}/>
         <Question question={currentQuestion} />
         <div className={styles.sidebar}>
-          <Options options={['SIM', 'NAO', 'TALVEZ']} onSelect={currentQuestion ? setAnswer :  () => {}} />
+          <Options options={['Sim', 'Não', 'Talvez']} onSelect={currentQuestion ? setAnswer :  () => {}} />
           <div>
             <button onClick={goToResult} style={{ display: 'block', marginBottom: '16px'}}>Ir para resultado</button>
             <button onClick={goToResearch} style={{ display: 'block', marginBottom: '16px'}}>Ir para questionário socioeconômico</button>

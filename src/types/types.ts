@@ -82,7 +82,7 @@ export type AboutText = {
 }
 
 // Quiz
-export type Option = "SIM" | "NAO" | "TALVEZ"
+export type Option = "Sim" | "Não" | "Talvez"
 
 export type QuestionType = {
   id: number;

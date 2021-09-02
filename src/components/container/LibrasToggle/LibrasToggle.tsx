@@ -23,7 +23,7 @@ const LibrasToggle: React.FC<LibrasToggleProps> = ({ blackIcon }) => {
         data-testid="libras-toggle" 
         className={styles.libras}
       >
-        <img src={blackIcon ? BlackLibras : WhiteLibras} alt="Mostrar vídeo em Libras" width={30} height={30} />
+        <img src={blackIcon ? BlackLibras : WhiteLibras} alt="Mostrar vídeo em Libras" />
       </button>
   );
 }

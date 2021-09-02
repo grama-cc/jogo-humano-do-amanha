@@ -10,15 +10,17 @@ import globalStyles from 'globals.module.scss';
 import styles from './Intro.module.scss';
 
 type IntroProps = {
-  title: string,
+  title?: string,
   question?: string;
   videos?: string[] | null;
   endedVideos?: () => void | undefined;
+  welcome?: string[];
+  showWelcomeMessage?: boolean;
 }
 
-const Intro: React.FC<IntroProps> = ({ title, question, videos, endedVideos }) => {
+const Intro: React.FC<IntroProps> = ({ title, question, videos, endedVideos, welcome, showWelcomeMessage }) => {
 
-  const { libras } = useContext(SettingsContext);
+  const { libras, step } = useContext(SettingsContext);
   const [currentVideo, setCurrentVideo] = useState<number>(0);
 
   function nextVideo(){
@@ -44,9 +46,21 @@ const Intro: React.FC<IntroProps> = ({ title, question, videos, endedVideos }) =
           <Video source={currentVideoSource} onEnded={nextVideo}/>
         ) : (
           <div className={styles.wrapper}>
-            <p className={styles.title}>{title}</p>
-            <h1 className={styles.question}>{question}</h1>
-            <img className={styles.shadow} src={Shadow} alt="Jogo do amanhã" />
+            {title && <p className={styles.title}>{title}</p>}
+            {question && <h1 className={styles.question}>{question}</h1>}
+            {step === 'home' && <img className={styles.shadow} src={Shadow} alt="Jogo do amanhã" />}
+            {step === 'countdown' && (
+              <>
+                {welcome?.map((item) => (
+                  <p
+                    key={item} 
+                    className={styles.welcome}
+                  >
+                  {item}
+                  </p>
+                ))}
+              </>
+            )}
           </div>
         )}
       </Circle>

@@ -7,9 +7,10 @@ import SettingsContext from 'context/settingsContext';
 import Intro from 'components/view/Intro/Intro';
 import Options from 'components/view/Options/Options';
 import LibrasToggle from '../LibrasToggle/LibrasToggle';
-
-import styles from 'globals.module.scss';
 import Menu from '../Menu/Menu';
+
+import globalStyles from 'globals.module.scss';
+import styles from './Countdown.module.scss';
 
 const initialMessageTime = 5000;
 const countDownTime = 1500;
@@ -81,21 +82,25 @@ const Countdown: React.FC = () => {
     }
   }, [step, libras, startTimer, resetState]);
 
-  const screenSaverMessage = `${screenSaver?.init_screen_saver.wellcome.title} ${screenSaver?.init_screen_saver.wellcome.subtitle}`;
+  const screenSaverMessage = [`${screenSaver?.init_screen_saver.wellcome.title}`, `${screenSaver?.init_screen_saver.wellcome.subtitle}`];
 
   return (
     <>
       {(step === 'countdown') && (
-        <main className={styles.container}>
+        <main className={`${globalStyles.container} ${styles.countdownWrapper}`}>
           <Menu text="0" prevStep={'home'} />
           <Intro
-            title={showWelcomeMessage ? screenSaverMessage : counter.toString()}
+            welcome={showWelcomeMessage ? screenSaverMessage : [counter.toString()]}
             videos={welcome ? [
               welcome?.pagina_inicial_libras_video.url,
               welcome?.pagina_carregando_contador_libras_video.url
             ] : null} 
-            endedVideos={changeStep}/>
-          <Options onSelect={() => {}} options={['SIM', 'NAO', 'TALVEZ']}/>
+            endedVideos={changeStep}
+            showWelcomeMessage={showWelcomeMessage}
+          />
+          <div className={globalStyles.sidebar}>
+            <Options onSelect={() => {}} options={['Sim', 'Não', 'Talvez']}/>
+          </div>
          
           <LibrasToggle />
         </main>
