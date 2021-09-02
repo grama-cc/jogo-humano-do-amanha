@@ -2,7 +2,10 @@ import React, { useContext } from 'react';
 import SettingsContext from 'context/settingsContext';
 import { Step } from 'types/types';
 
-import styles from 'globals.module.scss';
+import GoBackWhite from 'assets/icons/arrow-white.svg';
+//import GoBackBlack from 'assets/icons/arrow-black.svg';
+
+import globalStyles from 'globals.module.scss';
 
 type MenuProps = {
   text: string,
@@ -22,8 +25,10 @@ const Menu: React.FC<MenuProps> = ({ text, prevStep, prevAction }) => {
   };
 
   return (
-    <nav className={styles.menu}>
-      <button onClick={goBack}>Voltar</button>
+    <nav className={globalStyles.menu}>
+      <button onClick={goBack}>
+        <img src={GoBackWhite} alt="Voltar" />
+      </button>
       <p>{text}</p>
     </nav>
   );
