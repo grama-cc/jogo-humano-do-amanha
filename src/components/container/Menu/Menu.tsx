@@ -10,10 +10,10 @@ import globalStyles from 'globals.module.scss';
 type MenuProps = {
   text: string,
   prevStep: Step,
-  prevAction?: () => void
+  prevAction?: (() => void) | null
 }
 
-const Menu: React.FC<MenuProps> = ({ text, prevStep, prevAction }) => {
+const Menu: React.FC<MenuProps> = ({ text, prevStep, prevAction = null }) => {
   const { setStep } = useContext(SettingsContext);
 
   const goBack = () => {

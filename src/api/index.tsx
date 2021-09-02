@@ -3,7 +3,7 @@ import axios, { AxiosResponse } from 'axios';
 import { WelcomeContent, AboutText, HumanId, AnswersList, HumanType, ScreenSaverContent } from 'types/types';
 
 const instance = axios.create({
-	baseURL: 'http://jogo-humano-do-amanha-api.herokuapp.com/',
+	baseURL: 'https://jogo-humano-do-amanha-api.herokuapp.com/',
 	timeout: 15000,
 });
 
@@ -38,6 +38,10 @@ export const QuizQuestions = {
 		id: string|null = null,
 		alternativa: string|null = null
 	) => requests.get(`/quizz/?pergunta=${pergunta}&resposta=${resposta}&id=${id}&alterantiva=${alternativa}`),
+};
+
+export const Profile = {
+	getQuestion: () => requests.get(`/profile-question/`),
 };
 
 export const AllHumanTypes = {
