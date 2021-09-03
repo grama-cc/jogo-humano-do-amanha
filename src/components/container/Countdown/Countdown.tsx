@@ -99,7 +99,14 @@ const Countdown: React.FC = () => {
             showWelcomeMessage={showWelcomeMessage}
           />
           <div className={globalStyles.sidebar}>
-            <Options onSelect={() => {}} options={['Sim', 'Não', 'Talvez']}/>
+            <Options
+              onSelect={() => {}}
+              options={[
+                {label: 'Sim', value: 'SIM'},
+                {label: 'Não', value: 'NAO'},
+                {label: 'Talvez', value: 'TALVEZ'}
+              ]}
+            />
           </div>
          
           <LibrasToggle />

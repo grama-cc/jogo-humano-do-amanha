@@ -7,7 +7,7 @@ import styles from './Options.module.scss';
 
 type OptionsProps = {
   options: Option[];
-  onSelect: (value: Option) => void;
+  onSelect: (value: string) => void;
 }
 
 const Options: React.FC<OptionsProps> = ({ options, onSelect }) => {
@@ -17,11 +17,11 @@ const Options: React.FC<OptionsProps> = ({ options, onSelect }) => {
     <ul>
       {options.map(item => (
         <li
-          key={item} 
+          key={item.value} 
           className={step === 'countdown' ? `${styles.optionCountdown}` : `${styles.quizOption}` }
         >
-          <button onClick={() => onSelect(item)}>
-            {item}
+          <button onClick={() => onSelect(item.value)}>
+            {item.label}
           </button>
         </li>
       ))}
