@@ -6,11 +6,12 @@ import { QuizQuestions } from 'api/index';
 
 import Menu from '../Menu/Menu';
 import LibrasToggle from '../LibrasToggle/LibrasToggle';
-import Question from 'components/view/Question/Question';
+import QuestionList from 'components/container/QuestionList/QuestionList';
 import Options from 'components/view/Options/Options';
 
+import globalStyles from 'globals.module.scss';
+import styles from './Quiz.module.scss';
 
-import styles from 'globals.module.scss';
 
 const Quiz: React.FC = () => {
   const { step, setStep, userId, setUserId } = useContext(SettingsContext);
@@ -92,20 +93,45 @@ const Quiz: React.FC = () => {
     
   }, [currentQuestionIndex, questions, currentQuestion, getNextQuestion, goToNextQuestion]);
 
-  
+  const answerColor = useMemo(() => {
+    if(currentQuestion){
+      if(currentQuestion.resposta === 'SIM'){
+        return styles.blue;
+      }
+      if(currentQuestion.resposta === 'TALVEZ'){
+        return styles.yellow;
+      }
+      if(currentQuestion.resposta === 'NAO'){
+        return styles.orange;
+      } return '';
+    }
+    if(questions[currentQuestionIndex - 1]){
+      if(questions[currentQuestionIndex - 1].resposta === 'SIM'){
+        return styles.blue;
+      }
+      if(questions[currentQuestionIndex - 1].resposta === 'TALVEZ'){
+        return styles.yellow;
+      }
+      if(questions[currentQuestionIndex - 1].resposta === 'NAO'){
+        return styles.orange;
+      } 
+    }
+    return '';
+    
+  }, [questions, currentQuestion, currentQuestionIndex]);
 
   return (
     <>
     {step === 'quiz' && (
-      <main className={styles.container}>
+      <main className={`${globalStyles.container} ${styles.quizWrapper} ${answerColor}`}>
         <Menu prevStep={'countdown'} text={currentQuestionIndex.toString()} prevAction={currentQuestionIndex ? goToPreviousQuestion : null}/>
-        <Question question={currentQuestion} />
+        <QuestionList questions={questions} currentQuestion={currentQuestionIndex}/>
         <div className={styles.sidebar}>
-          <Options options={[{label: 'Sim', value: 'SIM'},{label: 'Não', value: 'NAO'}, {label: 'Talvez', value: 'TALVEZ'}]} onSelect={currentQuestion ? setAnswer :  () => {}} />
-          <div>
-            <button onClick={goToResult} style={{ display: 'block', marginBottom: '16px'}}>Ir para resultado</button>
-            <button onClick={goToResearch} style={{ display: 'block', marginBottom: '16px'}}>Ir para questionário socioeconômico</button>
-          </div>
+          <Options
+            options={[{label: 'Sim', value: 'SIM'},{label: 'Talvez', value: 'TALVEZ'}, {label: 'Não', value: 'NAO'}, ]}
+            onSelect={currentQuestion ? setAnswer :  () => {}}
+            selected={currentQuestion?.resposta}
+          />
         </div>
         <LibrasToggle />
       </main>

@@ -90,15 +90,16 @@ const Countdown: React.FC = () => {
       {(step === 'countdown') && (
         <main className={`${globalStyles.container} ${styles.countdownWrapper}`}>
           <Menu text="0" prevStep={'home'} />
-          <Intro
-            welcome={showWelcomeMessage ? screenSaverMessage : [counter.toString()]}
-            videos={welcome ? [
-              welcome?.pagina_inicial_libras_video.url,
-              welcome?.pagina_carregando_contador_libras_video.url
-            ] : null} 
-            endedVideos={changeStep}
-            showWelcomeMessage={showWelcomeMessage}
-          />
+            <Intro
+              welcome={showWelcomeMessage ? screenSaverMessage : [counter.toString()]}
+              videos={welcome ? [
+                welcome?.pagina_inicial_libras_video.url,
+                welcome?.pagina_carregando_contador_libras_video.url
+              ] : null} 
+              endedVideos={changeStep}
+              showWelcomeMessage={showWelcomeMessage}
+            />
+
           <div className={globalStyles.sidebar}>
             <Options
               onSelect={() => {}}

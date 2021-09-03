@@ -34,6 +34,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  z-index: 1;
 
   button > img {
     width: responsive(16, 52);
