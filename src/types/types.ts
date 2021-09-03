@@ -82,7 +82,11 @@ export type AboutText = {
 }
 
 // Quiz
-export type Option = "Sim" | "Não" | "Talvez"
+export type Option = {
+  value: 'SIM' | 'NAO' | 'TALVEZ',
+  label: 'Sim' | 'Não' | 'Talvez'
+}
+
 
 export type QuestionType = {
   id: number;
@@ -155,8 +159,13 @@ export type ProfileQuestion = {
   order: number,
   required: boolean,
   text: string,
+  texto_libras?:{
+    url: string
+  },
   __v: number,
   _id: string,
   answer: string,
+  answerText: string,
+  searchable?: boolean
 }
 
