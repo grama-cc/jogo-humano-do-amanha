@@ -29,3 +29,21 @@
     background-color: $orange;
   }
 }
+
+.transition {
+  background-color: $blue;
+  animation-name: fadeToBlack;
+  animation-duration: 2s; 
+  animation-timing-function: linear; 
+  animation-delay: 0;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeToBlack {
+  0% {
+    background-color: $blue;
+  }
+  100% {
+    background-color: $black;
+  }
+}

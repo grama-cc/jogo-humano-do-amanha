@@ -14,6 +14,7 @@ function App() {
   const [language, setLanguage] = useState<string>("pt-br");
   const [step, setStep] = useState<Step>('home');
   const [loading, setLoading] = useState<boolean>(false);
+  const [transitionHome, setTransitionHome] = useState<boolean>(false);
   const [allHumanTypes, setAllHumanTypes] = useState<HumanType[]>([]);
   const [humanId, setHumanId] = useState<string | HumanId>('');
   const [showAboutPopUp, setShowAboutPopUp] = useState<boolean>(false);
@@ -30,6 +31,8 @@ function App() {
     setStep,
     loading,
     setLoading,
+    transitionHome,
+    setTransitionHome,
     allHumanTypes,
     setAllHumanTypes,
     humanId,

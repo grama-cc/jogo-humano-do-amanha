@@ -13,7 +13,7 @@ import globalStyles from 'globals.module.scss';
 import styles from './Home.module.scss';
 
 const Home: React.FC = () => {
-  const { step, setStep, showAboutPopUp } = useContext(SettingsContext);
+  const { step, setStep, showAboutPopUp, transitionHome, setTransitionHome } = useContext(SettingsContext);
 
   const [welcome, setWelcome] = useState<WelcomeContent>();
   const [aboutContent, setAboutContent] = useState<AboutText>();
@@ -47,16 +47,21 @@ const Home: React.FC = () => {
 		return () => {};
 	}, []);
 
+  const goToCountdown = useCallback(() => {
+    setStep('countdown');
+  }, [setStep])
+
   const changeStep = useCallback(() => {
-    setStep('countdown')
-  }, [setStep]);
+    setTransitionHome(true);
+    setTimeout(goToCountdown, 2500);
+  }, [goToCountdown, setTransitionHome]);
 
   if (!aboutContent || !screenSaver) return null;
 
   return (
     <>
       {(step === 'home') && (
-        <main className={`${globalStyles.container} ${styles.home}`}>
+        <main className={`${globalStyles.container} ${transitionHome ? styles.transition : styles.home}`}>
           <Intro
             title={screenSaver.init_screen_saver.title}
             question={screenSaver.init_screen_saver.init_question}

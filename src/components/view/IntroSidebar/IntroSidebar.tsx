@@ -12,7 +12,7 @@ type IntroSidebarProps = {
 }
 
 const IntroSidebar: React.FC<IntroSidebarProps> = ({ aboutText, text, ctaLabel, ctaAction }) => {
-  const { showAboutPopUp, setShowAboutPopUp } = useContext(SettingsContext);
+  const { showAboutPopUp, setShowAboutPopUp, transitionHome } = useContext(SettingsContext);
 
   const aboutPopUp = () => {
     setShowAboutPopUp(!showAboutPopUp);
@@ -20,9 +20,15 @@ const IntroSidebar: React.FC<IntroSidebarProps> = ({ aboutText, text, ctaLabel, 
 
   return (
     <div className={globalStyles.sidebar}>
-      <button className={styles.about} onClick={aboutPopUp}>{aboutText}</button>
-      <p className={styles.text}>{text}</p>
-      <button className={styles.cta} onClick={ctaAction}>{ctaLabel}</button>
+      <button className={styles.about} onClick={aboutPopUp}>
+        <span className={`${transitionHome && styles.transition}`}>{aboutText}</span>
+      </button>
+      <p className={styles.text}>
+        <span className={`${transitionHome && styles.transition}`}>{text}</span>
+      </p>
+      <button className={`${transitionHome ? styles.transitionButton : styles.cta}`} onClick={ctaAction}>
+        <span className={`${transitionHome && styles.transition}`}>{ctaLabel}</span>
+      </button>
     </div>
   );
 }

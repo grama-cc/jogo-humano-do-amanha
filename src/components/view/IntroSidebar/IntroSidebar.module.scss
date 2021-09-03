@@ -39,6 +39,48 @@
   line-height: responsive(40, 80);
 }
 
+.transition {
+  opacity: 1;
+  animation-name: fade;
+  animation-duration: 1s; 
+  animation-timing-function: linear; 
+  animation-delay: 0;
+  animation-fill-mode: forwards;
+}
+
+.transitionButton {
+  width: 100%;
+  color: $black;
+  font-weight: bold;
+  height: 22vh;
+  font-size: responsive(40, 84);
+  line-height: responsive(40, 80);
+  background-color: $white;
+  animation-name: fadeToBlack;
+  animation-duration: 2s; 
+  animation-timing-function: linear; 
+  animation-delay: 0;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeToBlack {
+  0% {
+    background-color: $blue;
+  }
+  100% {
+    background-color: $black;
+  }
+}
+
 @media (max-width: $small) {
   .about, .cta {
     border: 1px solid $black;
