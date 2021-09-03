@@ -16,7 +16,7 @@ const initialMessageTime = 5000;
 const countDownTime = 1500;
 
 const Countdown: React.FC = () => {
-  const { step, setStep, libras } = useContext(SettingsContext);
+  const { step, setStep, libras, setLoading } = useContext(SettingsContext);
 
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
@@ -74,13 +74,14 @@ const Countdown: React.FC = () => {
         resetState();
         timerRef.current = setTimeout(() => {
           setShowWelcomeMessage(false);
+          setLoading(true);
           startTimer();
         }, initialMessageTime);
       } else if(timerRef.current){
         clearTimeout(timerRef.current);
       }
     }
-  }, [step, libras, startTimer, resetState]);
+  }, [step, libras, startTimer, resetState, setLoading]);
 
   const screenSaverMessage = [`${screenSaver?.init_screen_saver.wellcome.title}`, `${screenSaver?.init_screen_saver.wellcome.subtitle}`];
 
