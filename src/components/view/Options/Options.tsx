@@ -8,17 +8,19 @@ import styles from './Options.module.scss';
 type OptionsProps = {
   options: Option[];
   onSelect: (value: string) => void;
+  selected?: string;
 }
 
-const Options: React.FC<OptionsProps> = ({ options, onSelect }) => {
+const Options: React.FC<OptionsProps> = ({ options, onSelect, selected }) => {
   const { step } = useContext(SettingsContext);
 
   return (
-    <ul>
+    <ul className={step === 'countdown' ? `${styles.optionsCountdown}` : `${styles.quizOptions}`}>
       {options.map(item => (
         <li
           key={item.value} 
-          className={step === 'countdown' ? `${styles.optionCountdown}` : `${styles.quizOption}` }
+          className={`${step === 'countdown' ? `${styles.optionCountdown}` : `${styles.quizOption}`}
+          ${selected && selected !== item.value ? styles.disabled: ''}`}
         >
           <button onClick={() => onSelect(item.value)}>
             {item.label}

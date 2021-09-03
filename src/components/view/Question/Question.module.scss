@@ -1,0 +1,21 @@
+@import 'App.scss';
+
+.question{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  .text{
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    font-size: responsive(24, 40);
+    line-height: responsive(24, 40);
+    font-weight: bold;
+    width: 80%;
+  }
+}

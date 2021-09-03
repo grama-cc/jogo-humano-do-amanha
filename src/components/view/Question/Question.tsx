@@ -5,7 +5,7 @@ import SettingsContext from 'context/settingsContext';
 
 import Video from '../Video/Video';
 
-import globalStyles from 'globals.module.scss'
+import styles from './Question.module.scss';
 
 type QuestionProps = {
   question: QuestionType;
@@ -18,12 +18,12 @@ const Question: React.FC<QuestionProps> = ({ question }) => {
     if(question){
       if(libras){
         return <Video source={question.libras || 'http://techslides.com/demos/sample-videos/small.mp4'}/>;
-      } return <h1>{question.texto}</h1>
+      } return <p className={styles.text}>{question.texto}</p>
     } return null;
   },[libras, question]);
 
   return (
-    <div className={globalStyles.content}>
+    <div className={styles.question}>
       {content || 'Carregando...'}
     </div>
   );

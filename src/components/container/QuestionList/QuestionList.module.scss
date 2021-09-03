@@ -1,0 +1,57 @@
+@import 'App.scss';
+
+.circles{
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+  margin: 0 auto;
+  transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+  @media only screen and (min-width: $small) {
+    margin:0 10vw;
+  }
+  
+  .circleContainer{
+    position: relative;
+    width: fit-content;
+    margin: 0 auto;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  .circle{
+    width: 80vw;
+    margin: 0 auto;
+    height: auto;
+    display: block;
+    @media only screen and (min-width: $small) {
+      width: auto;
+      height: 70vh;
+    }
+  }
+  .semicircle{
+    width: 80vw;
+    height: auto;
+    @media only screen and (min-width: $small) {
+      width: auto;
+      height: 35vh;
+    }
+  }
+  .semicircleRotated{
+    width: 80vw;
+    height: auto;
+    transform: rotate(180deg);
+    @media only screen and (min-width: $small) {
+      height: 35vh;
+      width: auto;
+    }
+  }
+
+  .semicircle,.semicircleRotated{
+    path{
+      transition: stroke .5s ease-in-out;
+    }
+    &.blackStroke path{
+      stroke: $black;
+    }
+  }
+  
+}
