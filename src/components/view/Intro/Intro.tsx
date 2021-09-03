@@ -1,4 +1,4 @@
-import React, { useContext, useState, useMemo } from 'react';
+import React, { useContext, useState, useMemo, useEffect } from 'react';
 import SettingsContext from 'context/settingsContext';
 
 import Video from '../Video/Video';
@@ -18,10 +18,16 @@ type IntroProps = {
   showWelcomeMessage?: boolean;
 }
 
-const Intro: React.FC<IntroProps> = ({ title, question, videos, endedVideos, welcome, showWelcomeMessage }) => {
+const Intro: React.FC<IntroProps> = ({ title, question, videos, endedVideos, welcome }) => {
 
-  const { libras, step } = useContext(SettingsContext);
+  const { libras, step, setTransitionHome, transitionHome } = useContext(SettingsContext);
   const [currentVideo, setCurrentVideo] = useState<number>(0);
+
+  useEffect(() => {
+    if (step !== 'home') {
+      setTransitionHome(false);
+    }
+  }, [step, setTransitionHome])
 
   function nextVideo(){
     if(endedVideos){
@@ -46,8 +52,8 @@ const Intro: React.FC<IntroProps> = ({ title, question, videos, endedVideos, wel
           <Video source={currentVideoSource} onEnded={nextVideo}/>
         ) : (
           <div className={styles.wrapper}>
-            {title && <p className={styles.title}>{title}</p>}
-            {question && <h1 className={styles.question}>{question}</h1>}
+            {title && <p className={`${styles.title} ${transitionHome && styles.transition}`}>{title}</p>}
+            {question && <h1 className={`${styles.question} ${transitionHome && styles.transition}`}>{question}</h1>}
             {step === 'home' && <img className={styles.shadow} src={Shadow} alt="Jogo do amanhã" />}
             {step === 'countdown' && (
               <>

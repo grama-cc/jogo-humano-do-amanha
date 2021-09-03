@@ -52,6 +52,7 @@
   }
 }
 
+
 @keyframes showup {
   0% {opacity: 0;}
   50% {opacity: 0;}
@@ -61,6 +62,24 @@
 @keyframes showupSlow {
   0% {opacity: 0;}
   100% {opacity: 1;}
+}
+
+.transition {
+  opacity: 1;
+  animation-name: fade;
+  animation-duration: 1s; 
+  animation-timing-function: linear; 
+  animation-delay: 0;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 @media (max-width: $small) {
