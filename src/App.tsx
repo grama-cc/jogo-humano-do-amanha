@@ -13,6 +13,7 @@ function App() {
   const [libras, setLibras] = useState<boolean>(false);
   const [language, setLanguage] = useState<string>("pt-br");
   const [step, setStep] = useState<Step>('home');
+  const [loading, setLoading] = useState<boolean>(false);
   const [allHumanTypes, setAllHumanTypes] = useState<HumanType[]>([]);
   const [humanId, setHumanId] = useState<string | HumanId>('');
   const [showAboutPopUp, setShowAboutPopUp] = useState<boolean>(false);
@@ -27,6 +28,8 @@ function App() {
     setLibras,
     step,
     setStep,
+    loading,
+    setLoading,
     allHumanTypes,
     setAllHumanTypes,
     humanId,

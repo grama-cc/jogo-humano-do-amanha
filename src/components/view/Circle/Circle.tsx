@@ -4,14 +4,23 @@ import SettingsContext from 'context/settingsContext';
 import styles from './Circle.module.scss';
 
 const Circle: React.FC = ({ children }) => {
-  const { step } = useContext(SettingsContext);
+  const { step, loading } = useContext(SettingsContext);
 
   return (
-    <div 
-      className={`${styles.circleWrapper} ${step === 'home' ? styles.blackBorder : styles.whiteBorder}`}
-    >
-      {children}
-    </div>
+    <>
+    {loading ? (
+      <div className={styles.loaderWrapper}>
+        <div className={styles.loader}>Carregando...</div>
+        <p className={styles.loaderInner}>{children}</p>
+      </div>
+    ) : (
+      <div 
+        className={`${styles.circleWrapper} ${step === 'home' ? styles.blackBorder : styles.whiteBorder}`}
+      >
+        {children}
+      </div>
+    )}
+    </>
   );
 }
 
