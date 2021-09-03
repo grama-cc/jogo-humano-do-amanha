@@ -155,8 +155,13 @@ export type ProfileQuestion = {
   order: number,
   required: boolean,
   text: string,
+  texto_libras?:{
+    url: string
+  },
   __v: number,
   _id: string,
   answer: string,
+  answerText: string,
+  searchable?: boolean
 }
 
