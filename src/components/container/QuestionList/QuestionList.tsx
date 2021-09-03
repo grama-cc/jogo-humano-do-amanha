@@ -57,7 +57,7 @@ const QuestionList: React.FC<QuestionListProps> = ({questions, currentQuestion }
   }, [questions, questionText, shapesStrokeColor]);
 
   const translateAnimationValue = useMemo(() => {
-    if(window.screen.width > 480){
+    if(window.screen.width > 640){
       if(questions.length && questions[currentQuestion]){
         return `${((currentQuestion) * -105) -20}vh`;
       } 
@@ -67,10 +67,10 @@ const QuestionList: React.FC<QuestionListProps> = ({questions, currentQuestion }
       return 0;
     } else {
       if(questions.length && questions[currentQuestion]){
-        return `${((currentQuestion) * -130) - 10}vw `;
+        return `${((currentQuestion) * -120) - 10}vw `;
       } 
       if(questions.length){
-        return `${((questions.length -1) * -130) - 10}vw`;
+        return `${((questions.length -1) * -120) - 10}vw`;
       }
       return 0;
     }
