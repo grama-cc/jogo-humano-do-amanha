@@ -116,12 +116,13 @@ html {
       text-transform: none;
     }
 
-    input {
+    input, textarea {
       background: transparent;
       border: none;
       outline: none;
       @include reset-margin-paddding;
       @include font-inherit;
+      resize: none;
     }
 
     ::placeholder {

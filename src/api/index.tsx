@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 
-import { WelcomeContent, AboutText, HumanId, AnswersList, HumanType, ScreenSaverContent } from 'types/types';
+import { WelcomeContent, AboutText, HumanId, AnswersList, HumanType, ScreenSaverContent, ProfileAnswer } from 'types/types';
 
 const instance = axios.create({
 	baseURL: 'https://jogo-humano-do-amanha-api.herokuapp.com/',
@@ -42,6 +42,7 @@ export const QuizQuestions = {
 
 export const Profile = {
 	getQuestion: () => requests.get(`/profile-question/`),
+	postAnswers: (profileAnswer: ProfileAnswer) => requests.post(`/perfils/`, profileAnswer)
 };
 
 export const AllHumanTypes = {
