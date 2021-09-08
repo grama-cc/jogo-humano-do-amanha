@@ -1,23 +1,21 @@
 import React, { useState, useEffect, useCallback, useContext, useMemo } from 'react';
-import ResearchQuestion from 'components/view/ResearchQuestion/ResearchQuestion';
 import ResearchOptions from 'components/container/ResearchOptions/ResearchOptions';
 
 import SettingsContext from 'context/settingsContext';
 import Menu from '../Menu/Menu';
+import QuestionList from 'components/container/QuestionList/QuestionList';
 import { Profile } from 'api';
 
-import styles from 'globals.module.scss'
+import styles from './Research.module.scss';
 import LibrasToggle from '../LibrasToggle/LibrasToggle';
 import { ProfileQuestion } from 'types/types';
 
-const MOCK = [ '20-40 anos', '40-60 anos']
 
 const Research: React.FC = () => {
-  const { step, setStep } = useContext(SettingsContext);
+  const { step, setStep, userId } = useContext(SettingsContext);
+
   const [questions, setQuestions] = useState<ProfileQuestion[]>([]);
   const [currentQuestionIndex, setCurrentQuestionsIndex] = useState<number>(0);
-  const [gender,setGender] = useState<string>('');
-  const [otherGender, setOtherGender] = useState<string>('');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
 
@@ -66,7 +64,7 @@ const Research: React.FC = () => {
               options: [
                 {
                   value: "",
-                  text: "Responda aqui",
+                  text: "Responda aqui...",
                   optionType: 'input',
                 }
               ],
@@ -118,17 +116,38 @@ const Research: React.FC = () => {
     } else {
       goToQuiz();
     }
-  }, [currentQuestionIndex, questions]);
+  }, [currentQuestionIndex, questions, goToQuiz]);
+
+  const sendAnswers = useCallback(() => {
+    console.log(questions);
+    Profile.postAnswers({
+      genero: questions.find(q => q.api_field === 'genero')?.answer || 'outro', 
+      outro_genero: questions.find(q => q.api_field === 'genero')?.answerText || '',
+      faixa_etaria: questions.find(q => q.api_field === 'faixa_etaria')?.answer || '',
+      onde_mora: questions.find(q => q.api_field === 'onde_mora')?.answer || '',
+      avaliacao_jogo: parseInt((questions.find(q => q.api_field === 'avaliacao_jogo')?.answer || ''), 10) || 0,
+      avaliacao_comentario: questions.find(q => q.api_field === 'avaliacao_comentario')?.answer || '',
+      melhoria: questions.find(q => q.api_field === 'melhoria')?.answer || '',
+      personalizado: questions.find(q => q.api_field === 'personalizado')?.answer || '',
+      personalizado_text: questions.find(q => q.api_field === 'personalizado_text')?.answerText || '',
+      personalizado_options: questions.find(q => q.api_field === 'personalizado_options')?.answer || '',
+      resultado_identificacao: questions.find(q => q.api_field === 'resultado_identificacao')?.answer || '',
+      jogo_sensibilizou: questions.find(q => q.api_field === 'jogo_sensibilizou')?.answer || '',
+      reflexao_texto: questions.find(q => q.api_field === 'reflexao_texto')?.answerText || '',
+      recomendar: parseInt(questions.find(q => q.api_field === 'recomendar')?.answer || '', 10) || 0 ,
+      resposta: userId || ''
+    });
+  },[questions, userId]);
 
   const goToNextQuestion = useCallback(() => {
     const nextIndex = currentQuestionIndex + 1;
     if(nextIndex < questions.length){
       setCurrentQuestionsIndex(nextIndex);
     } else {
-
+      sendAnswers();
       goToResult();
     }
-  }, [currentQuestionIndex, questions]);
+  }, [currentQuestionIndex, questions, goToResult, sendAnswers]);
 
   const setAnswer = useCallback((value, textValue?) => {
     const updatedQuestions = [...questions];
@@ -139,7 +158,7 @@ const Research: React.FC = () => {
 
     setQuestions(updatedQuestions);
     goToNextQuestion();
-  }, [currentQuestion, questions, goToNextQuestion]);
+  }, [questions, goToNextQuestion, currentQuestionIndex]);
 
   const questionOptions = useMemo(() => {
     if(currentQuestion){
@@ -152,20 +171,26 @@ const Research: React.FC = () => {
   return (
     <>
     {step === 'research' && (
-      <main className={styles.container}>
-        <Menu text="Texto" prevStep={'quiz'} prevAction={currentQuestionIndex ? goToPreviousQuestion : null} />
+      <main className={`${styles.container} ${styles.researchWrapper}`}>
+        <Menu text={currentQuestionIndex.toString()} prevStep={'quiz'} prevAction={currentQuestionIndex ? goToPreviousQuestion : null} />
         {!!questions.length ? (
           <>
-            <ResearchQuestion question={currentQuestion} />
+            <QuestionList questions={questions} currentQuestion={currentQuestionIndex}/>
             <div className={styles.sidebar}>
               {!!currentQuestion.searchable && 
                 <input
                   value={searchQuery}
                   onChange={e => setSearchQuery(e.currentTarget.value)}
                   placeholder="Escreva aqui"
+                  className={styles.filterInput}
                 />
               }
-              <ResearchOptions options={questionOptions} onSelect={setAnswer} />
+              <ResearchOptions
+                searchable={!!currentQuestion.searchable}
+                options={questionOptions}
+                onSelect={setAnswer} 
+                selected={currentQuestion.answerText || currentQuestion.answer || currentQuestion.resposta || ''}
+              />
               <div>
               </div>
             </div>

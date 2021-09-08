@@ -1,21 +1,20 @@
-import React, {useMemo, useCallback} from 'react';
+import React, {useMemo} from 'react';
 
 import styles from './QuestionList.module.scss';
-import { QuestionType } from 'types/types';
+import { QuestionType, ProfileQuestion } from 'types/types';
 import Question from 'components/view/Question/Question';
 
 import {ReactComponent as Semicircle} from 'assets/shapes/Semicircle.svg';
 import {ReactComponent as Circle} from 'assets/shapes/Circle.svg';
 
 type QuestionListProps = {
-  questions: QuestionType[];
+  questions: QuestionType[] | ProfileQuestion[];
   currentQuestion: number;
 }
 
 const QuestionList: React.FC<QuestionListProps> = ({questions, currentQuestion }) => {
 
   const shapesStrokeColor = useMemo(() => {
-    console.log(questions[currentQuestion])
     if(!questions[currentQuestion]){
       if(questions[currentQuestion - 1]?.resposta){
         return styles.blackStroke;
@@ -26,10 +25,6 @@ const QuestionList: React.FC<QuestionListProps> = ({questions, currentQuestion }
     }
     return '';
   },[questions, currentQuestion]);
-
-  const questionText = useCallback((index) => {
-    return questions[index].texto || '';
-  }, [questions]);
   
   const questionShapes = useMemo(() => {
     if(questions.length){
@@ -54,7 +49,7 @@ const QuestionList: React.FC<QuestionListProps> = ({questions, currentQuestion }
         <Semicircle className={styles.semicircleRotated}/>
       </>
     );
-  }, [questions, questionText, shapesStrokeColor]);
+  }, [questions, shapesStrokeColor]);
 
   const translateAnimationValue = useMemo(() => {
     if(window.screen.width > 640){
@@ -67,7 +62,7 @@ const QuestionList: React.FC<QuestionListProps> = ({questions, currentQuestion }
       return 0;
     } else {
       if(questions.length && questions[currentQuestion]){
-        return `${((currentQuestion) * -120) - 10}vw `;
+        return `${((currentQuestion) * -120) - 10}vw`;
       } 
       if(questions.length){
         return `${((questions.length -1) * -120) - 10}vw`;

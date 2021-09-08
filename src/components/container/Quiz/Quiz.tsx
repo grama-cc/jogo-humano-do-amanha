@@ -55,11 +55,11 @@ const Quiz: React.FC = () => {
         setQuestions(updatedQuestions);
       } else {
         setFinished(true);
-        goToResearch();
+        goToResult();
       }
     });
     setCurrentQuestionsIndex(current => current + 1);
-  },[currentQuestionIndex, userId, questions, currentQuestion, goToResearch]);
+  },[currentQuestionIndex, userId, questions, currentQuestion, goToResult]);
 
   const goToPreviousQuestion = useCallback(() => {
     const previousIndex = currentQuestionIndex - 1;

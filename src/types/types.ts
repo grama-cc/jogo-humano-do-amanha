@@ -8,7 +8,6 @@ export type LibrasVideo = {
   createdAt: string,
   ext: string,
   hash: string,
-  height?: number | string,
   id: string,
   mime: string,
   name: string,
@@ -94,6 +93,10 @@ export type QuestionType = {
   resposta: string;
   alternativa: string;
   libras: string;
+  text: string;
+  texto_libras?:{
+    url: string
+  },
 }
 
 export type AvatarImage = {
@@ -183,10 +186,35 @@ export type ProfileQuestion = {
   texto_libras?:{
     url: string
   },
+  libras: string,
   __v: number,
   _id: string,
   answer: string,
   answerText: string,
-  searchable?: boolean
+  searchable?: boolean,
+  resposta: string,
+  texto: string
+}
+
+export type ProfileAnswer = {
+  genero: string,
+  outro_genero?: string,
+	onde_mora: string,
+	avaliacao_jogo:  number,
+	melhoria: string,
+	dispositivo?: string,
+	resultado_identificacao: string,
+	jogo_sensibilizou: string,
+	recomendar: number,
+	faixa_etaria: string,
+	personalizado: string,
+	avaliacao_comentario: string,
+	personalizado_text: string,
+  personalizado_options?: string,
+	dispositivo_text?: string,
+	melhoria_text?: string,
+	reflexao_texto?: string,
+	locale?: "pt-BR",
+	resposta: string,
 }
 
