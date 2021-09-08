@@ -10,7 +10,7 @@ import ResultText from 'components/view/ResultText/ResultText';
 import ResultShare from 'components/view/ResultShare/ResultsShare';
 import ResultsList from 'components/view/ResultsList/ResultsList';
 
-import styles from 'globals.module.scss';
+import styles from './Result.module.scss';
 
 const MOCK_DATA = 
   {
@@ -34,57 +34,83 @@ const MOCK_DATA =
 export default function Result() {
   const { step, setStep, allHumanTypes, setAllHumanTypes, resultAvatar, setResultAvatar, resultsListHuman } = useContext(SettingsContext);
   const [isError, setIsError] = useState<boolean>(false);
+  const [currentHuman, setCurrentHuman] = useState<boolean>(false)
 
+  
   useEffect(() => {
-		AllHumanTypes.getHumanTypes()
-			.then((data) => {
-				setAllHumanTypes(data);
-			})
-			.catch((err) => {
-				setIsError(true);
-			});
-
+    AllHumanTypes.getHumanTypes()
+    .then((data) => {
+      setAllHumanTypes(data);
+    })
+    .catch((err) => {
+      setIsError(true);
+    });
+    
     GetHumanType.getHumanType(MOCK_DATA.openness, MOCK_DATA.character)
-      .then((avatar) => {
-        if(avatar.length){
-          setResultAvatar(avatar[0]);
-        }
-      })
-      .catch((err) => {
-        setIsError(true);
-      });
-
+    .then((avatar) => {
+      if(avatar.length){
+        setResultAvatar(avatar[0]);
+      }
+    })
+    .catch((err) => {
+      setIsError(true);
+    });
+    
 		return () => {};
-
+    
 	}, [setAllHumanTypes, setResultAvatar]);
-
+  
   const goToResearch = useCallback(() => {
     setStep('research')
   }, [setStep]);
+
+  const goToHome = useCallback(() => {
+    setStep('home')
+  }, [setStep]);
+
+  const showHuman = () => {
+    setCurrentHuman(true);
+  }
 
   if (!resultAvatar) return null;
 
   return (
     <>
       {step === 'result' && (
-        <main className={styles.container}>
-          <Menu text={"Menu"} prevStep={'research'} />
-          <div className={styles.content} style={{ display: 'flex', flexDirection: 'column'}}>
-            <ResultAvatar avatar={resultAvatar.images[0]} avatarName={resultAvatar.nome} />
-            {allHumanTypes && <ResultsList results={allHumanTypes} />}
+        <main 
+          style={{ background: `${ window.innerWidth < 640 ? `linear-gradient(180deg, ${resultAvatar.backgroundColor} 0%, #000 90%)` : `${resultAvatar.backgroundColor}`}` }}
+        >
+          <Menu prevStep={'research'} text={'Seu humano do amanhã é:'} />
+          <div className={styles.resultContainer}>
+            <div className={styles.resultContent}>
+              <ResultAvatar avatar={resultAvatar.images[1].url} avatarName={resultAvatar.nome} />
+            </div>
+            <div className={styles.resultSidebar}>
+              <ResultText title={resultAvatar.nome} text={resultAvatar.descricao} />
+              <ResultShare resultTitle={resultAvatar.nome} resultDescription={resultAvatar.descricao} color={resultAvatar.backgroundColor} />
+              <div className={styles.seeMore}>Role para conhecer os outros <span>humanos do amanhã</span></div>
+            </div>
           </div>
-          <div className={styles.sidebar}>
-            <ResultText title={resultAvatar.nome} text={resultAvatar.descricao} />
-            <ResultShare resultTitle={resultAvatar.nome} resultDescription={resultAvatar.descricao} />
-            <p>Conheça os outros humanos do amanhã</p>
-            {resultsListHuman ? (
-              <>
-                <ResultText title={resultsListHuman.nome} text={resultsListHuman.descricao} />
-                <button onClick={goToResearch}>Nos ajude a melhorar o jogo do amanhã</button>
-              </>
-            ) : (
-              <p>Clique para conhecer os demais humanos do futuro</p>
-            )}
+          <div className={styles.resultList}>
+            <div className={styles.resultContent} onClick={showHuman}>
+              {allHumanTypes && <ResultsList results={allHumanTypes} color={resultAvatar.backgroundColor} />}
+            </div>
+
+            <div className={styles.resultSidebar}>
+              {currentHuman ? (
+                <div>
+                  <ResultText title={resultsListHuman.nome} text={resultsListHuman.descricao} />
+                </div>
+              ) : (
+                <div>
+                  <p className={styles.message}>Nos ajude a melhorar esse jogo respondendo um breve questionário e 
+                  aproveite para descobrir os outros <span style={{ color: `${resultAvatar.backgroundColor}` }}>humanos do amanhã</span></p>
+                  <button onClick={goToResearch} className={styles.cta}>Ok, vamos lá</button>
+                  <button onClick={goToHome} className={styles.cta}>Talvez depois</button>
+                  <button onClick={goToHome} className={styles.endGame}>Encerrar o jogo</button>
+                </div>
+              )}
+            </div>
           </div>
           <LibrasToggle />
         </main>
