@@ -1,5 +1,7 @@
 import React from 'react';
 
+import styles from './ResultText.module.scss';
+
 type ResultTextProps = {
   title: string;
   text: string;
@@ -8,8 +10,8 @@ type ResultTextProps = {
 const ResultText: React.FC<ResultTextProps> = ({ title, text }) => {
   return (
     <>
-      <h1>{title}</h1>
-      <p>{text}</p>
+      <h1 className={styles.title}><span>{title}</span></h1>
+      <p className={styles.text}>{text}</p>
     </>
   );
 }

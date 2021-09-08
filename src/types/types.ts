@@ -96,7 +96,28 @@ export type QuestionType = {
   libras: string;
 }
 
+export type AvatarImage = {
+  alternativeText: string;
+  caption: string;
+  createdAt: string;
+  ext: string;
+  formats: Object;
+  hash: string;
+  height: number;
+  id: string;
+  mime: string;
+  name: string;
+  related: string[];
+  size: number;
+  updatedAt: string;
+  url: string;
+  width: number;
+  __v: number;
+  _id: string;
+}
+
 export type HumanType = {
+  backgroundColor: string,
   __v: number,
   _id: string,
   character: string,
@@ -104,7 +125,7 @@ export type HumanType = {
   descricao: string,
   humor?: string,
   id: string,
-  images: string[],
+  images: AvatarImage[],
   locale: string,
   localizations: string[],
   nome: string,

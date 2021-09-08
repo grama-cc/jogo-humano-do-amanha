@@ -3,18 +3,19 @@ import SettingsContext from 'context/settingsContext';
 import { Step } from 'types/types';
 
 import GoBackWhite from 'assets/icons/arrow-white.svg';
-//import GoBackBlack from 'assets/icons/arrow-black.svg';
+import GoBackBlack from 'assets/icons/arrow-black.svg';
 
 import globalStyles from 'globals.module.scss';
 
 type MenuProps = {
-  text: string,
+  text?: string,
   prevStep: Step,
   prevAction?: (() => void) | null
+  blackIcon?: boolean,
 }
 
-const Menu: React.FC<MenuProps> = ({ text, prevStep, prevAction = null }) => {
-  const { setStep, setLoading } = useContext(SettingsContext);
+const Menu: React.FC<MenuProps> = ({ text, prevStep, prevAction = null, blackIcon }) => {
+  const { step, setStep, setLoading } = useContext(SettingsContext);
 
   const goBack = () => {
     setLoading(false);
@@ -26,11 +27,11 @@ const Menu: React.FC<MenuProps> = ({ text, prevStep, prevAction = null }) => {
   };
 
   return (
-    <nav className={globalStyles.menu}>
+    <nav className={`${step === 'result' ? globalStyles.menuResult : globalStyles.menu}`}>
       <button onClick={goBack}>
-        <img src={GoBackWhite} alt="Voltar" />
+        <img src={blackIcon ? GoBackBlack : GoBackWhite} alt="Voltar" />
       </button>
-      <p>{text}</p>
+      {text && <p>{text}</p>}
     </nav>
   );
 }
