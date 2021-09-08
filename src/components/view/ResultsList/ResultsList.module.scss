@@ -1,0 +1,65 @@
+@import 'App.scss';
+
+.listWrapper {
+  .text {
+    display: none;
+  }
+  .items {
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    li {
+      width: 33%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 150px;
+    }
+    .imagesWrapper {
+      position: relative;
+      .shadow {
+        width: 100%;
+        z-index: 2;
+      }
+      .imageBg {
+        width: 100%;
+        position: absolute;
+        right: 0;
+        z-index: 1;
+      }
+      .name {
+        font-size: 16px;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+@media (max-width: $small) {
+  .listWrapper {
+    border: 1px solid $black;
+    border-radius: 16px;
+    padding: 24px 34px;
+    margin-bottom: 16px;
+
+    .text {
+      font-size: 24px;
+      font-weight: bold;
+      line-height: 28px;
+      text-align: center;
+      margin: 0 auto;
+      color: $black;
+
+      span {
+        color: $white;
+      }
+    }
+
+    .items {
+      width: 105%;
+      li {
+        min-height: 115px;
+      }
+    }
+  }
+}

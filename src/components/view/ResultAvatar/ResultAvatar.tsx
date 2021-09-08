@@ -1,5 +1,7 @@
 import React from 'react';
 
+import styles from './ResultAvatar.module.scss';
+
 type ResultAvatarProps = {
   avatar: string;
   avatarName: string;
@@ -7,13 +9,13 @@ type ResultAvatarProps = {
 
 const ResultAvatar: React.FC<ResultAvatarProps> = ({ avatar, avatarName }) => {
   return (
-    <>
+    <div className={styles.avatar}>
       {avatar ? (
-        <img src={avatar} alt={avatarName} style={{ width: '180px', height: '200px'}} />
+        <img src={avatar} alt={avatarName} />
       ) : (
-        <p style={{ width: '180px', height: '200px'}} >RESULTADO: <span>{avatarName}</span></p>
+        <p>RESULTADO: <span>{avatarName}</span></p>
       )}
-    </>
+    </div>
   );
 }
 

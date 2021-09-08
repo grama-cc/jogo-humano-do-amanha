@@ -49,9 +49,31 @@
   }
 }
 
+.menuResult {
+  position: absolute;
+  top: 42px;
+  left: 64px;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+
+  button > img {
+    width: responsive(16, 52);
+    height: responsive(16, 52);
+  }
+
+  p {
+    font-weight: bold;
+    font-size: responsive(24, 40);
+    line-height: responsive(24, 40);
+    margin-left: 9vw;
+    color: $lightGrey;  
+  }
+}
+
 .libras {
   position: absolute;
-  bottom: 42px;
+  top: 80vh;
   left: 64px;
 
   img {
@@ -75,14 +97,32 @@
     width: 100%;
   }
   .libras {
+    position: absolute;
     left: auto;
     right: 32px;
-    bottom: 39vh;
+    bottom: auto;
+    top: 60vh;
   }
   .menu {
     left: 36px;
     min-height: 53vh;
     font-size: 24px;
     line-height: 24px;
+  }
+
+  .menuResult {
+    left: 36px;
+    min-height: 59vh;
+    font-size: 24px;
+    line-height: 24px;
+    flex-direction: row;
+    min-height: 0;
+    justify-content: flex-start;
+
+    p {
+      width: 60%;
+      margin-left: 20%;
+      text-align: center;
+    }
   }
 }
