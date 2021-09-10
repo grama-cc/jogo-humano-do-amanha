@@ -34,9 +34,7 @@ const MOCK_DATA =
 export default function Result() {
   const { step, setStep, allHumanTypes, setAllHumanTypes, resultAvatar, setResultAvatar, resultsListHuman } = useContext(SettingsContext);
   const [isError, setIsError] = useState<boolean>(false);
-  const [currentHuman, setCurrentHuman] = useState<boolean>(false)
 
-  
   useEffect(() => {
     AllHumanTypes.getHumanTypes()
     .then((data) => {
@@ -68,51 +66,60 @@ export default function Result() {
     setStep('home')
   }, [setStep]);
 
-  const showHuman = () => {
-    setCurrentHuman(true);
-  }
-
   if (!resultAvatar) return null;
 
   return (
     <>
       {step === 'result' && (
-        <main 
-          style={{ background: `${ window.innerWidth < 640 ? `linear-gradient(180deg, ${resultAvatar.backgroundColor} 0%, #000 90%)` : `${resultAvatar.backgroundColor}`}` }}
-        >
-          <Menu prevStep={'research'} text={'Seu humano do amanhã é:'} />
-          <div className={styles.resultContainer}>
-            <div className={styles.resultContent}>
-              <ResultAvatar avatar={resultAvatar.images[1].url} avatarName={resultAvatar.nome} />
+        <main className={styles.mainWrapper}>
+          <div 
+            className={styles.transitionWrapper}
+          >
+            <Menu prevStep={'research'} text={'Seu humano do amanhã é:'} />
+            <div className={styles.resultContainer}>
+              <div className={styles.resultContent}>
+              </div>
+              <div className={styles.resultSidebar}>
+                <ResultText title={resultAvatar.nome} text={''} revealResultMode={true} />
+              </div>
             </div>
-            <div className={styles.resultSidebar}>
-              <ResultText title={resultAvatar.nome} text={resultAvatar.descricao} />
-              <ResultShare resultTitle={resultAvatar.nome} resultDescription={resultAvatar.descricao} color={resultAvatar.backgroundColor} />
-              <div className={styles.seeMore}>Role para conhecer os outros <span>humanos do amanhã</span></div>
-            </div>
+            <LibrasToggle />
           </div>
-          <div className={styles.resultList}>
-            <div className={styles.resultContent} onClick={showHuman}>
-              {allHumanTypes && <ResultsList results={allHumanTypes} color={resultAvatar.backgroundColor} />}
+          <div 
+            className={styles.contentWrapper}
+            style={{ background: `${ window.innerWidth < 640 ? `linear-gradient(180deg, ${resultAvatar.backgroundColor} 0%, #000 90%)` : `${resultAvatar.backgroundColor}`}` }}
+          >
+            <Menu prevStep={'research'} text={'Seu humano do amanhã é:'} blackIcon={true} />
+            <div className={styles.resultContainer}>
+              <div className={styles.resultContent}>
+                <ResultAvatar avatar={resultAvatar.images[1].url} avatarName={resultAvatar.nome} />
+              </div>
+              <div className={styles.resultSidebar}>
+                <ResultText title={resultAvatar.nome} text={resultAvatar.descricao} />
+                <ResultShare resultTitle={resultAvatar.nome} resultDescription={resultAvatar.descricao} color={resultAvatar.backgroundColor} />
+                <div className={styles.seeMore}>Role para conhecer os outros <span>humanos do amanhã</span></div>
+              </div>
             </div>
+            <div className={styles.resultList}>
+              <div className={styles.resultContent}>
+                {allHumanTypes && <ResultsList results={allHumanTypes} color={resultAvatar.backgroundColor} />}
+              </div>
 
-            <div className={styles.resultSidebar}>
-              {currentHuman ? (
+              <div className={styles.resultSidebar}>
                 <div>
-                  <ResultText title={resultsListHuman.nome} text={resultsListHuman.descricao} />
-                </div>
-              ) : (
-                <div>
-                  <p className={styles.message}>Nos ajude a melhorar esse jogo respondendo um breve questionário e 
-                  aproveite para descobrir os outros <span style={{ color: `${resultAvatar.backgroundColor}` }}>humanos do amanhã</span></p>
+                  <p className={styles.message}>
+                    Nos ajude a melhorar esse jogo respondendo um breve questionário e aproveite para descobrir os outros
+                    <span style={{ color: `${resultAvatar.backgroundColor}` }}>
+                      humanos do amanhã
+                    </span>
+                  </p>
                   <button onClick={goToResearch} className={styles.cta}>Ok, vamos lá</button>
-                  <button onClick={goToHome} className={styles.cta}>Talvez depois</button>
                   <button onClick={goToHome} className={styles.endGame}>Encerrar o jogo</button>
                 </div>
-              )}
+              </div>
             </div>
+            <LibrasToggle blackIcon={true} />
           </div>
-          <LibrasToggle />
         </main>
       )}
     </>

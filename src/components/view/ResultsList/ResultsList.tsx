@@ -10,7 +10,7 @@ type ResultListProps = {
 }
 
 const ResultsList: React.FC<ResultListProps> = ({ results, color }) => {
-  const { setResultsListHuman } = useContext(SettingsContext);
+  const { step, setResultsListHuman } = useContext(SettingsContext);
 
   const chooseHuman = (human: HumanType) => {
     setResultsListHuman(human);
@@ -22,8 +22,8 @@ const ResultsList: React.FC<ResultListProps> = ({ results, color }) => {
       <div className={styles.items}>
         {results.map((item, index) => (
           <li key={item.id}>
-            <button onClick={() => chooseHuman(item)}>
-              {item.images[index] ? (
+            <button>
+              {item.images ? (
                 <div className={styles.imagesWrapper}>
                   <img src={item.images[2].url} alt={item.nome} className={styles.shadow} style={{ width: '100px' }}/>
                   <img src={item.images[0].url} alt={item.nome} className={styles.imageBg} style={{ width: '100px' }} />

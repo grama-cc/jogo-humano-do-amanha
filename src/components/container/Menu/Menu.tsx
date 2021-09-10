@@ -31,7 +31,7 @@ const Menu: React.FC<MenuProps> = ({ text, prevStep, prevAction = null, blackIco
       <button onClick={goBack}>
         <img src={blackIcon ? GoBackBlack : GoBackWhite} alt="Voltar" />
       </button>
-      {text && <p>{text}</p>}
+      {text && <p style={{ color: `${blackIcon ? '#0d0d0d' : '#E9E9E9'}` }}>{text}</p>}
     </nav>
   );
 }
