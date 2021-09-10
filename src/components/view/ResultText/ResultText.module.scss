@@ -21,6 +21,16 @@
     width: 70%;
   }
 }
+
+.revealTitle, .revealText {
+  border: 1px solid $white;
+  background: $black;
+  color: $white;
+}
+
+.revealText {
+  min-height: 60vh;
+}
   
 .text {
   font-size: 20px;
