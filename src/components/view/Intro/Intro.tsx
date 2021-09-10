@@ -46,12 +46,12 @@ const Intro: React.FC<IntroProps> = ({ title, question, videos, endedVideos, wel
   }, [currentVideo, videos]);
 
   return (
-    <div className={globalStyles.content}>
+    <div className={`${styles.wrapper} ${step === 'home' ? styles.home : ''}`}>
       <Circle>
         {libras ? (
           <Video source={currentVideoSource} onEnded={nextVideo}/>
         ) : (
-          <div className={styles.wrapper}>
+          <div className={styles.textWrapper}>
             {title && <p className={`${styles.title} ${transitionHome && styles.transition}`}>{title}</p>}
             {question && <h1 className={`${styles.question} ${transitionHome && styles.transition}`}>{question}</h1>}
             {step === 'home' && <img className={styles.shadow} src={Shadow} alt="Jogo do amanhã" />}

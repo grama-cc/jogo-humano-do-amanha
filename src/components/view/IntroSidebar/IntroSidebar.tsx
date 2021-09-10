@@ -19,14 +19,14 @@ const IntroSidebar: React.FC<IntroSidebarProps> = ({ aboutText, text, ctaLabel, 
   };
 
   return (
-    <div className={globalStyles.sidebar}>
+    <div className={styles.sidebar}>
       <button className={styles.about} onClick={aboutPopUp}>
         <span className={`${transitionHome && styles.transition}`}>{aboutText}</span>
       </button>
       <p className={styles.text}>
         <span className={`${transitionHome && styles.transition}`}>{text}</span>
       </p>
-      <button className={`${transitionHome ? styles.transitionButton : styles.cta}`} onClick={ctaAction}>
+      <button className={`${styles.cta} ${transitionHome ? styles.transitionButton : ''}`} onClick={ctaAction}>
         <span className={`${transitionHome && styles.transition}`}>{ctaLabel}</span>
       </button>
     </div>

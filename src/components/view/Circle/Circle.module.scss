@@ -1,12 +1,18 @@
 @import 'App.scss';
 
 .circleWrapper {
-  width: responsive(215, 500);
-  height: responsive(215, 500);
+  width: 80vw;
+  min-width: 80vw;
+  height: 80vw;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (min-width: $small) {
+    width: responsive(215, 500);
+    min-width: responsive(215, 500);
+    height: responsive(215, 500);
+  }
 }
 
 .blackBorder {
@@ -18,9 +24,16 @@
 }
 
 .loaderWrapper {
-  width: responsive(215, 500);
-  height: responsive(215, 500);
   position: relative;
+  width: 80vw;
+  min-width: 80vw;
+  height: 80vw;
+  @media (min-width: $small) {
+    width: responsive(215, 500);
+    min-width: responsive(215, 500);
+    height: responsive(215, 500);
+  }
+
 }
 
 .loader {
@@ -100,11 +113,3 @@
     transform: rotate(360deg);
   }
 }
-
-@media (max-width: $small) {
-  .circleWrapper {
-    width: 315px;
-    height: 315px;
-  }
-}
-
