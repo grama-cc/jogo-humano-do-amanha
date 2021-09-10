@@ -14,7 +14,7 @@ import styles from './Quiz.module.scss';
 
 
 const Quiz: React.FC = () => {
-  const { step, setStep, userId, setUserId } = useContext(SettingsContext);
+  const { step, setStep, userId, setUserId, setLoading } = useContext(SettingsContext);
   const [questions, setQuestions] = useState<QuestionType[]>([]);
   const [currentQuestionIndex, setCurrentQuestionsIndex] = useState<number>(0);
   const [finished, setFinished]= useState<boolean>(false);
@@ -23,8 +23,8 @@ const Quiz: React.FC = () => {
     setStep('research')
   }, [setStep]);
 
-  const goToResult = useCallback(() => {
-    setStep('result')
+  const goToPreResult = useCallback(() => {
+    setStep('preresult')
   }, [setStep]);
 
   const getInitialQuestion = useCallback(() => {
@@ -55,11 +55,12 @@ const Quiz: React.FC = () => {
         setQuestions(updatedQuestions);
       } else {
         setFinished(true);
-        goToResult();
+        setLoading(false);
+        goToPreResult();
       }
     });
     setCurrentQuestionsIndex(current => current + 1);
-  },[currentQuestionIndex, userId, questions, currentQuestion, goToResult]);
+  },[currentQuestionIndex, userId, questions, currentQuestion, goToPreResult, setLoading]);
 
   const goToPreviousQuestion = useCallback(() => {
     const previousIndex = currentQuestionIndex - 1;
