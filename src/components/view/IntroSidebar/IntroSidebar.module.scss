@@ -1,5 +1,17 @@
 @import 'App.scss';
 
+.sidebar{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+  @media (min-width: $small) {
+    height: 100vh;
+    margin-bottom: 0;
+  }
+}
+
 .about, .cta, .text {
   border: 1px solid $black;
   border-radius: 16px;
@@ -47,10 +59,8 @@
 }
 
 .transitionButton {
-  width: 100%;
   color: $black;
   font-weight: bold;
-  height: 22vh;
   font-size: responsive(40, 80);
   line-height: responsive(40, 76);
   background-color: $white;

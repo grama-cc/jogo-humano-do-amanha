@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import SettingsContext from 'context/settingsContext';
 
-import globalStyles from 'globals.module.scss';
 import styles from './IntroSidebar.module.scss';
 
 type IntroSidebarProps = {
@@ -19,8 +18,9 @@ const IntroSidebar: React.FC<IntroSidebarProps> = ({ aboutText, text, ctaLabel, 
   };
 
   return (
-    <div className={globalStyles.sidebar}>
+    <div className={styles.sidebar}>
     {step === 'home' && (
+
       <button className={styles.about} onClick={aboutPopUp}>
         <span className={`${transitionStep && styles.transition}`}>{aboutText}</span>
       </button>
@@ -28,11 +28,10 @@ const IntroSidebar: React.FC<IntroSidebarProps> = ({ aboutText, text, ctaLabel, 
       <p className={styles.text}>
         <span className={`${transitionStep && styles.transition}`}>{text}</span>
       </p>
-      <button 
-        className={`${transitionStep ? styles.transitionButton : styles.cta}`} 
-        onClick={ctaAction}
-      >
+
+      <button className={`${styles.cta} ${transitionStep ? styles.transitionButton : ''}`} onClick={ctaAction}>
         <span className={`${transitionStep && styles.transition}`}>{ctaLabel}</span>
+
       </button>
     </div>
   );

@@ -15,18 +15,21 @@
 }
 
 .optionCountdown {
-  border: 1px solid $white;
-  opacity: 0;
-  &:first-of-type {
-    animation: showup 1.5s forwards;
+  border: 1px solid $white;;
+  button{
+    opacity: 0;
+    transition: opacity ease-out .5s;
+  }
+  &:first-of-type button{
+    animation: showup 3.5s;
     animation-delay: 2s;
   }
-  &:nth-of-type(2) {
-    animation: showup 1.5s forwards;
+  &:nth-of-type(2) button{
+    animation: showup 2.5s;
     animation-delay: 3s;
   }
-  &:nth-of-type(3) {
-    animation: showup 1.5s forwards;
+  &:nth-of-type(3) button{
+    animation: showup 1.5s;
     animation-delay: 4s;
   }
   button {
@@ -34,7 +37,7 @@
   }
 }
 
-.quizOptions{
+.quizOptions, .optionsCountdown{
   position: absolute;
   left: 0;
   bottom: 0;
@@ -67,6 +70,9 @@
     background-color: $orange;
   }
 }
+.optionsCountdown{
+  position: relative;
+}
 
 .disabled{
   opacity: .5;
@@ -74,13 +80,16 @@
 
 @keyframes showup {
   0% {opacity: 0;}
-  100% {opacity: 1;}
+  25% {opacity: 1;}
+  95%{opacity: 1;}
+  100%{opacity: 0;}
 }
 
 @media (max-width: $small) {
   .quizOption, .optionCountdown {
     height: 9vh;
     width: 95%;
+    margin-top: 8px;
   }
   .optionCountdown {
     button {

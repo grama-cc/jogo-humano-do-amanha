@@ -3,4 +3,15 @@
 .countdownWrapper {
   background-color: $black;
   overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  height: 100vh;
+}
+
+.sidebar{
+  width: 100%;
+  display: flex;
+  @media (min-width: $small) {
+    height: 100vh;
+  }
 }

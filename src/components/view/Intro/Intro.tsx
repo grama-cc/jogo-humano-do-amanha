@@ -6,7 +6,6 @@ import Circle from '../Circle/Circle';
 
 import Shadow from 'assets/images/main-shadow.png';
 
-import globalStyles from 'globals.module.scss';
 import styles from './Intro.module.scss';
 
 type IntroProps = {
@@ -46,12 +45,12 @@ const Intro: React.FC<IntroProps> = ({ title, question, videos, endedVideos, wel
   }, [currentVideo, videos]);
 
   return (
-    <div className={globalStyles.content}>
+    <div className={`${styles.wrapper} ${step === 'home' ? styles.home : ''}`}>
       <Circle>
         {libras ? (
           <Video source={currentVideoSource} onEnded={nextVideo}/>
         ) : (
-          <div className={styles.wrapper}>
+          <div className={styles.textWrapper}>
             {title && <p className={`${styles.title} ${transitionStep && styles.transition}`}>{title}</p>}
             {question && <h1 className={`${styles.question} ${transitionStep && styles.transition}`}>{question}</h1>}
             {step === 'home' && <img className={styles.shadow} src={Shadow} alt="Jogo do amanhã" />}
