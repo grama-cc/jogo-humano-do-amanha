@@ -10,10 +10,9 @@ import IntroSidebar from 'components/view/IntroSidebar/IntroSidebar';
 import LibrasToggle from '../LibrasToggle/LibrasToggle';
 
 import globalStyles from 'globals.module.scss';
-import styles from './Home.module.scss';
 
 const Home: React.FC = () => {
-  const { step, setStep, showAboutPopUp, transitionHome, setTransitionHome } = useContext(SettingsContext);
+  const { step, setStep, showAboutPopUp, transitionStep, settransitionStep } = useContext(SettingsContext);
 
   const [welcome, setWelcome] = useState<WelcomeContent>();
   const [aboutContent, setAboutContent] = useState<AboutText>();
@@ -52,16 +51,16 @@ const Home: React.FC = () => {
   }, [setStep])
 
   const changeStep = useCallback(() => {
-    setTransitionHome(true);
+    settransitionStep(true);
     setTimeout(goToCountdown, 2500);
-  }, [goToCountdown, setTransitionHome]);
+  }, [goToCountdown, settransitionStep]);
 
   if (!aboutContent || !screenSaver) return null;
 
   return (
     <>
       {(step === 'home') && (
-        <main className={`${globalStyles.container} ${transitionHome ? styles.transition : styles.home}`}>
+        <main className={`${globalStyles.container} ${transitionStep ? globalStyles.transition : globalStyles.colorfulBackground}`}>
           <Intro
             title={screenSaver.init_screen_saver.title}
             question={screenSaver.init_screen_saver.init_question}

@@ -6,7 +6,6 @@ import Circle from '../Circle/Circle';
 
 import Shadow from 'assets/images/main-shadow.png';
 
-import globalStyles from 'globals.module.scss';
 import styles from './Intro.module.scss';
 
 type IntroProps = {
@@ -20,14 +19,14 @@ type IntroProps = {
 
 const Intro: React.FC<IntroProps> = ({ title, question, videos, endedVideos, welcome }) => {
 
-  const { libras, step, setTransitionHome, transitionHome } = useContext(SettingsContext);
+  const { libras, step, settransitionStep, transitionStep } = useContext(SettingsContext);
   const [currentVideo, setCurrentVideo] = useState<number>(0);
 
   useEffect(() => {
     if (step !== 'home') {
-      setTransitionHome(false);
+      settransitionStep(false);
     }
-  }, [step, setTransitionHome])
+  }, [step, settransitionStep])
 
   function nextVideo(){
     if(endedVideos){
@@ -52,8 +51,8 @@ const Intro: React.FC<IntroProps> = ({ title, question, videos, endedVideos, wel
           <Video source={currentVideoSource} onEnded={nextVideo}/>
         ) : (
           <div className={styles.textWrapper}>
-            {title && <p className={`${styles.title} ${transitionHome && styles.transition}`}>{title}</p>}
-            {question && <h1 className={`${styles.question} ${transitionHome && styles.transition}`}>{question}</h1>}
+            {title && <p className={`${styles.title} ${transitionStep && styles.transition}`}>{title}</p>}
+            {question && <h1 className={`${styles.question} ${transitionStep && styles.transition}`}>{question}</h1>}
             {step === 'home' && <img className={styles.shadow} src={Shadow} alt="Jogo do amanhã" />}
             {step === 'countdown' && (
               <>
@@ -66,6 +65,9 @@ const Intro: React.FC<IntroProps> = ({ title, question, videos, endedVideos, wel
                   </p>
                 ))}
               </>
+            )}
+            {step === 'preresult' && (
+              <div className={styles.animatedShadow}></div>
             )}
           </div>
         )}

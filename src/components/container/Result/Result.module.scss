@@ -1,5 +1,42 @@
 @import 'App.scss';
 
+.mainWrapper {
+  position: relative;
+  min-width: 100vw;
+  min-height: 100vh;
+  top: 0;
+  left: 0;
+}
+
+.transitionWrapper {
+  background: $black;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.contentWrapper {
+  clip-path: circle(5% at 35vw 48vh);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  animation-name: revealContent;
+  animation-duration: 3s; 
+  animation-timing-function: ease-in-out; 
+  animation-delay: 0;
+  animation-direction: linear;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+
+@keyframes revealContent {
+  0% {clip-path: circle(5% at 35vw 48vh);}
+  100% {clip-path: circle(150% at 35vw 48vh);}
+}
+
 .resultContainer {
   display: flex;
   justify-content: center;
@@ -54,9 +91,14 @@
   font-size: 24px;
   line-height: 28px;
   font-weight: bold;
-  text-align: center;
-  padding: 20px;
+  padding: 60px 20px;
   margin-bottom: 8px;
+  min-height: 40vh;
+  text-align: center;
+
+  span {
+    margin-left: 8px;
+  }
 }
 
 .cta, .endGame {
@@ -105,6 +147,9 @@
   .message {
     display: block;
     width: 100%;
+    span {
+      display: block;
+    }
   }
   .cta, .endGame {
     width: 100%;
