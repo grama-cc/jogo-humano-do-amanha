@@ -52,7 +52,6 @@
   }
 }
 
-
 @keyframes showup {
   0% {opacity: 0;}
   50% {opacity: 0;}
@@ -62,6 +61,37 @@
 @keyframes showupSlow {
   0% {opacity: 0;}
   100% {opacity: 1;}
+}
+
+.animatedShadow {
+  background-image: url('../../../assets/images/02_natusilhu.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 70%;
+  width: responsive(215, 500);
+  height: responsive(215, 500);
+  z-index: 2;
+  animation-name: shadowChange;
+  animation-duration: 12s; 
+  animation-timing-function: ease-in-out; 
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-fill-mode: none;
+  animation-play-state: running;
+}
+
+@keyframes shadowChange {
+  0% {background-image: url('../../../assets/images/09_conesilhu.svg');}
+  15% {background-image: url('../../../assets/images/09_conesilhu.svg');}
+  18% {background-image: url('../../../assets/images/04_apresilhu.svg');}
+  33% {background-image: url('../../../assets/images/04_apresilhu.svg');}
+  36% {background-image: url('../../../assets/images/07_cibsilhu.svg');}
+  51% {background-image: url('../../../assets/images/07_cibsilhu.svg');}
+  54% {background-image: url('../../../assets/images/02_natusilhu.svg');}
+  69% {background-image: url('../../../assets/images/02_natusilhu.svg');}
+  72% {background-image: url('../../../assets/images/03_aliesilhu.svg');}
+  100% {background-image: url('../../../assets/images/03_aliesilhu.svg');}
 }
 
 .transition {

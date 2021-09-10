@@ -8,13 +8,14 @@ import Quiz from 'components/container/Quiz/Quiz';
 import Result from 'components/container/Result/Result';
 import Research from 'components/container/Research/Research';
 import Countdown from 'components/container/Countdown/Countdown';
+import PreResult from 'components/container/PreResult/PreResult';
 
 function App() {
   const [libras, setLibras] = useState<boolean>(false);
   const [language, setLanguage] = useState<string>("pt-br");
   const [step, setStep] = useState<Step>('home');
   const [loading, setLoading] = useState<boolean>(false);
-  const [transitionHome, setTransitionHome] = useState<boolean>(false);
+  const [transitionStep, settransitionStep] = useState<boolean>(false);
   const [allHumanTypes, setAllHumanTypes] = useState<HumanType[]>([]);
   const [humanId, setHumanId] = useState<string | HumanId>('');
   const [showAboutPopUp, setShowAboutPopUp] = useState<boolean>(false);
@@ -31,8 +32,8 @@ function App() {
     setStep,
     loading,
     setLoading,
-    transitionHome,
-    setTransitionHome,
+    transitionStep,
+    settransitionStep,
     allHumanTypes,
     setAllHumanTypes,
     humanId,
@@ -54,6 +55,7 @@ function App() {
         <Countdown />
         <Quiz />
         <Research />
+        <PreResult />
         <Result />
       </div>
     </SettingsContext.Provider>
