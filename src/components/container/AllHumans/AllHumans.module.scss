@@ -1,0 +1,103 @@
+@import 'App.scss';
+
+.contentWrapper {
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.resultList {
+  display: flex;
+  justify-content: center;
+}
+
+.resultContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 60%;
+  min-height: inherit;
+}
+
+.resultSidebar {
+  width: 40%;
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+}
+
+.resultList {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.title, .text, .cta {
+  width: 96%;
+  border: 1px solid $black;
+  border-radius: 16px;
+  text-align: center;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  padding: 24px 0;
+  font-weight: bold;
+  font-size: responsive(40, 60);
+  line-height: responsive(40, 60);
+}
+
+.text {
+  font-size: responsive(12, 16);
+  line-height: responsive(16, 20);
+  padding: 36px;
+  min-height: 42vh;
+}
+
+.cta {
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: bold;
+  padding: 40px 20px;
+  margin-top: 8px;
+  min-height: 8vh;
+
+  span {
+    margin-left: 8px;
+    color: $blue;
+  }
+}
+
+
+@media (max-width: $small) {
+  .contentWrapper {
+    flex-direction: column;
+    align-items: center;
+    min-height: 0;
+    max-width: 100vw;
+    padding-top: 80px;
+  }
+  .resultContent {
+    width: 100%;
+    flex-direction: column-reverse;
+  }
+  .resultSidebar {
+    width: 100%;
+  }
+  .resultList {
+    flex-direction: column;
+    min-height: 0;
+    padding: 0 16px 16px 16px;
+  }
+  .cta, .text, .title {
+    width: 100%;
+  }
+  .cta {
+    display: none;
+  }
+}

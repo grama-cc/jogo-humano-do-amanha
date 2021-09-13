@@ -56,7 +56,7 @@ export default function Result() {
     
 		return () => {};
     
-	}, [setAllHumanTypes, setResultAvatar]);
+	}, [setAllHumanTypes, setResultAvatar, allHumanTypes]);
   
   const goToResearch = useCallback(() => {
     setStep('research')
