@@ -36,38 +36,48 @@
   justify-content: space-between;
   z-index: 1;
 
-  button > img {
+  button > .goback {
     width: responsive(16, 52);
     height: responsive(16, 52);
+  }
+
+  button > .social {
+    width: responsive(32, 32);
+    height: responsive(32, 32);
+  }
+
+  .socialWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 12vh;
+    min-height: 42vh;
+  }
+
+  .singleIcon {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $black;
+    border-radius: 50%;
   }
 
   p {
     font-weight: bold;
     font-size: responsive(24, 40);
     line-height: responsive(24, 40);
-    color: $lightGrey;  
-  }
-}
-
-.menuResult {
-  position: absolute;
-  top: 42px;
-  left: 64px;
-  display: flex;
-  align-items: center;
-  z-index: 1;
-
-  button > img {
-    width: responsive(16, 52);
-    height: responsive(16, 52);
+    color: $lightGrey;
   }
 
-  p {
-    font-weight: bold;
-    font-size: responsive(24, 40);
-    line-height: responsive(24, 40);
-    margin-left: 9vw;
-    color: $lightGrey;  
+  .topText {
+    position: absolute;
+    top: 12px;
+    left: 12vw;
+    width: 36vw;
+    text-align: center;
+    color: $black;
   }
 }
 
@@ -146,26 +156,20 @@
     bottom: auto;
     top: 55vh;
   }
+  .allhumansLibras {
+    top: 90vh;
+  }
   .menu {
     left: 36px;
     min-height: 53vh;
     font-size: 24px;
     line-height: 24px;
-  }
 
-  .menuResult {
-    left: 36px;
-    min-height: 59vh;
-    font-size: 24px;
-    line-height: 24px;
-    flex-direction: row;
-    min-height: 0;
-    justify-content: flex-start;
-
-    p {
-      width: 60%;
-      margin-left: 20%;
-      text-align: center;
+    .topText {
+      position: absolute;
+      top: -10px;
+      left: 12vw;
+      width: 70vw;
     }
   }
 }
