@@ -9,6 +9,7 @@ import Result from 'components/container/Result/Result';
 import Research from 'components/container/Research/Research';
 import Countdown from 'components/container/Countdown/Countdown';
 import PreResult from 'components/container/PreResult/PreResult';
+import AllHumans from 'components/container/AllHumans/AllHumans';
 
 function App() {
   const [libras, setLibras] = useState<boolean>(false);
@@ -57,6 +58,7 @@ function App() {
         <Research />
         <PreResult />
         <Result />
+        <AllHumans />
       </div>
     </SettingsContext.Provider>
     

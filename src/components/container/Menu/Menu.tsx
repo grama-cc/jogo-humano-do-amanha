@@ -12,9 +12,10 @@ type MenuProps = {
   prevStep: Step,
   prevAction?: (() => void) | null
   blackIcon?: boolean,
+  topText?: string,
 }
 
-const Menu: React.FC<MenuProps> = ({ text, prevStep, prevAction = null, blackIcon }) => {
+const Menu: React.FC<MenuProps> = ({ text, prevStep, prevAction = null, blackIcon, topText }) => {
   const { step, setStep, setLoading } = useContext(SettingsContext);
 
   const goBack = () => {

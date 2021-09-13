@@ -102,8 +102,8 @@ const Research: React.FC = () => {
     setStep('quiz')
   }, [setStep]);
 
-  const goToResult = useCallback(() => {
-    setStep('result')
+  const goToAllHumans = useCallback(() => {
+    setStep('allhumans')
   }, [setStep]);
 
 
@@ -145,9 +145,9 @@ const Research: React.FC = () => {
       setCurrentQuestionsIndex(nextIndex);
     } else {
       sendAnswers();
-      goToResult();
+      goToAllHumans();
     }
-  }, [currentQuestionIndex, questions, goToResult, sendAnswers]);
+  }, [currentQuestionIndex, questions, goToAllHumans, sendAnswers]);
 
   const setAnswer = useCallback((value, textValue?) => {
     const updatedQuestions = [...questions];
