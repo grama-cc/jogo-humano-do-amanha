@@ -34,7 +34,7 @@ export default function Result() {
     <>
       {step === 'allhumans' && (
         <main className={styles.contentWrapper}>
-          <Menu prevStep={'research'} topText={'Seu humano do amanhã é:'} blackIcon={true} />
+          <Menu prevStep={'research'} topText={'Conheça os outros humanos do amanhã:'} blackIcon={true} />
           <div className={styles.resultList}>
             <div className={styles.resultContent}>
               {resultsListHuman.nome !== '' && (

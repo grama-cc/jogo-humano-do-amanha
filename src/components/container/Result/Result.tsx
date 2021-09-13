@@ -72,7 +72,7 @@ export default function Result() {
           <div 
             className={styles.transitionWrapper}
           >
-            <Menu prevStep={'research'} text={'Seu humano do amanhã é:'} />
+            <Menu prevStep={'research'} topText={'Seu humano do amanhã é:'} />
             <div className={styles.resultContainer}>
               <div className={styles.resultContent}>
               </div>
@@ -86,7 +86,7 @@ export default function Result() {
             className={styles.contentWrapper}
             style={{ background: `${ window.innerWidth < 640 ? `linear-gradient(180deg, ${resultAvatar.backgroundColor} 0%, #000 90%)` : `${resultAvatar.backgroundColor}`}` }}
           >
-            <Menu prevStep={'research'} text={'Seu humano do amanhã é:'} blackIcon={true} />
+            <Menu prevStep={'research'} topText={'Seu humano do amanhã é:'} blackIcon={true} />
             <div className={styles.resultContainer}>
               <div className={styles.resultContent}>
                 <ResultAvatar avatar={resultAvatar.images[1].url} avatarName={resultAvatar.nome} />
