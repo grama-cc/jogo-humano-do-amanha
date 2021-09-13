@@ -45,6 +45,10 @@ export const Profile = {
 	postAnswers: (profileAnswer: ProfileAnswer) => requests.post(`/perfils/`, profileAnswer)
 };
 
+export const GetResult = {
+	getResult: (id: string): Promise<any> => requests.get(`result/?id=${id}`),
+};
+
 export const AllHumanTypes = {
 	getHumanTypes: (): Promise<HumanType[]> => requests.get('tipo-de-humanos'),
 };

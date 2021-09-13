@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect, useCallback } from 'react';
-import { AllHumanTypes, GetHumanType } from 'api';
+import { AllHumanTypes, GetHumanType, GetResult } from 'api';
 
 import SettingsContext from 'context/settingsContext';
 
@@ -12,27 +12,10 @@ import ResultsList from 'components/view/ResultsList/ResultsList';
 
 import styles from './Result.module.scss';
 
-const MOCK_DATA = 
-  {
-    __v: 0,
-    _id: '610d8ac6161e780015ce6152',
-    character: 'COLETIVISMO',
-    createdAt: '2021-08-06T19:17:26.897Z',
-    descricao: 'O mundo lhe parece confuso demais. Você quer mudar isso, mas às vezes desiste para NAO entrar numa briga. O seu sonho de futuro é viver como antigamente. Mas NAO se engane. Sonhar com o mundo ideal é tão importante quanto estar acordado para agir no momento presente.',
-    humor: 'FLEUMATICO',
-    id: '610d8ac6161e780015ce6152',
-    images: [Image],
-    locale: 'pt-BR',
-    localizations: ['localization'],
-    nome: 'NATUREBA SOSSEGADO',
-    openness: 'CAUTELOSO',
-    perfil: 'FECHADO',
-    updatedAt: '2021-08-12T17:59:33.906Z',
-  }
-;
-
 export default function Result() {
-  const { step, setStep, allHumanTypes, setAllHumanTypes, resultAvatar, setResultAvatar, resultsListHuman } = useContext(SettingsContext);
+  const { step, setStep, userId, allHumanTypes, setAllHumanTypes, resultAvatar, setResultAvatar } = useContext(SettingsContext);
+  const [resultOpenness, setResultOpenness] = useState<string>('');
+  const [resultCharacter, setResultCharacter] = useState<string>('');
   const [isError, setIsError] = useState<boolean>(false);
 
   useEffect(() => {
@@ -43,16 +26,30 @@ export default function Result() {
     .catch((err) => {
       setIsError(true);
     });
-    
-    GetHumanType.getHumanType(MOCK_DATA.openness, MOCK_DATA.character)
-    .then((avatar) => {
-      if(avatar.length){
-        setResultAvatar(avatar[0]);
-      }
-    })
-    .catch((err) => {
-      setIsError(true);
-    });
+
+    if (userId && step === 'result') {
+      GetResult.getResult(userId)
+      .then((data) => {
+        setResultCharacter(data.point.max_character_label);
+        setResultOpenness(data.point.max_openness_label);
+      })
+      .catch((err) => {
+        setIsError(true);
+      })
+    }
+
+    if ((resultOpenness !== '') && (resultCharacter !== '')) {
+      GetHumanType.getHumanType(resultOpenness, resultCharacter)
+      .then((avatar) => {
+        if(avatar.length){
+          setResultAvatar(avatar[0]);
+        }
+      })
+      .catch((err) => {
+        setIsError(true);
+      });
+    }
+
     
 		return () => {};
     
