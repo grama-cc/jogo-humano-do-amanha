@@ -27,10 +27,10 @@ $lilac: #D591FF;
 }
 
 // Responsive
-$small: 640px;
+$small: 770px;
 $medium: 992px;
 $large: 1500px;
-$xlarge: 2000px;
+$xlarge: 1920px;
 
 @function responsive($value1, $value2, $width1: 320, $width2: 1366) {
   $x1: $width1;
