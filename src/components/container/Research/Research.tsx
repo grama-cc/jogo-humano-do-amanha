@@ -172,7 +172,7 @@ const Research: React.FC = () => {
     <>
     {step === 'research' && (
       <main className={`${styles.container} ${styles.researchWrapper}`}>
-        <Menu text={currentQuestionIndex.toString()} prevStep={'result'} prevAction={currentQuestionIndex ? goToPreviousQuestion : null} />
+        <Menu text={(currentQuestionIndex + 1).toString()} prevStep={'result'} prevAction={currentQuestionIndex ? goToPreviousQuestion : null} />
         {!!questions.length ? (
           <>
             <QuestionList questions={questions} currentQuestion={currentQuestionIndex}/>
