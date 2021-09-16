@@ -65,9 +65,9 @@ function App() {
   return (
     <SettingsContext.Provider value={value}>
       <div className="App">
-        {/* {(step ==="home" || step === "countdown") ? (
+        {(step ==="home" || step === "countdown") ? (
           <Sound autoLoad={true} playStatus={play ? 'PLAYING': 'PAUSED'} url={introAudio.default} loop={true} />
-        ): <Sound autoLoad={true} playStatus={play ? 'PLAYING': 'PAUSED'} url={quizAudio.default} loop={true}/>} */}
+        ): <Sound autoLoad={true} playStatus={play ? 'PLAYING': 'PAUSED'} url={quizAudio.default} loop={true}/>}
         <Home/>
         <Countdown />
         <Quiz />
