@@ -1,4 +1,4 @@
-import React, {useMemo, useContext} from 'react';
+import React, {useMemo,useEffect, useContext, useRef} from 'react';
 
 import styles from './QuestionList.module.scss';
 import { QuestionType, ProfileQuestion } from 'types/types';
@@ -8,6 +8,8 @@ import SettingsContext from 'context/settingsContext';
 import {ReactComponent as Semicircle} from 'assets/shapes/Semicircle.svg';
 import {ReactComponent as Circle} from 'assets/shapes/Circle.svg';
 
+const questionTransitionAudio = require('assets/audios/transicaoPerguntas.mp3');
+
 type QuestionListProps = {
   questions: QuestionType[] | ProfileQuestion[];
   currentQuestion: number;
@@ -16,6 +18,22 @@ type QuestionListProps = {
 const QuestionList: React.FC<QuestionListProps> = ({questions, currentQuestion }) => {
 
   const { libras } = useContext(SettingsContext);
+
+  const transitionAudioRef = useRef<HTMLAudioElement>(new Audio(questionTransitionAudio.default));
+
+  useEffect(() => {
+    if(transitionAudioRef.current){
+      transitionAudioRef.current.load();
+    }
+  }, []);
+
+  useEffect(() => {
+    if(currentQuestion + 1 && questions[currentQuestion] && questions.length > 1){
+      transitionAudioRef.current.pause();
+      transitionAudioRef.current.currentTime = 0;
+      transitionAudioRef.current.play();
+    }
+  }, [currentQuestion, questions]);
 
   const shapesStrokeColor = useMemo(() => {
     if(!questions[currentQuestion]){

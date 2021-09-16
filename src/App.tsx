@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Sound  from 'react-sound';
+
 import './App.scss';
 import SettingsContext, { defaultHuman } from './context/settingsContext';
 import { HumanId, HumanType, Step } from 'types/types'
@@ -10,6 +12,9 @@ import Research from 'components/container/Research/Research';
 import Countdown from 'components/container/Countdown/Countdown';
 import PreResult from 'components/container/PreResult/PreResult';
 import AllHumans from 'components/container/AllHumans/AllHumans';
+
+const introAudio = require('assets/audios/intro.mp3');
+const quizAudio = require('assets/audios/quiz.mp3');
 
 function App() {
   const [libras, setLibras] = useState<boolean>(false);
@@ -23,6 +28,8 @@ function App() {
   const [userId, setUserId] = useState<string>('');
   const [resultAvatar, setResultAvatar] = useState<HumanType|null>(null);
   const [resultsListHuman, setResultsListHuman] = useState<HumanType>(defaultHuman);
+  
+  const [play, setPlay] = useState<boolean>(false);
 
   const value = { 
     language,
@@ -49,9 +56,18 @@ function App() {
     setResultsListHuman,
   };
 
+  useEffect(() => {
+    if(step !== 'home'){
+      setPlay(true);
+    }
+  }, [step])
+
   return (
     <SettingsContext.Provider value={value}>
       <div className="App">
+        {(step ==="home" || step === "countdown") ? (
+          <Sound autoLoad={true} playStatus={play ? 'PLAYING': 'PAUSED'} url={introAudio.default} loop={true} />
+        ): <Sound autoLoad={true} playStatus={play ? 'PLAYING': 'PAUSED'} url={quizAudio.default} loop={true}/>}
         <Home/>
         <Countdown />
         <Quiz />

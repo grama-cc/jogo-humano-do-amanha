@@ -14,7 +14,7 @@ import Video from 'components/view/Video/Video';
 
 export default function Result() {
   const { step, allHumanTypes, setAllHumanTypes, resultsListHuman, libras } = useContext(SettingsContext);
-  const [isError, setIsError] = useState<boolean>(false);
+  const [, setIsError] = useState<boolean>(false);
 
   useEffect(() => {
     AllHumanTypes.getHumanTypes()
@@ -42,7 +42,6 @@ export default function Result() {
                 <>
                   {libras && !!resultsListHuman?.libras_description?.url &&
                     <div className={styles.librasWrapper}>
-                      {console.log(resultsListHuman)}
                       <Video source={resultsListHuman.libras_description.url}/>
                     </div>
                   }
@@ -58,7 +57,6 @@ export default function Result() {
                   <p className={styles.title}>{resultsListHuman.nome}</p>
                   {libras && !!resultsListHuman?.libras_description?.url &&
                     <div className={styles.librasWrapperMobile}>
-                      {console.log(resultsListHuman)}
                       <Video source={resultsListHuman.libras_description.url}/>
                     </div>
                   }

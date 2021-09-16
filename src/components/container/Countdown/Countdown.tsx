@@ -12,6 +12,8 @@ import Menu from '../Menu/Menu';
 import globalStyles from 'globals.module.scss';
 import styles from './Countdown.module.scss';
 
+const countAudio = require('assets/audios/contagem.mp3');
+
 const initialMessageTime = 5000;
 const countDownTime = 1500;
 
@@ -19,12 +21,19 @@ const Countdown: React.FC = () => {
   const { step, setStep, libras, setLoading } = useContext(SettingsContext);
 
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const countAudioRef = useRef<HTMLAudioElement>(new Audio(countAudio.default));
 
   const [welcome, setWelcome] = useState<WelcomeContent | null>(null);
-	const [isError, setIsError] = useState<boolean>(false);
+	const [, setIsError] = useState<boolean>(false);
   const [counter, setCounter] = useState<number>(3);
   const [screenSaver, setScreenSaver] = useState<ScreenSaverContent>();
   const [showWelcomeMessage, setShowWelcomeMessage] = useState<boolean>(true);
+
+  useEffect(() => {
+    if(countAudioRef.current){
+      countAudioRef.current.load();
+    }
+  }, []);
 
   const changeStep = useCallback(() => {
     setStep('quiz')
@@ -71,6 +80,8 @@ const Countdown: React.FC = () => {
   useEffect(() => {
     if(step === 'countdown'){
       if(!libras){
+        countAudioRef.current.currentTime = 0;
+        countAudioRef.current.play();
         resetState();
         timerRef.current = setTimeout(() => {
           setShowWelcomeMessage(false);
@@ -82,6 +93,9 @@ const Countdown: React.FC = () => {
       }
     } else {
       if(timerRef.current){
+        countAudioRef.current.pause();
+        countAudioRef.current.currentTime = 0;
+        countAudioRef.current.load();
         resetState();
       }
     }
