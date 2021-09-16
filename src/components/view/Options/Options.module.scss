@@ -23,15 +23,15 @@
   &.animate{
     &:first-of-type button{
       animation: showup 3.5s;
-      animation-delay: 2s;
+      animation-delay: 1.5s;
     }
     &:nth-of-type(2) button{
       animation: showup 2.5s;
-      animation-delay: 3s;
+      animation-delay: 2.4s;
     }
     &:nth-of-type(3) button{
       animation: showup 1.5s;
-      animation-delay: 4s;
+      animation-delay: 3.2s;
     }
   }
   
