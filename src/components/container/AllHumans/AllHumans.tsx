@@ -42,7 +42,6 @@ export default function Result() {
                 <>
                   {libras && !!resultsListHuman?.libras_description?.url &&
                     <div className={styles.librasWrapper}>
-                      {console.log(resultsListHuman)}
                       <Video source={resultsListHuman.libras_description.url}/>
                     </div>
                   }
@@ -58,7 +57,6 @@ export default function Result() {
                   <p className={styles.title}>{resultsListHuman.nome}</p>
                   {libras && !!resultsListHuman?.libras_description?.url &&
                     <div className={styles.librasWrapperMobile}>
-                      {console.log(resultsListHuman)}
                       <Video source={resultsListHuman.libras_description.url}/>
                     </div>
                   }

@@ -29,8 +29,6 @@ function App() {
   const [resultAvatar, setResultAvatar] = useState<HumanType|null>(null);
   const [resultsListHuman, setResultsListHuman] = useState<HumanType>(defaultHuman);
   
-  const audioRef = useRef<typeof Sound>();
-
   const [play, setPlay] = useState<boolean>(false);
 
   const value = { 

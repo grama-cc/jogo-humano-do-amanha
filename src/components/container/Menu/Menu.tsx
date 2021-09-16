@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext,useEffect, useRef } from 'react';
 import SettingsContext from 'context/settingsContext';
 import { Step } from 'types/types';
 
@@ -12,6 +12,11 @@ import whatsapp from 'assets/icons/whatsapp.svg';
 
 import globalStyles from 'globals.module.scss';
 
+const buttonsAudio = require('assets/audios/botoes.mp3');
+
+
+const backAudio = require('assets/audios/voltar.mp3');
+
 type MenuProps = {
   text?: string,
   prevStep: Step,
@@ -23,14 +28,30 @@ type MenuProps = {
 const Menu: React.FC<MenuProps> = ({ text, prevStep, prevAction = null, blackIcon, topText }) => {
   const { step, setStep, setLoading, resultAvatar } = useContext(SettingsContext);
 
+  const backAudioRef = useRef<HTMLAudioElement>(new Audio(backAudio.default));
+  const buttonsAudioRef = useRef<HTMLAudioElement>(new Audio(buttonsAudio.default));
+
+  useEffect(() => {
+    if(backAudioRef.current){
+      backAudioRef.current.load();
+    }
+  }, []);
+
   const goBack = () => {
     setLoading(false);
+    backAudioRef.current.currentTime = 0.3;
+    backAudioRef.current.play();
     if(prevAction){
       prevAction();
     } else {
       setStep(prevStep);
     }
   };
+
+  const playAudio = () => {
+    buttonsAudioRef.current.currentTime = 0.3;
+    buttonsAudioRef.current.play();
+  }
 
   return (
     <nav className={`${globalStyles.menu}`}>
@@ -48,6 +69,7 @@ const Menu: React.FC<MenuProps> = ({ text, prevStep, prevAction = null, blackIco
                   url={`${window.location.href}`}
                   quote={`Meu humano do amanhã é ${resultAvatar.nome}! ${resultAvatar.descricao}`}
                   hashtag={'#humanodofuturo'}
+                  onClick={playAudio}
                 >
                   <img src={facebook} alt="Facebook" className={globalStyles.social} />
                 </FacebookShareButton>
@@ -56,6 +78,7 @@ const Menu: React.FC<MenuProps> = ({ text, prevStep, prevAction = null, blackIco
                 <WhatsappShareButton
                   url={`${window.location.href}`}
                   title={`Meu humano do amanhã é ${resultAvatar.nome}`}
+                  onClick={playAudio}
                 >
                   <img src={whatsapp} alt="WhatsApp" className={globalStyles.social} />
                 </WhatsappShareButton>
@@ -65,6 +88,7 @@ const Menu: React.FC<MenuProps> = ({ text, prevStep, prevAction = null, blackIco
                   title={`Meu humano do amanhã é ${resultAvatar.nome}!`}
                   url={`${window.location.href}`}
                   hashtags={['#humanodofuturo']}
+                  onClick={playAudio}
                 >
                   <img src={twitter} alt="Twitter" className={globalStyles.social} />
                 </TwitterShareButton>

@@ -1,11 +1,12 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState,useRef, useEffect, useCallback } from 'react';
 import { ProfileOption } from 'types/types';
 
 import {ReactComponent as Star} from 'assets/shapes/Star.svg';
 import {ReactComponent as Send} from 'assets/icons/Send.svg';
 
-
 import styles from './ResearchOptions.module.scss';
+
+const buttonsAudio = require('assets/audios/botoes.mp3');
 
 type ResearchOptionsProps = {
   options: ProfileOption[];
@@ -17,9 +18,24 @@ type ResearchOptionsProps = {
 const ResearchOptions: React.FC<ResearchOptionsProps> = ({ options, onSelect, selected, searchable }) => {
   const [textValue, setTextValue] = useState<string>('');
 
+  const buttonsAudioRef = useRef<HTMLAudioElement>(new Audio(buttonsAudio.default));
+
   useEffect(() => {
     setTextValue('');
   }, [options]);
+  
+
+  useEffect(() => {
+    if(buttonsAudioRef.current){
+      buttonsAudioRef.current.load();
+    }
+  }, []);
+
+  const selectOption = (val: any, text?: string) => {
+    buttonsAudioRef.current.currentTime = 0.5;
+    buttonsAudioRef.current.play();
+    onSelect(val, text);
+  };
 
   const renderOption = useCallback((option, multiple) => {
     if(option.optionType === 'input'){
@@ -32,7 +48,7 @@ const ResearchOptions: React.FC<ResearchOptionsProps> = ({ options, onSelect, se
             />
             <button 
               disabled={!textValue} 
-              className={styles.send} onClick={() => onSelect(option.value, textValue)}><Send/></button>
+              className={styles.send} onClick={() => selectOption(option.value, textValue)}><Send/></button>
           </div>
         )
       } return (
@@ -41,12 +57,12 @@ const ResearchOptions: React.FC<ResearchOptionsProps> = ({ options, onSelect, se
             value={textValue}
             onChange={(e) => setTextValue(e.currentTarget.value)}
           />
-          <button disabled={!textValue} className={styles.send} onClick={() => onSelect(option.value, textValue)}><Send/></button>
+          <button disabled={!textValue} className={styles.send} onClick={() => selectOption(option.value, textValue)}><Send/></button>
         </div>);
     } 
     if(option.stars){
       return (
-        <button className={`${styles.rateButton} ${selected === option.value ? styles.active : ''}`} onClick={() => onSelect(option.value)}>
+        <button className={`${styles.rateButton} ${selected === option.value ? styles.active : ''}`} onClick={() => selectOption(option.value)}>
           {option.text} {Array(parseInt(option.value,10)).fill(<Star/>)}
         </button>
       );
@@ -54,11 +70,11 @@ const ResearchOptions: React.FC<ResearchOptionsProps> = ({ options, onSelect, se
     return (
       <button
         className={`${selected === option.value ? styles.active : ''}`}
-        onClick={() => onSelect(option.value)}>
+        onClick={() => selectOption(option.value)}>
         {option.text}
       </button>
     );
-  }, [textValue, setTextValue, selected, onSelect]);
+  }, [textValue, setTextValue, selected, selectOption]);
 
   return (
     <ul className={`${styles.container} ${searchable ? styles.longList : ''}`}>
