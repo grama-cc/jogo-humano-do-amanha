@@ -9,8 +9,6 @@ type VideoProps = {
 
 const Video: React.FC<VideoProps> = ({ source = false, onEnded = false }) => {
 
-  console.log(source);
-
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
