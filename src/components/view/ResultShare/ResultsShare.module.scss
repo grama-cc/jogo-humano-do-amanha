@@ -1,0 +1,45 @@
+@import 'App.scss';
+
+@media (max-width: $small) {
+  .share {
+    background: $white;
+    border: 1px solid $black;
+    border-radius: 16px;
+    margin-top: 16px;
+    padding: 24px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .text {
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 28px;
+      color: $black;
+      margin-bottom: 32px;
+    }
+
+    .icons {
+      display: flex;
+      justify-content: space-around;
+      width: 105%;
+
+      .singleIcon {
+        width: 44px;
+        height: 44px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid $black;
+        border-radius: 50%;
+
+        > button > img {
+          margin-top: 5px;
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+  }
+}

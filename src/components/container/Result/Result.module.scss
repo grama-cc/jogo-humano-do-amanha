@@ -1,0 +1,192 @@
+@import 'App.scss';
+
+.mainWrapper {
+  position: relative;
+  min-width: 100vw;
+  min-height: 100vh;
+  top: 0;
+  left: 0;
+}
+
+.librasWrapper{
+  
+  display: none;
+  @media (min-width: $small) {
+    display: block;
+    width: unset;
+    height: unset;
+    position: fixed;
+    bottom: 5px;
+    left: 10vw;
+  }
+}
+
+
+.transitionWrapper {
+  background: $black;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.contentWrapper {
+  clip-path: circle(5% at 35vw 48vh);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  animation-name: revealContent;
+  animation-duration: 3s; 
+  animation-timing-function: ease-in-out; 
+  animation-delay: 0;
+  animation-direction: linear;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+
+@keyframes revealContent {
+  0% {clip-path: circle(5% at 35vw 48vh);}
+  100% {clip-path: circle(150% at 35vw 48vh);}
+}
+
+.resultContainer {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.resultContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  min-height: inherit;
+}
+
+.resultSidebar {
+  width: 40%;
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 10px 0;
+}
+
+.resultList {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.seeMore {
+  width: 96%;
+  border-radius: 16px;
+  margin-top: 16px;
+  background: $black;
+  color: $white;
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: bold;
+  text-align: center;
+  padding: 20px 0;
+
+  span {
+    color: $lilac;
+  }
+}
+
+.message {
+  background: $white;
+  width: 96%;
+  border: 1px solid $black;
+  border-radius: 16px;
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: bold;
+  padding: 60px 20px;
+  margin-bottom: 8px;
+  min-height: 40vh;
+  text-align: center;
+
+  span {
+    margin-left: 8px;
+  }
+}
+
+.cta, .endGame {
+  padding: responsive(24, 48) 0;
+  text-align: center;
+  font-size: 40px;
+  line-height: 44px;
+  font-weight: bold;
+  border-radius: 16px;
+  border: 1px solid $black;
+  margin-bottom: 8px;
+  display: block;
+  width: 96%;
+}
+
+.cta {
+  background: $white;
+  color: $black;
+}
+
+.endGame {
+  border: 1px solid $white;
+  color: $white;
+}
+.researchInvite{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+@media (max-width: $small) {
+  .resultContainer {
+    flex-direction: column;
+    align-items: center;
+    min-height: 0;
+    max-width: 100vw;
+    padding: 80px 16px 16px 16px;
+  }
+  .resultContent {
+    width: 100%;
+  }
+  .resultSidebar {
+    width: 100%;
+  }
+  .resultList {
+    flex-direction: column;
+    min-height: 0;
+    max-width: 100vw;
+    padding: 0 16px 16px 16px;
+  }
+  .message {
+    display: block;
+    width: 100%;
+    flex: 1;
+    span {
+      display: block;
+    }
+  }
+  .researchInvite{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .cta, .endGame {
+    width: 100%;
+    padding: 24px 0;
+    font-size: 24px;
+    line-height: 28px;
+    margin-bottom: 8px;
+  }
+  .seeMore {
+    display: block;
+    width: 100%;
+  }
+}

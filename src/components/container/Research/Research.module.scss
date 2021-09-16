@@ -1,0 +1,47 @@
+@import 'App.scss';
+
+.researchWrapper {
+  background-color: $black;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  height: 100vh;
+  transition: background-color 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sidebar{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  margin: 0 auto;
+  padding: 65vh 10px 0 10px;
+  overflow-y: scroll;
+  @media (min-width: $small) {
+    padding: 10px 10px 10px 0;
+
+    position: relative;
+    overflow: unset;
+  }
+  
+  .filterInput{
+    background-color: $white;
+    border-radius: 32px;
+    padding: 5px 55px;
+    color: $black;
+    font-size: 40px;
+    height: calc(100vh/6 - 25px);
+    margin-bottom: 10px;
+    font-size: responsive(20, 30);
+    min-height: 73px;
+    z-index: 5;
+    @media (min-width: $small) {
+      min-height: auto;
+      margin: 0 10px 5px 10px;
+    }
+  }
+}
+
+
+

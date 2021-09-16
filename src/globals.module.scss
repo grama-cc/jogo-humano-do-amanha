@@ -1,0 +1,192 @@
+@import 'App.scss';
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  min-height: inherit;
+}
+
+.sidebar {
+  width: 40%;
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu {
+  position: absolute;
+  top: 42px;
+  left: 64px;
+  height: fit-content;
+  min-height: 45vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1;
+
+  button > .goback {
+    width: responsive(16, 52);
+    height: responsive(16, 52);
+  }
+
+  button > .social {
+    width: responsive(32, 32);
+    height: responsive(32, 32);
+  }
+
+  .socialWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 12vh;
+    min-height: 42vh;
+  }
+
+  .singleIcon {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $black;
+    border-radius: 50%;
+  }
+
+  p {
+    font-weight: bold;
+    font-size: responsive(24, 40);
+    line-height: responsive(24, 40);
+    color: $lightGrey;
+  }
+
+  .topText {
+    position: absolute;
+    top: 12px;
+    left: 12vw;
+    width: 36vw;
+    text-align: center;
+    color: $black;
+  }
+}
+
+.libras {
+  position: absolute;
+  top: 80vh;
+  left: 64px;
+
+  img {
+    width: responsive(30, 64);
+    height: responsive(30, 64);
+  }
+}
+
+.colorfulBackground {
+  background-color: $purple;
+  animation-name: colorChange;
+  animation-duration: 12s; 
+  animation-timing-function: ease-in-out; 
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-fill-mode: none;
+  animation-play-state: running;
+}
+
+@keyframes colorChange {
+  0% {background-color: $purple;}
+  15% {background-color: $purple;}
+  18% {background-color: $blue;}
+  33% {background-color: $blue;}
+  36% {background-color: $green;}
+  51% {background-color: $green;}
+  54% {background-color: $yellow;}
+  69% {background-color: $yellow;}
+  72% {background-color: $orange;}
+  100% {background-color: $orange;}
+}
+
+.transition {
+  background-color: $blue;
+  animation-name: fadeToBlack;
+  animation-duration: 2s; 
+  animation-timing-function: linear; 
+  animation-delay: 0;
+  animation-fill-mode: forwards;
+  video{
+    animation-name: videoOpacity;
+    animation-duration: 2s; 
+    animation-timing-function: linear; 
+    animation-delay: 0;
+    animation-fill-mode: forwards;
+  }
+  
+}
+
+@keyframes fadeToBlack {
+  0% {
+    background-color: $blue;
+  }
+  100% {
+    background-color: $black;
+  }
+}
+
+@keyframes videoOpacity {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (max-width: $small) {
+  .container {
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .content {
+    width: 100%;
+    border-right: none;
+    min-height: 70vh;
+  }
+  .sidebar {
+    min-height: 30vh;
+    width: 100%;
+  }
+  .libras {
+    position: absolute;
+    left: auto;
+    right: 32px;
+    bottom: auto;
+    top: 55vh;
+  }
+  .allhumansLibras {
+    top: 90vh;
+  }
+  .menu {
+    left: 36px;
+    min-height: 53vh;
+    font-size: 24px;
+    line-height: 24px;
+
+    .topText {
+      position: absolute;
+      top: -10px;
+      left: 12vw;
+      width: 70vw;
+    }
+  }
+}

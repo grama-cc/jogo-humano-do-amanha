@@ -1,0 +1,112 @@
+@import 'App.scss';
+
+.sidebar{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+  @media (min-width: $small) {
+    padding: 20px 0;
+    height: 100vh;
+    margin-bottom: 0;
+  }
+}
+
+.about, .cta, .text {
+  border: 1px solid $black;
+  border-radius: 16px;
+  width: 94%;
+}
+
+.about, .text {
+  color: $white;
+  font-weight: bold;
+  margin-bottom: 8px;
+  font-size: responsive(24, 36);
+  line-height: responsive(28, 44);
+}
+
+.about {
+  height: 16vh;
+  margin-top: 24px;
+}
+
+.text {
+  flex: 1;
+  display: flex;
+  height: 56vh;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding: 0 responsive(14, 36)
+}
+
+.cta {
+  background-color: $white;
+  color: $black;
+  font-weight: bold;
+  height: 18vh;
+  font-size: responsive(40, 84);
+  line-height: responsive(40, 80);
+}
+
+.transition {
+  opacity: 1;
+  animation-name: fade;
+  animation-duration: 1s; 
+  animation-timing-function: linear; 
+  animation-delay: 0;
+  animation-fill-mode: forwards;
+}
+
+.transitionButton {
+  color: $black;
+  font-weight: bold;
+  font-size: responsive(40, 80);
+  line-height: responsive(40, 76);
+  background-color: $white;
+  animation-name: fadeToBlack;
+  animation-duration: 2s; 
+  animation-timing-function: linear; 
+  animation-delay: 0;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeToBlack {
+  0% {
+    background-color: $blue;
+  }
+  100% {
+    background-color: $black;
+  }
+}
+
+@media (max-width: $small) {
+  .about, .cta {
+    border: 1px solid $black;
+    border-radius: 16px;
+  }
+  .about {
+    font-size: 24px;
+    line-height: 28px;
+    height: 10vh;
+  }
+  .text {
+    display: none;
+  }
+  .cta {
+    font-size: 40px;
+    line-height: 40px;
+    height: 20vh;
+  }
+}

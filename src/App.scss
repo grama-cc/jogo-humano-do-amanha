@@ -1,38 +1,144 @@
-.App {
-  text-align: center;
+//Paths
+$img: './assets/images';
+$icons: './assets/icons';
+
+//Colors
+$white: #E9E9E9;
+$black: #0d0d0d;
+$lightGrey: #fafafa;
+$purple: #9F53CE;
+$blue: #0179D1;
+$darkBlue: #00243F;
+$lightBlue: #5EBCFF;
+$green: #00A876;
+$yellow: #FFA615;
+$darkYellow: #4D3206;
+$orange: #FF5701;
+$darkOrange: #4D1A01;
+$lilac: #D591FF;
+
+
+// Font
+@font-face {
+  font-family: 'Calibre';
+  src:  url('./assets/fonts/Calibre-Regular.woff2') format('woff2'),
+        url('./assets/fonts/Calibre-Bold.woff2') format('woff2'),
+        url('./assets/fonts/Calibre-BoldItalic.woff2') format('woff2');
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+// Responsive
+$small: 640px;
+$medium: 992px;
+$large: 1500px;
+$xlarge: 2000px;
+
+@function responsive($value1, $value2, $width1: 320, $width2: 1366) {
+  $x1: $width1;
+  $x2: $width2;
+  $y1: $value1;
+  $y2: $value2;
+  $a: ($y2 - $y1) / ($x2 - $x1);
+  $b: ($x2 * $y1 - $x1 * $y2) / ($x2 - $x1);
+  @return calc(#{$a * 100vw} + #{$b * 1px});
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+// Reset
+
+@mixin reset-margin-paddding {
+  margin: 0;
+  padding: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+@mixin font-inherit {
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
 }
 
-.App-link {
-  color: #61dafb;
-}
+html {
+  overflow-x: hidden;
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+  body {
+    @include reset-margin-paddding;
+    font-family: 'Calibre';
+    overflow-x: hidden;
+    position: relative;
+    width: 100vw;
+    background-color: $black;
+
+    *,
+    *:before,
+    *:after {
+      box-sizing: border-box;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      @include font-inherit;
+      @include reset-margin-paddding;
+    }
+
+    p {
+      @include reset-margin-paddding;
+    }
+
+    blockquote {
+      @include reset-margin-paddding;
+    }
+
+    ul {
+      @include reset-margin-paddding;
+      list-style: none;
+
+      li {
+        @include reset-margin-paddding;
+        list-style: none;
+      }
+    }
+
+    a {
+      @include font-inherit;
+      text-decoration: none;
+    }
+
+    button {    
+      @include reset-margin-paddding;
+      appearance: button;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      overflow: visible;
+      text-transform: none;
+    }
+
+    input, textarea {
+      background: transparent;
+      border: none;
+      outline: none;
+      @include reset-margin-paddding;
+      @include font-inherit;
+      resize: none;
+    }
+
+    ::placeholder {
+      color: inherit;
+      opacity: 0.5;
+    }
+    
+    :-ms-input-placeholder {
+      color: inherit;
+      opacity: 0.5;
+    }
+    
+    ::-ms-input-placeholder {
+      color: inherit;
+      opacity: 0.5;
+    }
   }
 }

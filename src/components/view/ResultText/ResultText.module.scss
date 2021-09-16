@@ -1,0 +1,71 @@
+@import 'App.scss';
+
+.title, .text {
+  border-radius: 16px;
+  border: 1px solid $black;
+  width: 96%;
+  background: $white;
+  color: $black;
+}
+
+.librasWrapperMobile{
+  position: relative;
+  width: 90vw;
+  min-height: 90vw;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  overflow: hidden;
+  @media (min-width: $small) {
+    display: none;
+  }
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  padding: 24px 0;
+  font-size: responsive(40, 60);
+  line-height: responsive(40, 60);
+  span {
+    width: 70%;
+  }
+}
+
+.revealTitle, .revealText {
+  border: 1px solid $white;
+  background: $black;
+  color: $white;
+}
+
+.revealText {
+  min-height: 60vh;
+}
+  
+.text {
+  font-size: 20px;
+  line-height: 24px;
+  padding: 36px;
+  flex: 1;
+}
+
+@media (max-width: $small) {
+  .title {
+    margin-top: 0;
+    width: 100%;
+    height: 148px;
+  }
+
+  .text {
+    width: 100%;
+    font-size: 24px;
+    line-height: 28px;
+    padding: 24px;
+  }
+
+  .cta {
+    display: none;
+  }
+}

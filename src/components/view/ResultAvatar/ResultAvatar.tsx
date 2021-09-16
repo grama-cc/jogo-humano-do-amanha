@@ -1,0 +1,25 @@
+import SettingsContext from 'context/settingsContext';
+import React, { useContext } from 'react';
+
+import styles from './ResultAvatar.module.scss';
+
+type ResultAvatarProps = {
+  avatar: string;
+  avatarName: string;
+}
+
+const ResultAvatar: React.FC<ResultAvatarProps> = ({ avatar, avatarName }) => {
+  const { libras } = useContext(SettingsContext);
+
+  return (
+    <div className={`${styles.avatar} ${libras ? styles.libras : ''}`}>
+      {avatar ? (
+        <img src={avatar} alt={avatarName} />
+      ) : (
+        <p>RESULTADO: <span>{avatarName}</span></p>
+      )}
+    </div>
+  );
+}
+
+export default ResultAvatar;

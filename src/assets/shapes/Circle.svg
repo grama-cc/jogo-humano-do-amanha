@@ -1,0 +1,7 @@
+<svg width="634" height="634" viewBox="0 0 634 634" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="circle-mask" clipPathUnits="objectBoundingBox">
+    </clipPath>
+  </defs>
+  <path d="M633 317C633 491.522 491.522 633 317 633C142.478 633 0.999914 491.522 0.999945 317C0.999975 142.478 142.478 1.00002 317 1.00006C491.522 1.00009 633 142.478 633 317Z" fill="#FFFFFF" stroke="#FAFAFA" stroke-width="2"/>
+</svg>

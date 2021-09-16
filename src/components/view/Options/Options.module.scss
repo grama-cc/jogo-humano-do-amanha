@@ -1,0 +1,109 @@
+@import 'App.scss';
+
+.quizOption,.optionCountdown {
+  border-radius: 16px;
+  flex: 1;
+  width: 100%;
+  max-height: 32.5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  button {
+    font-size: responsive(40, 96);
+    line-height: responsive(64, 88);
+  }
+}
+
+.optionCountdown {
+  border: 1px solid $white;;
+  button{
+    opacity: 0;
+    transition: opacity ease-out .5s;
+  }
+  &.animate{
+    &:first-of-type button{
+      animation: showup 3.5s;
+      animation-delay: 2s;
+    }
+    &:nth-of-type(2) button{
+      animation: showup 2.5s;
+      animation-delay: 3s;
+    }
+    &:nth-of-type(3) button{
+      animation: showup 1.5s;
+      animation-delay: 4s;
+    }
+  }
+  
+  button {
+    color: $white;
+  }
+}
+
+.quizOptions, .optionsCountdown{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  flex: 1;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 10px;
+  width: 100%;
+  button{
+    width: 100%;
+    height: 100%;
+  }
+  @media (min-width: $small) {
+    position: relative;
+    width: auto;
+  }
+}
+
+.quizOption{
+  border: 1px solid $black;
+  &:first-of-type {
+   background-color: $blue;
+  }
+  &:nth-of-type(2) {
+    background-color: $yellow;
+  }
+  &:nth-of-type(3) {
+    background-color: $orange;
+  }
+}
+.optionsCountdown{
+  position: relative;
+}
+
+.disabled{
+  opacity: .5;
+}
+.selected button{
+  font-style: italic;
+}
+button:active{
+  font-style: italic;
+}
+
+@keyframes showup {
+  0% {opacity: 0;}
+  25% {opacity: 1;}
+  95%{opacity: 1;}
+  100%{opacity: 0;}
+}
+
+@media (max-width: $small) {
+  .quizOption, .optionCountdown {
+    height: 9vh;
+    width: 95%;
+    margin-top: 8px;
+  }
+  .optionCountdown {
+    button {
+      font-size: 40px;
+      line-height: 64px;
+    }
+  }
+}
