@@ -109,8 +109,8 @@ const Countdown: React.FC = () => {
               onSelect={() => {}}
               options={[
                 {label: 'Sim', value: 'SIM'},
-                {label: 'Não', value: 'NAO'},
-                {label: 'Talvez', value: 'TALVEZ'}
+                {label: 'Talvez', value: 'TALVEZ'},
+                {label: 'Não', value: 'NAO'}
               ]}
             />
           </div>
