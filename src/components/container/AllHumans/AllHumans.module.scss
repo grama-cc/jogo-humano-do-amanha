@@ -3,6 +3,11 @@
 .contentWrapper {
   width: 100vw;
   min-height: 100vh;
+  background-color: $white;
+  padding-bottom: 55vw;
+  @media (min-width: $small) {
+    padding-bottom: 0;
+  }
 }
 
 .resultList {
@@ -19,11 +24,37 @@
   min-height: inherit;
 }
 
+.librasWrapper{
+  display: none;
+  @media (min-width: $small) {
+    display: block;
+    width: unset;
+    height: unset;
+    position: absolute;
+    top: 40vh;
+    left: 10vw;
+  }
+}
+
+.librasWrapperMobile{
+  position: relative;
+  width: 90vw;
+  min-height: 90vw;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  overflow: hidden;
+  @media (min-width: $small) {
+    display: none;
+  }
+}
+
 .resultSidebar {
+  padding: 10px 0;
   width: 40%;
   height: inherit;
   display: flex;
   flex-direction: column;
+  height: 100vh;
 }
 
 .resultList {
@@ -31,6 +62,7 @@
   justify-content: center;
   width: 100vw;
   min-height: 100vh;
+  background-color: white;
 }
 
 .title, .text, .cta {
@@ -57,6 +89,7 @@
   line-height: responsive(16, 20);
   padding: 36px;
   min-height: 42vh;
+  flex: 1;
 }
 
 .cta {

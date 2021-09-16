@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState,useEffect, useContext } from 'react';
 import { Option } from 'types/types';
 import SettingsContext from 'context/settingsContext';
 
@@ -10,16 +10,29 @@ type OptionsProps = {
   selected?: string;
 }
 
-const Options: React.FC<OptionsProps> = ({ options, onSelect, selected }) => {
-  const { step } = useContext(SettingsContext);
+const Options: React.FC<OptionsProps> = ({ options, onSelect, selected}) => {
+  const { step, libras } = useContext(SettingsContext);
+
+  const [animate, setAnimate] = useState<boolean>(true);
+  useEffect(() => {
+    setAnimate(false);
+    setTimeout(() => {
+      setAnimate(true)
+    }, 500);
+  }, [libras])
+
+  const [restart, setRestart] = useState<boolean>()
 
   return (
     <ul className={step === 'countdown' ? `${styles.optionsCountdown}` : `${styles.quizOptions}`}>
       {options.map(item => (
         <li
           key={item.value} 
-          className={`${step === 'countdown' ? `${styles.optionCountdown}` : `${styles.quizOption}`}
-          ${selected && selected !== item.value ? styles.disabled: ''}`}
+          className={`${step === 'countdown' ? styles.optionCountdown : styles.quizOption}
+          ${selected && selected !== item.value ? styles.disabled: ''}
+          ${selected && selected === item.value ? styles.selected: ''}
+          ${animate ? styles.animate: ''}
+        `}
         >
           <button onClick={() => onSelect(item.value)}>
             {item.label}

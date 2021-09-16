@@ -8,6 +8,18 @@
   color: $black;
 }
 
+.librasWrapperMobile{
+  position: relative;
+  width: 90vw;
+  min-height: 90vw;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  overflow: hidden;
+  @media (min-width: $small) {
+    display: none;
+  }
+}
+
 .title {
   display: flex;
   justify-content: center;
@@ -36,6 +48,7 @@
   font-size: 20px;
   line-height: 24px;
   padding: 36px;
+  flex: 1;
 }
 
 @media (max-width: $small) {

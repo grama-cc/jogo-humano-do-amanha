@@ -124,6 +124,14 @@
   animation-timing-function: linear; 
   animation-delay: 0;
   animation-fill-mode: forwards;
+  video{
+    animation-name: videoOpacity;
+    animation-duration: 2s; 
+    animation-timing-function: linear; 
+    animation-delay: 0;
+    animation-fill-mode: forwards;
+  }
+  
 }
 
 @keyframes fadeToBlack {
@@ -132,6 +140,15 @@
   }
   100% {
     background-color: $black;
+  }
+}
+
+@keyframes videoOpacity {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
 

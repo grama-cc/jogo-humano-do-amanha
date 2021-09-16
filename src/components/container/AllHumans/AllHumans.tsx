@@ -9,10 +9,11 @@ import AllHumansList from 'components/view/AllHumansList/AllHumansList';
 
 import styles from './AllHumans.module.scss';
 import ResultAvatar from 'components/view/ResultAvatar/ResultAvatar';
+import Video from 'components/view/Video/Video';
 
 
 export default function Result() {
-  const { step, allHumanTypes, setAllHumanTypes, resultsListHuman } = useContext(SettingsContext);
+  const { step, allHumanTypes, setAllHumanTypes, resultsListHuman, libras } = useContext(SettingsContext);
   const [isError, setIsError] = useState<boolean>(false);
 
   useEffect(() => {
@@ -38,7 +39,15 @@ export default function Result() {
           <div className={styles.resultList}>
             <div className={styles.resultContent}>
               {resultsListHuman.nome !== '' && (
-                <ResultAvatar avatar={resultsListHuman.images[1].url} avatarName={resultsListHuman.nome} />
+                <>
+                  {libras && !!resultsListHuman?.libras_description?.url &&
+                    <div className={styles.librasWrapper}>
+                      {console.log(resultsListHuman)}
+                      <Video source={resultsListHuman.libras_description.url}/>
+                    </div>
+                  }
+                  <ResultAvatar avatar={resultsListHuman.images[1].url} avatarName={resultsListHuman.nome} />
+                </>
               )}
               {allHumanTypes && <AllHumansList results={allHumanTypes} />}
             </div>
@@ -47,6 +56,12 @@ export default function Result() {
               {resultsListHuman.nome !== '' ? (
                 <>
                   <p className={styles.title}>{resultsListHuman.nome}</p>
+                  {libras && !!resultsListHuman?.libras_description?.url &&
+                    <div className={styles.librasWrapperMobile}>
+                      {console.log(resultsListHuman)}
+                      <Video source={resultsListHuman.libras_description.url}/>
+                    </div>
+                  }
                   <p className={styles.text}>{resultsListHuman.descricao}</p>
                   <p className={styles.cta}>
                     Role para conhecer os 

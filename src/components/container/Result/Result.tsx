@@ -11,49 +11,41 @@ import ResultShare from 'components/view/ResultShare/ResultsShare';
 import ResultsList from 'components/view/ResultsList/ResultsList';
 
 import styles from './Result.module.scss';
+import Video from 'components/view/Video/Video';
 
 export default function Result() {
-  const { step, setStep, userId, allHumanTypes, setAllHumanTypes, resultAvatar, setResultAvatar } = useContext(SettingsContext);
+  const { step, setStep, userId, allHumanTypes, setAllHumanTypes, resultAvatar, setResultAvatar, libras } = useContext(SettingsContext);
   const [resultOpenness, setResultOpenness] = useState<string>('');
   const [resultCharacter, setResultCharacter] = useState<string>('');
   const [isError, setIsError] = useState<boolean>(false);
 
   useEffect(() => {
-    AllHumanTypes.getHumanTypes()
-    .then((data) => {
-      setAllHumanTypes(data);
-    })
-    .catch((err) => {
-      setIsError(true);
-    });
-
-    if (userId && step === 'result') {
-      GetResult.getResult(userId)
-      .then((data) => {
-        setResultCharacter(data.point.max_character_label);
-        setResultOpenness(data.point.max_openness_label);
-      })
-      .catch((err) => {
-        setIsError(true);
-      })
+    if(step === 'result'){
+      if (!resultOpenness && !resultCharacter && userId) {
+        GetResult.getResult(userId)
+        .then((data) => {
+          setResultCharacter(data.point.max_character_label);
+          setResultOpenness(data.point.max_openness_label);
+        })
+        .catch((err) => {
+          setIsError(true);
+        })
+      }
+  
+      if (resultOpenness && resultCharacter) {
+        GetHumanType.getHumanType(resultOpenness, resultCharacter)
+        .then((avatar) => {
+          if(avatar.length){
+            setResultAvatar(avatar[0]);
+          }
+        })
+        .catch((err) => {
+          setIsError(true);
+        });
+      }
     }
-
-    if ((resultOpenness !== '') && (resultCharacter !== '')) {
-      GetHumanType.getHumanType(resultOpenness, resultCharacter)
-      .then((avatar) => {
-        if(avatar.length){
-          setResultAvatar(avatar[0]);
-        }
-      })
-      .catch((err) => {
-        setIsError(true);
-      });
-    }
-
-    
-		return () => {};
-    
-	}, [setAllHumanTypes, setResultAvatar, allHumanTypes]);
+  
+	}, [setAllHumanTypes, setResultAvatar, userId, step, resultOpenness, resultCharacter]);
   
   const goToResearch = useCallback(() => {
     setStep('research')
@@ -90,9 +82,15 @@ export default function Result() {
             <div className={styles.resultContainer}>
               <div className={styles.resultContent}>
                 <ResultAvatar avatar={resultAvatar.images[1].url} avatarName={resultAvatar.nome} />
+                {libras && !!resultAvatar?.libras_description?.url &&
+                  <div className={styles.librasWrapper}>
+                    <Video source={resultAvatar.libras_description.url}/>
+                  </div>}
               </div>
               <div className={styles.resultSidebar}>
-                <ResultText title={resultAvatar.nome} text={resultAvatar.descricao} />
+                <ResultText title={resultAvatar.nome}
+                  text={resultAvatar.descricao}
+                  video={resultAvatar.libras_description.url}/>
                 <ResultShare resultTitle={resultAvatar.nome} resultDescription={resultAvatar.descricao} color={resultAvatar.backgroundColor} />
                 <div className={styles.seeMore}>Role para conhecer os outros <span>humanos do amanhã</span></div>
               </div>
@@ -103,7 +101,7 @@ export default function Result() {
               </div>
 
               <div className={styles.resultSidebar}>
-                <div>
+                <div className={styles.researchInvite}>
                   <p className={styles.message}>
                     Nos ajude a melhorar esse jogo respondendo um breve questionário e aproveite para descobrir os outros
                     <span style={{ color: `${resultAvatar.backgroundColor}` }}>
