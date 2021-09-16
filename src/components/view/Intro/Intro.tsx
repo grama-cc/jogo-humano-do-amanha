@@ -4,7 +4,7 @@ import SettingsContext from 'context/settingsContext';
 import Video from '../Video/Video';
 import Circle from '../Circle/Circle';
 
-import Shadow from 'assets/images/main-shadow.png';
+import Shadow from 'assets/images/03_aliesilhu.svg';
 
 import styles from './Intro.module.scss';
 

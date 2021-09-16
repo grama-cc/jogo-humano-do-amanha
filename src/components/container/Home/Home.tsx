@@ -92,7 +92,7 @@ const Home: React.FC = () => {
             ctaLabel={screenSaver.init_screen_saver.init_button}
             ctaAction={changeStep}
           />
-          <LibrasToggle blackIcon={true} />
+          {/* <LibrasToggle blackIcon={true} /> */}
           {showAboutPopUp && <About title={aboutContent.title} text={aboutContent.description} /> }
         </main>
       )}
