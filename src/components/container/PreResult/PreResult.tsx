@@ -15,7 +15,7 @@ const discoverAudio = require('assets/audios/descobrir.mp3');
 
 const PreResult: React.FC = () => {
   const { step, setStep, transitionStep, settransitionStep } = useContext(SettingsContext);
-  const [initialMessage, setInitialMessage] = useState<boolean>(true);
+  const [, setInitialMessage] = useState<boolean>(true);
 
   const discoverAudioRef = useRef<HTMLAudioElement>(new Audio(discoverAudio.default));
 
@@ -40,7 +40,7 @@ const PreResult: React.FC = () => {
     discoverAudioRef.current.play();
     settransitionStep(true);
     setTimeout(goToResult, 2500);
-  }, [goToResult, settransitionStep, discoverAudioRef.current]);
+  }, [goToResult, settransitionStep, discoverAudioRef]);
  
   return (
     <>

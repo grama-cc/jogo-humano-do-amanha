@@ -14,7 +14,6 @@ import styles from './Countdown.module.scss';
 
 const countAudio = require('assets/audios/contagem.mp3');
 
-
 const initialMessageTime = 5000;
 const countDownTime = 1500;
 
@@ -25,7 +24,7 @@ const Countdown: React.FC = () => {
   const countAudioRef = useRef<HTMLAudioElement>(new Audio(countAudio.default));
 
   const [welcome, setWelcome] = useState<WelcomeContent | null>(null);
-	const [isError, setIsError] = useState<boolean>(false);
+	const [, setIsError] = useState<boolean>(false);
   const [counter, setCounter] = useState<number>(3);
   const [screenSaver, setScreenSaver] = useState<ScreenSaverContent>();
   const [showWelcomeMessage, setShowWelcomeMessage] = useState<boolean>(true);
