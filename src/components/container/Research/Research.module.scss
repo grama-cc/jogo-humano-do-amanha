@@ -6,6 +6,7 @@
   display: flex;
   align-items: flex-start;
   height: 100vh;
+  transition: background-color 1s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .sidebar{
@@ -37,7 +38,10 @@
     z-index: 5;
     @media (min-width: $small) {
       min-height: auto;
+      margin: 0 10px 5px 10px;
     }
   }
 }
+
+
 

@@ -7,6 +7,11 @@
   img {
     width: 45%;
   }
+  &.libras{
+    img{
+      margin-left: 30vw;
+    }
+  }
 }
 
 @media (max-width: $small) {

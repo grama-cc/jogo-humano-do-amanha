@@ -7,6 +7,7 @@
   justify-content: flex-end;
   z-index: 5;
   @media (min-width: $small) {
+    padding: 20px 10px;
     justify-content: space-between;
     overflow-y: hidden;
     position: relative;

@@ -7,6 +7,8 @@ import QuestionList from 'components/container/QuestionList/QuestionList';
 import { Profile } from 'api';
 
 import styles from './Research.module.scss';
+import globalStyles from 'globals.module.scss';
+
 import LibrasToggle from '../LibrasToggle/LibrasToggle';
 import { ProfileQuestion } from 'types/types';
 
@@ -119,7 +121,6 @@ const Research: React.FC = () => {
   }, [currentQuestionIndex, questions, goToQuiz]);
 
   const sendAnswers = useCallback(() => {
-    console.log(questions);
     Profile.postAnswers({
       genero: questions.find(q => q.api_field === 'genero')?.answer || 'outro', 
       outro_genero: questions.find(q => q.api_field === 'genero')?.answerText || '',
@@ -171,7 +172,7 @@ const Research: React.FC = () => {
   return (
     <>
     {step === 'research' && (
-      <main className={`${styles.container} ${styles.researchWrapper}`}>
+      <main className={`${globalStyles.container} ${styles.researchWrapper}`}>
         <Menu text={currentQuestionIndex.toString()} prevStep={'result'} prevAction={currentQuestionIndex ? goToPreviousQuestion : null} />
         {!!questions.length ? (
           <>

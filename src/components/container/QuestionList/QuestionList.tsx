@@ -1,8 +1,9 @@
-import React, {useMemo} from 'react';
+import React, {useMemo, useContext} from 'react';
 
 import styles from './QuestionList.module.scss';
 import { QuestionType, ProfileQuestion } from 'types/types';
 import Question from 'components/view/Question/Question';
+import SettingsContext from 'context/settingsContext';
 
 import {ReactComponent as Semicircle} from 'assets/shapes/Semicircle.svg';
 import {ReactComponent as Circle} from 'assets/shapes/Circle.svg';
@@ -14,13 +15,15 @@ type QuestionListProps = {
 
 const QuestionList: React.FC<QuestionListProps> = ({questions, currentQuestion }) => {
 
+  const { libras } = useContext(SettingsContext);
+
   const shapesStrokeColor = useMemo(() => {
     if(!questions[currentQuestion]){
       if(questions[currentQuestion - 1]?.resposta){
         return styles.blackStroke;
       } 
     }
-    if(questions[currentQuestion].resposta){
+    if(questions[currentQuestion]?.resposta){
       return styles.blackStroke;
     }
     return '';
@@ -31,13 +34,13 @@ const QuestionList: React.FC<QuestionListProps> = ({questions, currentQuestion }
       return (
       <>
         {questions.map((question,index) => (
-          <>
+          <span className={styles.shapesContainer}>
             <Semicircle className={`${index % 2 === 0 ? styles.semicircle : styles.semicircleRotated} ${shapesStrokeColor}`}/>
             <span className={styles.circleContainer}>
               <Circle fill="white" className={styles.circle}/>
-              <Question question={question}/>
+              <Question question={question} current={currentQuestion === index || !questions[currentQuestion]}/>
             </span>
-          </>
+          </span>
         ))}
         <Semicircle className={`${questions.length % 2 === 0 ? styles.semicircle : styles.semicircleRotated} ${shapesStrokeColor}`}/>
       </>);
@@ -49,15 +52,15 @@ const QuestionList: React.FC<QuestionListProps> = ({questions, currentQuestion }
         <Semicircle className={styles.semicircleRotated}/>
       </>
     );
-  }, [questions, shapesStrokeColor]);
+  }, [questions, shapesStrokeColor, currentQuestion]);
 
   const translateAnimationValue = useMemo(() => {
     if(window.screen.width > 640){
       if(questions.length && questions[currentQuestion]){
-        return `${((currentQuestion) * -105) -20}vh`;
+        return `${((currentQuestion) * (libras ? -90 : -105)) -20}vh`;
       } 
       if(questions.length){
-        return `${((questions.length -1) * -105) -20}vh`;
+        return `${((questions.length -1) * (libras ? -90 : -105)) -20}vh`;
       }
       return 0;
     } else {
@@ -69,9 +72,9 @@ const QuestionList: React.FC<QuestionListProps> = ({questions, currentQuestion }
       }
       return 0;
     }
-  },[questions, currentQuestion]);
+  },[questions, currentQuestion, libras]);
 
-  return <div className={styles.circles} style={{transform: `translateY(${translateAnimationValue})`}}>
+  return <div className={`${styles.circles} ${libras ? styles.libras : ''}`} style={{transform: `translateY(${translateAnimationValue})`}}>
     {questionShapes}
   </div>;
 }

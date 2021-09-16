@@ -135,6 +135,9 @@ export type HumanType = {
   openness: string,
   perfil?: string,
   updatedAt: string,
+  libras_description:{
+    url: string;
+  }
 }
 
 export type Result = HumanType[]
