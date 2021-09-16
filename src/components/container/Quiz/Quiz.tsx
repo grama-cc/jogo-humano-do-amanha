@@ -42,7 +42,7 @@ const Quiz: React.FC = () => {
     }
   }, [questions, getInitialQuestion]);
 
-  const currentQuestion = useMemo(() => questions[currentQuestionIndex] || null, [currentQuestionIndex, questions]);
+  const currentQuestion = useMemo(() => questions[currentQuestionIndex] || questions[currentQuestionIndex - 1] || null, [currentQuestionIndex, questions]);
 
   const getNextQuestion = useCallback((answer = null) => {
     QuizQuestions.getQuestion(currentQuestionIndex + 1, answer, userId, currentQuestion.alternativa).then(res => {
@@ -83,15 +83,16 @@ const Quiz: React.FC = () => {
   }, [currentQuestionIndex, questions, getNextQuestion, finished, goToResearch]);
 
   const setAnswer = useCallback((value) => {
-    if(currentQuestion.resposta){
+    if(currentQuestion.resposta && questions[currentQuestionIndex]){
       goToNextQuestion();
     } else {
       const updatedQuestions = [...questions];
-      updatedQuestions[currentQuestionIndex].resposta = value;
-      setQuestions(updatedQuestions);
-      getNextQuestion(value);
+      if(updatedQuestions[currentQuestionIndex]){
+        updatedQuestions[currentQuestionIndex].resposta = value;
+        setQuestions(updatedQuestions);
+        getNextQuestion(value);
+      }
     }
-    
   }, [currentQuestionIndex, questions, currentQuestion, getNextQuestion, goToNextQuestion]);
 
   const answerColor = useMemo(() => {
@@ -126,6 +127,7 @@ const Quiz: React.FC = () => {
     {step === 'quiz' && (
       <main className={`${globalStyles.container} ${styles.quizWrapper} ${answerColor}`}>
         <Menu prevStep={'countdown'} text={currentQuestionIndex.toString()} prevAction={currentQuestionIndex ? goToPreviousQuestion : null}/>
+        {console.log(currentQuestionIndex)}
         <QuestionList questions={questions} currentQuestion={currentQuestionIndex}/>
         <div className={styles.sidebar}>
           <Options

@@ -35,6 +35,9 @@ export const defaultHuman = {
   openness: '',
   perfil: '',
   updatedAt: '',
+  libras_description: {
+    url: ''
+  }
 }
 
 type settingsType = {

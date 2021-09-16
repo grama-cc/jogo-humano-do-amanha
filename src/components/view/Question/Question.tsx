@@ -9,18 +9,21 @@ import styles from './Question.module.scss';
 
 type QuestionProps = {
   question: QuestionType | ProfileQuestion;
+  current: boolean
 }
 
-const Question: React.FC<QuestionProps> = ({ question }) => {
+const Question: React.FC<QuestionProps> = ({ question, current }) => {
   const { libras } = useContext(SettingsContext);
-
   const content = useMemo(() => {
     if(question){
-      if(libras){
-        return <Video source={question.libras || question.texto_libras?.url || 'http://techslides.com/demos/sample-videos/small.mp4'}/>;
-      } return <p className={styles.text}>{question.texto || question.text}</p>
+      return <>
+        {libras && current && <div className={styles.librasWrapper}>
+          <Video source={question.libras || question.texto_libras?.url || false}/>
+        </div>}
+        <p className={styles.text}>{question.texto || question.text}</p>
+      </>
     } return null;
-  },[libras, question]);
+  },[libras, question, current]);
 
   return (
     <div className={styles.question}>

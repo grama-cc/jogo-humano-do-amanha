@@ -45,32 +45,34 @@ const Intro: React.FC<IntroProps> = ({ title, question, videos, endedVideos, wel
   }, [currentVideo, videos]);
 
   return (
-    <div className={`${styles.wrapper} ${step === 'home' ? styles.home : ''}`}>
+    <div className={`
+      ${styles.wrapper} ${step === 'home' ? styles.home : ''}
+      ${libras ? styles.libras : ''}
+    `}>
       <Circle>
-        {libras ? (
-          <Video source={currentVideoSource} onEnded={nextVideo}/>
-        ) : (
-          <div className={styles.textWrapper}>
-            {title && <p className={`${styles.title} ${transitionStep && styles.transition}`}>{title}</p>}
-            {question && <h1 className={`${styles.question} ${transitionStep && styles.transition}`}>{question}</h1>}
-            {step === 'home' && <img className={styles.shadow} src={Shadow} alt="Jogo do amanhã" />}
-            {step === 'countdown' && (
-              <>
-                {welcome?.map((item) => (
-                  <p
-                    key={item} 
-                    className={styles.welcome}
-                  >
-                  {item}
-                  </p>
-                ))}
-              </>
-            )}
-            {step === 'preresult' && (
-              <div className={styles.animatedShadow}></div>
-            )}
-          </div>
-        )}
+        {libras &&  <div className={styles.librasWrapper}>
+          <Video source={currentVideoSource} onEnded={endedVideos ? nextVideo : false}/>
+        </div>}
+        <div className={styles.textWrapper}>
+          {title && <p className={`${styles.title} ${transitionStep && styles.transition}`}>{title}</p>}
+          {question && <h1 className={`${styles.question} ${transitionStep && styles.transition}`}>{question}</h1>}
+          {step === 'home' && <img className={styles.shadow} src={Shadow} alt="Jogo do amanhã" />}
+          {step === 'countdown' && (
+            <>
+              {welcome?.map((item) => (
+                <p
+                  key={item} 
+                  className={styles.welcome}
+                >
+                {item}
+                </p>
+              ))}
+            </>
+          )}
+          {step === 'preresult' && (
+            <div className={styles.animatedShadow}></div>
+          )}
+        </div>
       </Circle>
     </div>
   );

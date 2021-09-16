@@ -20,18 +20,21 @@
     opacity: 0;
     transition: opacity ease-out .5s;
   }
-  &:first-of-type button{
-    animation: showup 3.5s;
-    animation-delay: 2s;
+  &.animate{
+    &:first-of-type button{
+      animation: showup 3.5s;
+      animation-delay: 2s;
+    }
+    &:nth-of-type(2) button{
+      animation: showup 2.5s;
+      animation-delay: 3s;
+    }
+    &:nth-of-type(3) button{
+      animation: showup 1.5s;
+      animation-delay: 4s;
+    }
   }
-  &:nth-of-type(2) button{
-    animation: showup 2.5s;
-    animation-delay: 3s;
-  }
-  &:nth-of-type(3) button{
-    animation: showup 1.5s;
-    animation-delay: 4s;
-  }
+  
   button {
     color: $white;
   }
@@ -76,6 +79,12 @@
 
 .disabled{
   opacity: .5;
+}
+.selected button{
+  font-style: italic;
+}
+button:active{
+  font-style: italic;
 }
 
 @keyframes showup {

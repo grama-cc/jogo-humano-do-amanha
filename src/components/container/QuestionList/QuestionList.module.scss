@@ -1,5 +1,14 @@
 @import 'App.scss';
 
+.shapesContainer{
+  svg{
+    display: block;
+  }
+  @media only screen and (min-width: $small) {
+    position: relative;
+  }
+}
+
 .circles{
   display: flex;
   flex-direction: column;
@@ -9,19 +18,29 @@
   @media only screen and (min-width: $small) {
     margin: 0 10vw 0 14vw;
   }
+
   
   .circleContainer{
     position: relative;
+    display: block;
+    @media only screen and (min-width: $small) {
+      position: unset;
+    }
     width: fit-content;
     margin: 0 auto;
     border-radius: 50%;
     overflow: hidden;
+    path{
+      stroke-width: 0;
+    }
   }
+  
   .circle{
     width: 80vw;
     margin: 0 auto;
     height: auto;
     display: block;
+    position: relative;
     @media only screen and (min-width: $small) {
       width: auto;
       height: 70vh;
@@ -42,6 +61,22 @@
     @media only screen and (min-width: $small) {
       height: 35vh;
       width: auto;
+    }
+  }
+
+  &.libras{
+    @media only screen and (min-width: $small) {
+      margin: 0 1vw 0 16vw;
+      padding-left: 12vw;
+      .circle{
+        height:60vh;
+      }
+      .semicircle{
+        height: 30vh;
+      }
+      .semicircleRotated{
+        height: 30vh;
+      }
     }
   }
 

@@ -1,4 +1,5 @@
-import React from 'react';
+import SettingsContext from 'context/settingsContext';
+import React, { useContext } from 'react';
 
 import styles from './ResultAvatar.module.scss';
 
@@ -8,8 +9,10 @@ type ResultAvatarProps = {
 }
 
 const ResultAvatar: React.FC<ResultAvatarProps> = ({ avatar, avatarName }) => {
+  const { libras } = useContext(SettingsContext);
+
   return (
-    <div className={styles.avatar}>
+    <div className={`${styles.avatar} ${libras ? styles.libras : ''}`}>
       {avatar ? (
         <img src={avatar} alt={avatarName} />
       ) : (
