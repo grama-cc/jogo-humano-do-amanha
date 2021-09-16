@@ -14,7 +14,6 @@ import globalStyles from 'globals.module.scss';
 
 const buttonsAudio = require('assets/audios/botoes.mp3');
 
-
 const backAudio = require('assets/audios/voltar.mp3');
 
 type MenuProps = {
@@ -26,7 +25,7 @@ type MenuProps = {
 }
 
 const Menu: React.FC<MenuProps> = ({ text, prevStep, prevAction = null, blackIcon, topText }) => {
-  const { step, setStep, setLoading, resultAvatar } = useContext(SettingsContext);
+  const { setStep, setLoading, resultAvatar } = useContext(SettingsContext);
 
   const backAudioRef = useRef<HTMLAudioElement>(new Audio(backAudio.default));
   const buttonsAudioRef = useRef<HTMLAudioElement>(new Audio(buttonsAudio.default));
@@ -39,7 +38,7 @@ const Menu: React.FC<MenuProps> = ({ text, prevStep, prevAction = null, blackIco
 
   const goBack = () => {
     setLoading(false);
-    backAudioRef.current.currentTime = 0.3;
+    backAudioRef.current.currentTime = 0.6;
     backAudioRef.current.play();
     if(prevAction){
       prevAction();

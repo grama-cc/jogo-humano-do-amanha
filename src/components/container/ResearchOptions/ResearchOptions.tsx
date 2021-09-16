@@ -31,11 +31,11 @@ const ResearchOptions: React.FC<ResearchOptionsProps> = ({ options, onSelect, se
     }
   }, []);
 
-  const selectOption = (val: any, text?: string) => {
+  const selectOption = useCallback((val: any, text?: string) => {
     buttonsAudioRef.current.currentTime = 0.5;
     buttonsAudioRef.current.play();
     onSelect(val, text);
-  };
+  }, [buttonsAudioRef, onSelect]);
 
   const renderOption = useCallback((option, multiple) => {
     if(option.optionType === 'input'){

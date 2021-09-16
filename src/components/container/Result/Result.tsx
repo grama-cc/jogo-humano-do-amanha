@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect, useCallback } from 'react';
-import { AllHumanTypes, GetHumanType, GetResult } from 'api';
+import { GetHumanType, GetResult } from 'api';
 
 import SettingsContext from 'context/settingsContext';
 
@@ -12,12 +12,13 @@ import ResultsList from 'components/view/ResultsList/ResultsList';
 
 import styles from './Result.module.scss';
 import Video from 'components/view/Video/Video';
+import humanAudios from 'assets/audios/humans/allHumans';
 
 export default function Result() {
   const { step, setStep, userId, allHumanTypes, setAllHumanTypes, resultAvatar, setResultAvatar, libras } = useContext(SettingsContext);
   const [resultOpenness, setResultOpenness] = useState<string>('');
   const [resultCharacter, setResultCharacter] = useState<string>('');
-  const [isError, setIsError] = useState<boolean>(false);
+  const [, setIsError] = useState<boolean>(false);
 
   useEffect(() => {
     if(step === 'result'){
@@ -37,6 +38,9 @@ export default function Result() {
         .then((avatar) => {
           if(avatar.length){
             setResultAvatar(avatar[0]);
+            const humanAudio = humanAudios.find(h => h.name === avatar[0].nome);
+            const audio = new Audio(humanAudio?.audio.default);
+            audio.play();
           }
         })
         .catch((err) => {

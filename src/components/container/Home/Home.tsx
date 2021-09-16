@@ -7,7 +7,6 @@ import SettingsContext from 'context/settingsContext';
 import About from 'components/view/About/About';
 import Intro from 'components/view/Intro/Intro';
 import IntroSidebar from 'components/view/IntroSidebar/IntroSidebar';
-import LibrasToggle from '../LibrasToggle/LibrasToggle';
 
 import globalStyles from 'globals.module.scss';
 
@@ -20,7 +19,7 @@ const Home: React.FC = () => {
   const [welcome, setWelcome] = useState<WelcomeContent>();
   const [aboutContent, setAboutContent] = useState<AboutText>();
   const [screenSaver, setScreenSaver] = useState<ScreenSaverContent>();
-	const [isError, setIsError] = useState<boolean>(false);
+	const [, setIsError] = useState<boolean>(false);
 
   const playRef = useRef<HTMLAudioElement>(new Audio(playAudio.default));
 

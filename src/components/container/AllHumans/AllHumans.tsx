@@ -14,7 +14,7 @@ import Video from 'components/view/Video/Video';
 
 export default function Result() {
   const { step, allHumanTypes, setAllHumanTypes, resultsListHuman, libras } = useContext(SettingsContext);
-  const [isError, setIsError] = useState<boolean>(false);
+  const [, setIsError] = useState<boolean>(false);
 
   useEffect(() => {
     AllHumanTypes.getHumanTypes()
