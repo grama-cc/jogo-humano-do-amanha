@@ -1,5 +1,5 @@
 // Steps
-export type Step = 'home' | 'countdown' | 'quiz' | 'research' | 'preresult' | 'result' | 'allhumans'
+export type Step = 'home' | 'countdown' | 'quiz' | 'research' | 'preresult' | 'result' | 'allhumans' | 'end'
 
 // Libras
 export type LibrasVideo = {

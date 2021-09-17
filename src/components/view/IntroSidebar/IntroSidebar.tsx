@@ -9,11 +9,15 @@ const closeAboutAudio = require('assets/audios/sobre_fechar.mp3');
 type IntroSidebarProps = {
   aboutText?: string;
   text?: string;
-  ctaLabel: string;
-  ctaAction: () => void;
+  ctaLabel?: string;
+  ctaAction?: () => void;
+  endCtaLabelResult?: string;
+  endCtaActionResult?: () => void;
+  endCtaLabelHome?: string;
+  endCtaActionHome?: () => void;
 }
 
-const IntroSidebar: React.FC<IntroSidebarProps> = ({ aboutText, text, ctaLabel, ctaAction }) => {
+const IntroSidebar: React.FC<IntroSidebarProps> = ({ aboutText, text, ctaLabel, ctaAction, endCtaLabelResult, endCtaActionResult, endCtaLabelHome, endCtaActionHome }) => {
   const { step, showAboutPopUp, setShowAboutPopUp, transitionStep } = useContext(SettingsContext);
 
   const openAboutRef = useRef<HTMLAudioElement>(new Audio(openAboutAudio.default));
@@ -59,18 +63,34 @@ const IntroSidebar: React.FC<IntroSidebarProps> = ({ aboutText, text, ctaLabel, 
 
   return (
     <div className={styles.sidebar}>
-    {step === 'home' && (
-      <button className={styles.about} onClick={aboutPopUp}>
-        <span className={`${transitionStep && styles.transition}`}>{aboutText}</span>
-      </button>
-    )}
+      {step === 'home' && (
+        <button className={styles.about} onClick={aboutPopUp}>
+          <span className={`${transitionStep && styles.transition}`}>{aboutText}</span>
+        </button>
+      )}
+
       <p className={styles.text}>
         <span className={`${transitionStep && styles.transition}`}>{text}</span>
       </p>
 
-      <button className={`${styles.cta} ${transitionStep ? styles.transitionButton : ''}`} onClick={ctaAction}>
-        <span className={`${transitionStep && styles.transition}`}>{ctaLabel}</span>
-      </button>
+      {(ctaLabel && ctaAction) && (
+        <button className={`${styles.cta} ${transitionStep ? styles.transitionButton : ''}`} onClick={ctaAction}>
+          <span className={`${transitionStep && styles.transition}`}>{ctaLabel}</span>
+        </button>
+      )}
+
+      {step === 'end' && (
+        <>
+          <button className={styles.endCta} onClick={endCtaActionResult}>
+            <span>{endCtaLabelResult}</span>
+          </button>
+
+          <button className={styles.endCta} onClick={endCtaActionHome}>
+            <span>{endCtaLabelHome}</span>
+          </button>
+        </>
+      )}
+
     </div>
   );
 }

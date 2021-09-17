@@ -57,8 +57,8 @@ export default function Result() {
     setStep('research')
   }, [setStep]);
 
-  const goToHome = useCallback(() => {
-    setStep('home')
+  const goToEnd = useCallback(() => {
+    setStep('end')
   }, [setStep]);
 
   if (!resultAvatar) return null;
@@ -115,7 +115,7 @@ export default function Result() {
                     </span>
                   </p>
                   <button onClick={goToResearch} className={styles.cta}>Ok, vamos lá</button>
-                  <button onClick={goToHome} className={styles.endGame}>Encerrar o jogo</button>
+                  <button onClick={goToEnd} className={styles.endGame}>Encerrar o jogo</button>
                 </div>
               </div>
             </div>
