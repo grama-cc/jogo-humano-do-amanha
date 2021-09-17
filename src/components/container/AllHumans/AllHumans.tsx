@@ -75,22 +75,16 @@ export default function Result() {
                   <p className={styles.cta}>
                     <button onClick={goToEnd}>Encerrar o jogo</button>
                   </p>
-                  <p className={styles.cta}>
-                    Que tal conhecer os outros
-                    <span>
-                      humanos do amanhã
-                    </span>?
-                  </p>
                 </>
               ) : (
                 <>
                   <p className={styles.title}>Os humanos do amanhã</p>
                   <p className={styles.text}>Cada personagem é inspirado nas tendências de comportamento dos próximos anos e seu temperamento é determinado pelo nível de sociabilidade e coletividade.</p>
                   <p className={styles.cta}>
-                    Clique para conhecer os 
+                    Que tal conhecer os outros 
                     <span>
                       humanos do amanhã
-                    </span>
+                    </span>?
                   </p> 
                 </>
               )}
