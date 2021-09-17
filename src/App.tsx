@@ -12,6 +12,7 @@ import Research from 'components/container/Research/Research';
 import Countdown from 'components/container/Countdown/Countdown';
 import PreResult from 'components/container/PreResult/PreResult';
 import AllHumans from 'components/container/AllHumans/AllHumans';
+import EndPage from 'components/container/EndPage/EndPage';
 
 const introAudio = require('assets/audios/intro.mp3');
 const quizAudio = require('assets/audios/quiz.mp3');
@@ -75,6 +76,7 @@ function App() {
         <PreResult />
         <Result />
         <AllHumans />
+        <EndPage />
       </div>
     </SettingsContext.Provider>
     

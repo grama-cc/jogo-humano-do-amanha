@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, useCallback } from 'react';
 import { AllHumanTypes } from 'api';
 
 import SettingsContext from 'context/settingsContext';
@@ -13,7 +13,7 @@ import Video from 'components/view/Video/Video';
 
 
 export default function Result() {
-  const { step, allHumanTypes, setAllHumanTypes, resultsListHuman, libras } = useContext(SettingsContext);
+  const { step, setStep, allHumanTypes, setAllHumanTypes, resultsListHuman, libras } = useContext(SettingsContext);
   const [, setIsError] = useState<boolean>(false);
 
   useEffect(() => {
@@ -28,6 +28,10 @@ export default function Result() {
 		return () => {};
     
 	}, [setAllHumanTypes]);
+
+  const goToEnd = useCallback(() => {
+    setStep('end');
+  }, [setStep])
 
   if (!allHumanTypes) return null;
 
@@ -62,11 +66,14 @@ export default function Result() {
                   }
                   <p className={styles.text}>{resultsListHuman.descricao}</p>
                   <p className={styles.cta}>
+                    <button onClick={goToEnd}>Encerrar o jogo</button>
+                  </p>
+                  <p className={styles.cta}>
                     Que tal conhecer os outros
                     <span>
                       humanos do amanhã
                     </span>?
-                  </p> 
+                  </p>
                 </>
               ) : (
                 <>
