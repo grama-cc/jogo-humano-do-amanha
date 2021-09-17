@@ -37,10 +37,12 @@ export default function Result() {
         GetHumanType.getHumanType(resultOpenness, resultCharacter)
         .then((avatar) => {
           if(avatar.length){
-            setResultAvatar(avatar[0]);
             const humanAudio = humanAudios.find(h => h.name === avatar[0].nome);
             const audio = new Audio(humanAudio?.audio.default);
-            audio.play();
+            audio.oncanplaythrough = () => {
+              setResultAvatar(avatar[0]);
+              audio.play();
+            };
           }
         })
         .catch((err) => {
