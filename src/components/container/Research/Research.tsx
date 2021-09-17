@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useContext, useMemo } from 'react';
+import React, { useState, useEffect,useRef, useCallback, useContext, useMemo } from 'react';
 import ResearchOptions from 'components/container/ResearchOptions/ResearchOptions';
 
 import SettingsContext from 'context/settingsContext';
@@ -20,9 +20,33 @@ const Research: React.FC = () => {
   const [currentQuestionIndex, setCurrentQuestionsIndex] = useState<number>(0);
   const [searchQuery, setSearchQuery] = useState<string>('');
 
+  const optionsListRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if(questions.length && window.innerWidth < 770){
+      if(optionsListRef.current){
+        optionsListRef.current.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: 'smooth',
+        })
+      }
+      setTimeout(() => {
+        if(optionsListRef.current){
+          optionsListRef.current.scrollTo({
+            top: window.innerHeight/2,
+            left: 0,
+            behavior: 'smooth',
+          })
+        }
+      }, 3000);
+    }
+  },[questions, currentQuestionIndex]);
+
 
   useEffect(() => {
     Profile.getQuestion().then(res => {
+      console.log(res.questions);
       const currentQuestions = res.questions
         .filter((q: any) => q.api_field !== 'outro_genero')
         .map((q: any) => {
@@ -177,7 +201,7 @@ const Research: React.FC = () => {
         {!!questions.length ? (
           <>
             <QuestionList questions={questions} currentQuestion={currentQuestionIndex}/>
-            <div className={styles.sidebar}>
+            <div ref={optionsListRef} className={styles.sidebar}>
               {!!currentQuestion.searchable && 
                 <input
                   value={searchQuery}
