@@ -1,0 +1,127 @@
+@font-face {
+  font-family: 'Calibre';
+  src: url("./assets/fonts/Calibre-Regular.woff2") format("woff2"), url("./assets/fonts/Calibre-Bold.woff2") format("woff2"), url("./assets/fonts/Calibre-BoldItalic.woff2") format("woff2");
+}
+
+html {
+  overflow-x: hidden;
+}
+
+html body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Calibre';
+  overflow-x: hidden;
+  position: relative;
+  width: 100vw;
+  background-color: #0d0d0d;
+}
+
+html body *,
+html body *:before,
+html body *:after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html body h1,
+html body h2,
+html body h3,
+html body h4,
+html body h5,
+html body h6 {
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+html body p {
+  margin: 0;
+  padding: 0;
+}
+
+html body blockquote {
+  margin: 0;
+  padding: 0;
+}
+
+html body ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+html body ul li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+html body a {
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  text-decoration: none;
+}
+
+html body button {
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: button;
+     -moz-appearance: button;
+          appearance: button;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  overflow: visible;
+  text-transform: none;
+}
+
+html body input, html body textarea {
+  background: transparent;
+  border: none;
+  outline: none;
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  resize: none;
+}
+
+html body ::-webkit-input-placeholder {
+  color: inherit;
+  opacity: 0.5;
+}
+
+html body :-ms-input-placeholder {
+  color: inherit;
+  opacity: 0.5;
+}
+
+html body ::-ms-input-placeholder {
+  color: inherit;
+  opacity: 0.5;
+}
+
+html body ::placeholder {
+  color: inherit;
+  opacity: 0.5;
+}
+
+html body :-ms-input-placeholder {
+  color: inherit;
+  opacity: 0.5;
+}
+
+html body ::-ms-input-placeholder {
+  color: inherit;
+  opacity: 0.5;
+}
+/*# sourceMappingURL=App.css.map */

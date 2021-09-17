@@ -50,7 +50,7 @@ const PreResult: React.FC = () => {
           <Intro />
           <IntroSidebar
             aboutText={''}
-            text={'Preparado para saber que tipo de humano do amanhã você é?'}
+            text={'Já temos o seu perfil! Saiba que tipo de humano do amanhã você será!'}
             ctaLabel={'Descobrir'}
             ctaAction={changeStep}
           />

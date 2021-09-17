@@ -96,7 +96,7 @@ export default function Result() {
                   text={resultAvatar.descricao}
                   video={resultAvatar.libras_description.url}/>
                 <ResultShare resultTitle={resultAvatar.nome} resultDescription={resultAvatar.descricao} color={resultAvatar.backgroundColor} />
-                <div className={styles.seeMore}>Role para conhecer os outros <span>humanos do amanhã</span></div>
+                <div className={styles.seeMore}>Que tal conhecer os outros <span>humanos do amanhã</span>?</div>
               </div>
             </div>
             <div className={styles.resultList}>

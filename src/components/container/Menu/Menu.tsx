@@ -66,8 +66,8 @@ const Menu: React.FC<MenuProps> = ({ text, prevStep, prevAction = null, blackIco
               <button className={globalStyles.singleIcon}>
                 <FacebookShareButton
                   url={`${window.location.href}`}
-                  quote={`Meu humano do amanhã é ${resultAvatar.nome}! ${resultAvatar.descricao}`}
-                  hashtag={'#humanodofuturo'}
+                  quote={`'Descobri que #HumanodoAmanhã eu serei no futuro! Acesse o novo jogo do Museu do Amanhã e veja qual é o seu perfil em: jogohumano.museudoamanha.org.br'`}
+                  hashtag={'#HumanodoAmanhã'}
                   onClick={playAudio}
                 >
                   <img src={facebook} alt="Facebook" className={globalStyles.social} />
@@ -76,7 +76,7 @@ const Menu: React.FC<MenuProps> = ({ text, prevStep, prevAction = null, blackIco
               <button className={globalStyles.singleIcon}>
                 <WhatsappShareButton
                   url={`${window.location.href}`}
-                  title={`Meu humano do amanhã é ${resultAvatar.nome}`}
+                  title={`Descobri que #HumanodoAmanhã eu serei no futuro! Acesse o novo jogo do Museu do Amanhã e veja qual é o seu perfil em: jogohumano.museudoamanha.org.br`}
                   onClick={playAudio}
                 >
                   <img src={whatsapp} alt="WhatsApp" className={globalStyles.social} />
@@ -84,9 +84,9 @@ const Menu: React.FC<MenuProps> = ({ text, prevStep, prevAction = null, blackIco
               </button>
               <button className={globalStyles.singleIcon}>
                 <TwitterShareButton
-                  title={`Meu humano do amanhã é ${resultAvatar.nome}!`}
+                  title={`Descobri que #HumanodoAmanhã eu serei no futuro! Acesse o novo jogo do Museu do Amanhã e veja qual é o seu perfil em: jogohumano.museudoamanha.org.br`}
                   url={`${window.location.href}`}
-                  hashtags={['#humanodofuturo']}
+                  hashtags={['#HumanodoAmanhã']}
                   onClick={playAudio}
                 >
                   <img src={twitter} alt="Twitter" className={globalStyles.social} />
