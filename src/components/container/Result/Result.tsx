@@ -19,6 +19,8 @@ export default function Result() {
   const [resultOpenness, setResultOpenness] = useState<string>('');
   const [resultCharacter, setResultCharacter] = useState<string>('');
   const [, setIsError] = useState<boolean>(false);
+  const [avatarReady, setAvatarReady] = useState<boolean>(false);
+  const [allReady, setAllReady] = useState<boolean>(false);
 
   useEffect(() => {
     if(step === 'result'){
@@ -33,16 +35,11 @@ export default function Result() {
         })
       }
   
-      if (resultOpenness && resultCharacter) {
+      if (resultOpenness && resultCharacter && !resultAvatar) {
         GetHumanType.getHumanType(resultOpenness, resultCharacter)
         .then((avatar) => {
           if(avatar.length){
-            const humanAudio = humanAudios.find(h => h.name === avatar[0].nome);
-            const audio = new Audio(humanAudio?.audio.default);
-            audio.oncanplaythrough = () => {
-              setResultAvatar(avatar[0]);
-              audio.play();
-            };
+            setResultAvatar(avatar[0]);
           }
         })
         .catch((err) => {
@@ -51,7 +48,25 @@ export default function Result() {
       }
     }
   
-	}, [setAllHumanTypes, setResultAvatar, userId, step, resultOpenness, resultCharacter]);
+	}, [setAllHumanTypes, setResultAvatar, userId, step, resultOpenness, resultCharacter, resultAvatar]);
+
+
+  useEffect(() => {
+    console.log(avatarReady, resultAvatar,step)
+    if(step === 'result' && avatarReady && resultAvatar){
+      const humanAudio = humanAudios.find(h => h.name === resultAvatar.nome);
+      const audio = new Audio(humanAudio?.audio.default);
+      audio.oncanplaythrough = () => {
+        audio.play();
+      };
+      audio.onplay = () => {
+        setAllReady(true);
+      }
+    } else {
+      setAllReady(false);
+      setAvatarReady(false);
+    }
+  }, [avatarReady, resultAvatar, step]);
   
   const goToResearch = useCallback(() => {
     setStep('research')
@@ -81,13 +96,17 @@ export default function Result() {
             <LibrasToggle />
           </div>
           <div 
-            className={styles.contentWrapper}
+            className={`${styles.contentWrapper} ${allReady ? styles.reveal : ''}`}
             style={{ background: `${ window.innerWidth < 640 ? `linear-gradient(180deg, ${resultAvatar.backgroundColor} 0%, #000 90%)` : `${resultAvatar.backgroundColor}`}` }}
           >
             <Menu prevStep={'research'} topText={'Seu humano do amanhã é:'} blackIcon={true} />
             <div className={styles.resultContainer}>
               <div className={styles.resultContent}>
-                <ResultAvatar avatar={resultAvatar.images[1].url} avatarName={resultAvatar.nome} />
+                <ResultAvatar
+                  avatar={resultAvatar.images[1].url}
+                  avatarName={resultAvatar.nome}
+                  ready={() => setAvatarReady(true)}
+                />
                 {libras && !!resultAvatar?.libras_description?.url &&
                   <div className={styles.librasWrapper}>
                     <Video source={resultAvatar.libras_description.url}/>
