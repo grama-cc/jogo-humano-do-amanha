@@ -3,13 +3,15 @@ import { AllHumanTypes } from 'api';
 
 import SettingsContext from 'context/settingsContext';
 
+import sanitizeHtml from 'sanitize-html';
+
 import Menu from 'components/container/Menu/Menu';
 import LibrasToggle from '../LibrasToggle/LibrasToggle';
 import AllHumansList from 'components/view/AllHumansList/AllHumansList';
-
-import styles from './AllHumans.module.scss';
 import ResultAvatar from 'components/view/ResultAvatar/ResultAvatar';
 import Video from 'components/view/Video/Video';
+
+import styles from './AllHumans.module.scss';
 
 
 export default function Result() {
@@ -34,6 +36,11 @@ export default function Result() {
   }, [setStep])
 
   if (!allHumanTypes) return null;
+
+  const clean = sanitizeHtml(resultsListHuman.descricao, {
+    allowedTags: ['b'],
+    allowedAttributes: {}
+  });
 
   return (
     <>
@@ -64,7 +71,7 @@ export default function Result() {
                       <Video source={resultsListHuman.libras_description.url}/>
                     </div>
                   }
-                  <p className={styles.text}>{resultsListHuman.descricao}</p>
+                  <p className={styles.text}><span dangerouslySetInnerHTML={{__html: clean}}/></p>
                   <p className={styles.cta}>
                     <button onClick={goToEnd}>Encerrar o jogo</button>
                   </p>
