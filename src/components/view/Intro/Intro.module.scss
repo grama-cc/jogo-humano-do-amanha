@@ -9,13 +9,17 @@
   &.home{
     align-items: center;
   }
-  &.other.libras{
+  &.other{
     align-items: center;
-    height: 100vh;
-    @media only screen and (min-width: $small) {
-      align-items: flex-start;
+    &.libras{
+      align-items: center;
+      height: 100vh;
+      @media only screen and (min-width: $small) {
+        align-items: flex-start;
+      }
     }
   }
+
   .librasWrapper{
     height: 100%;
     position: absolute;

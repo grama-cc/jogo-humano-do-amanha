@@ -1,19 +1,21 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, useCallback } from 'react';
 import { AllHumanTypes } from 'api';
 
 import SettingsContext from 'context/settingsContext';
 
+import sanitizeHtml from 'sanitize-html';
+
 import Menu from 'components/container/Menu/Menu';
 import LibrasToggle from '../LibrasToggle/LibrasToggle';
 import AllHumansList from 'components/view/AllHumansList/AllHumansList';
-
-import styles from './AllHumans.module.scss';
 import ResultAvatar from 'components/view/ResultAvatar/ResultAvatar';
 import Video from 'components/view/Video/Video';
 
+import styles from './AllHumans.module.scss';
+
 
 export default function Result() {
-  const { step, allHumanTypes, setAllHumanTypes, resultsListHuman, libras } = useContext(SettingsContext);
+  const { step, setStep, allHumanTypes, setAllHumanTypes, resultsListHuman, libras } = useContext(SettingsContext);
   const [, setIsError] = useState<boolean>(false);
 
   useEffect(() => {
@@ -29,7 +31,16 @@ export default function Result() {
     
 	}, [setAllHumanTypes]);
 
+  const goToEnd = useCallback(() => {
+    setStep('end');
+  }, [setStep])
+
   if (!allHumanTypes) return null;
+
+  const clean = sanitizeHtml(resultsListHuman.descricao, {
+    allowedTags: ['b'],
+    allowedAttributes: {}
+  });
 
   return (
     <>
@@ -60,23 +71,20 @@ export default function Result() {
                       <Video source={resultsListHuman.libras_description.url}/>
                     </div>
                   }
-                  <p className={styles.text}>{resultsListHuman.descricao}</p>
+                  <p className={styles.text}><span dangerouslySetInnerHTML={{__html: clean}}/></p>
                   <p className={styles.cta}>
-                    Que tal conhecer os outros
-                    <span>
-                      humanos do amanhã
-                    </span>?
-                  </p> 
+                    <button onClick={goToEnd}>Encerrar o jogo</button>
+                  </p>
                 </>
               ) : (
                 <>
                   <p className={styles.title}>Os humanos do amanhã</p>
                   <p className={styles.text}>Cada personagem é inspirado nas tendências de comportamento dos próximos anos e seu temperamento é determinado pelo nível de sociabilidade e coletividade.</p>
                   <p className={styles.cta}>
-                    Clique para conhecer os 
+                    Que tal conhecer os outros 
                     <span>
                       humanos do amanhã
-                    </span>
+                    </span>?
                   </p> 
                 </>
               )}

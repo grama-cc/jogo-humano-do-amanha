@@ -71,8 +71,8 @@ export default function Result() {
     setStep('research')
   }, [setStep]);
 
-  const goToHome = useCallback(() => {
-    setStep('home')
+  const goToEnd = useCallback(() => {
+    setStep('end')
   }, [setStep]);
 
   if (!resultAvatar) return null;
@@ -89,14 +89,17 @@ export default function Result() {
               <div className={styles.resultContent}>
               </div>
               <div className={styles.resultSidebar}>
-                <ResultText title={resultAvatar.nome} text={''} revealResultMode={true} />
+                <ResultText
+                  title={resultAvatar.nome} text={''}
+                  revealResultMode={true}
+                />
               </div>
             </div>
             <LibrasToggle />
           </div>
           <div 
             className={`${styles.contentWrapper} ${allReady ? styles.reveal : ''}`}
-            style={{ background: `${ window.innerWidth < 640 ? `linear-gradient(180deg, ${resultAvatar.backgroundColor} 0%, #000 90%)` : `${resultAvatar.backgroundColor}`}` }}
+            style={{ background: `${ window.innerWidth < 770 ? `linear-gradient(180deg, ${resultAvatar.backgroundColor} 0%, #000 90%)` : `${resultAvatar.backgroundColor}`}` }}
           >
             <Menu prevStep={'research'} topText={'Seu humano do amanhã é:'} blackIcon={true} />
             <div className={styles.resultContainer}>
@@ -115,7 +118,11 @@ export default function Result() {
                 <ResultText title={resultAvatar.nome}
                   text={resultAvatar.descricao}
                   video={resultAvatar.libras_description.url}/>
-                <ResultShare resultTitle={resultAvatar.nome} resultDescription={resultAvatar.descricao} color={resultAvatar.backgroundColor} />
+                <ResultShare
+                  resultTitle={resultAvatar.nome}
+                  resultDescription={resultAvatar.descricao}
+                  color={resultAvatar.backgroundColor}
+                />
                 <div className={styles.seeMore}>Que tal conhecer os outros <span>humanos do amanhã</span>?</div>
               </div>
             </div>
@@ -133,7 +140,7 @@ export default function Result() {
                     </span>
                   </p>
                   <button onClick={goToResearch} className={styles.cta}>Ok, vamos lá</button>
-                  <button onClick={goToHome} className={styles.endGame}>Encerrar o jogo</button>
+                  <button onClick={goToEnd} className={styles.endGame}>Encerrar o jogo</button>
                 </div>
               </div>
             </div>

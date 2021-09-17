@@ -22,6 +22,10 @@
   flex-direction: column;
   width: 60%;
   min-height: inherit;
+  
+  img {
+    margin-top: responsive(60, 90);
+  }
 }
 
 .librasWrapper{
@@ -75,6 +79,15 @@
   align-items: center;
 }
 
+.cta > button {
+  width: 96%;
+  border-radius: 16px;
+  text-align: center;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .title {
   margin-top: 16px;
   margin-bottom: 16px;
@@ -88,11 +101,11 @@
   font-size: responsive(12, 16);
   line-height: responsive(16, 20);
   padding: 36px;
-  min-height: 42vh;
+  min-height: 56vh;
   flex: 1;
 }
 
-.cta {
+.cta, .cta > button {
   font-size: 24px;
   line-height: 28px;
   font-weight: bold;
@@ -118,6 +131,7 @@
   .resultContent {
     width: 100%;
     flex-direction: column-reverse;
+    img { margin-top: 0 }
   }
   .resultSidebar {
     width: 100%;
@@ -127,10 +141,10 @@
     min-height: 0;
     padding: 0 16px 16px 16px;
   }
-  .cta, .text, .title {
+  .cta, .cta > button, .text, .title {
     width: 100%;
   }
-  .cta {
+  .cta, .cta > button {
     display: none;
   }
 }
