@@ -126,7 +126,12 @@ const Quiz: React.FC = () => {
     <>
     {step === 'quiz' && (
       <main className={`${globalStyles.container} ${styles.quizWrapper} ${answerColor}`}>
-        <Menu prevStep={'countdown'} text={(currentQuestionIndex + 1).toString()} prevAction={currentQuestionIndex ? goToPreviousQuestion : null}/>
+        <Menu
+          prevStep={'countdown'}
+          text={(currentQuestionIndex + 1).toString()}
+          prevAction={currentQuestionIndex ? goToPreviousQuestion : null}
+          blackIcon={!!answerColor}
+        />
         <QuestionList questions={questions} currentQuestion={currentQuestionIndex}/>
         <div className={styles.sidebar}>
           <Options
@@ -135,7 +140,7 @@ const Quiz: React.FC = () => {
             selected={currentQuestion?.resposta}
           />
         </div>
-        <LibrasToggle />
+        <LibrasToggle blackIcon={!!answerColor}/>
       </main>
     )}
     </>

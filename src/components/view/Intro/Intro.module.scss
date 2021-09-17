@@ -9,7 +9,7 @@
   &.home{
     align-items: center;
   }
-  &.libras{
+  &.other.libras{
     align-items: center;
     height: 100vh;
     @media only screen and (min-width: $small) {
@@ -32,7 +32,7 @@
     height: 100%;
     width: 80vw;
     margin: 0 10vw 0 12vw;
-    &.libras{
+    &.other.libras{
       margin: 0 1vw 0 25vw;
       padding-top: 5vw;
     }

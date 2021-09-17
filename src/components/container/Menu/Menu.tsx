@@ -1,16 +1,17 @@
-import React, { useContext,useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import SettingsContext from 'context/settingsContext';
 import { Step } from 'types/types';
 
 import { FacebookShareButton, TwitterShareButton, WhatsappShareButton } from "react-share";
 
-import GoBackWhite from 'assets/icons/arrow-white.svg';
-import GoBackBlack from 'assets/icons/arrow-black.svg';
+import {ReactComponent as GoBackWhite} from 'assets/icons/arrow-white.svg';
+
 import facebook from 'assets/icons/Facebook.svg';
 import twitter from 'assets/icons/Twitter.svg';
 import whatsapp from 'assets/icons/whatsapp.svg';
 
 import globalStyles from 'globals.module.scss';
+import styles from './Menu.module.scss';
 
 const buttonsAudio = require('assets/audios/botoes.mp3');
 
@@ -46,7 +47,7 @@ const Menu: React.FC<MenuProps> = ({ text, prevStep, prevAction = null, blackIco
       setStep(prevStep);
     }
   };
-
+  
   const playAudio = () => {
     buttonsAudioRef.current.currentTime = 0.3;
     buttonsAudioRef.current.play();
@@ -55,10 +56,13 @@ const Menu: React.FC<MenuProps> = ({ text, prevStep, prevAction = null, blackIco
   return (
     <nav className={`${globalStyles.menu}`}>
       <button onClick={goBack}>
-        <img src={blackIcon ? GoBackBlack : GoBackWhite} alt="Voltar" className={globalStyles.goback} />
+        <GoBackWhite
+          title="Voltar"
+          className={`${globalStyles.goback} ${styles.back} ${blackIcon ? styles.black : ''}`}
+        />
       </button>
       {text ? (
-        <p style={{ color: `${blackIcon ? '#0d0d0d' : '#E9E9E9'}` }} className={globalStyles.text}>{text}</p>
+        <p className={`${globalStyles.text} ${styles.counter} ${blackIcon ? styles.black : ''}`}>{text}</p>
       ) : (
         <div className={globalStyles.socialWrapper}>
           {(window.innerWidth > 738 && resultAvatar) && (
