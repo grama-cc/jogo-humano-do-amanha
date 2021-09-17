@@ -46,11 +46,11 @@ const Intro: React.FC<IntroProps> = ({ title, question, videos, endedVideos, wel
 
   return (
     <div className={`
-      ${styles.wrapper} ${step === 'home' ? styles.home : ''}
+      ${styles.wrapper} ${step === 'home' ? styles.home : styles.other}
       ${libras ? styles.libras : ''}
     `}>
       <Circle>
-        {libras &&  <div className={styles.librasWrapper}>
+        {(libras &&  step !== 'home') && <div className={styles.librasWrapper}>
           <Video source={currentVideoSource} onEnded={endedVideos ? nextVideo : false}/>
         </div>}
         <div className={styles.textWrapper}>
