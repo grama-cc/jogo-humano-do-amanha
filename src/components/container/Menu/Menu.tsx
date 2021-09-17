@@ -1,16 +1,17 @@
-import React, { useContext,useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import SettingsContext from 'context/settingsContext';
 import { Step } from 'types/types';
 
 import { FacebookShareButton, TwitterShareButton, WhatsappShareButton } from "react-share";
 
-import GoBackWhite from 'assets/icons/arrow-white.svg';
-import GoBackBlack from 'assets/icons/arrow-black.svg';
+import {ReactComponent as GoBackWhite} from 'assets/icons/arrow-white.svg';
+
 import facebook from 'assets/icons/Facebook.svg';
 import twitter from 'assets/icons/Twitter.svg';
 import whatsapp from 'assets/icons/whatsapp.svg';
 
 import globalStyles from 'globals.module.scss';
+import styles from './Menu.module.scss';
 
 const buttonsAudio = require('assets/audios/botoes.mp3');
 
@@ -46,7 +47,7 @@ const Menu: React.FC<MenuProps> = ({ text, prevStep, prevAction = null, blackIco
       setStep(prevStep);
     }
   };
-
+  
   const playAudio = () => {
     buttonsAudioRef.current.currentTime = 0.3;
     buttonsAudioRef.current.play();
@@ -55,10 +56,13 @@ const Menu: React.FC<MenuProps> = ({ text, prevStep, prevAction = null, blackIco
   return (
     <nav className={`${globalStyles.menu}`}>
       <button onClick={goBack}>
-        <img src={blackIcon ? GoBackBlack : GoBackWhite} alt="Voltar" className={globalStyles.goback} />
+        <GoBackWhite
+          title="Voltar"
+          className={`${globalStyles.goback} ${styles.back} ${blackIcon ? styles.black : ''}`}
+        />
       </button>
       {text ? (
-        <p style={{ color: `${blackIcon ? '#0d0d0d' : '#E9E9E9'}` }} className={globalStyles.text}>{text}</p>
+        <p className={`${globalStyles.text} ${styles.counter} ${blackIcon ? styles.black : ''}`}>{text}</p>
       ) : (
         <div className={globalStyles.socialWrapper}>
           {(window.innerWidth > 738 && resultAvatar) && (
@@ -66,8 +70,8 @@ const Menu: React.FC<MenuProps> = ({ text, prevStep, prevAction = null, blackIco
               <button className={globalStyles.singleIcon}>
                 <FacebookShareButton
                   url={`${window.location.href}`}
-                  quote={`Meu humano do amanhã é ${resultAvatar.nome}! ${resultAvatar.descricao}`}
-                  hashtag={'#humanodofuturo'}
+                  quote={`'Descobri que #HumanodoAmanhã eu serei no futuro! Acesse o novo jogo do Museu do Amanhã e veja qual é o seu perfil em: jogohumano.museudoamanha.org.br'`}
+                  hashtag={'#HumanodoAmanhã'}
                   onClick={playAudio}
                 >
                   <img src={facebook} alt="Facebook" className={globalStyles.social} />
@@ -76,7 +80,7 @@ const Menu: React.FC<MenuProps> = ({ text, prevStep, prevAction = null, blackIco
               <button className={globalStyles.singleIcon}>
                 <WhatsappShareButton
                   url={`${window.location.href}`}
-                  title={`Meu humano do amanhã é ${resultAvatar.nome}`}
+                  title={`Descobri que #HumanodoAmanhã eu serei no futuro! Acesse o novo jogo do Museu do Amanhã e veja qual é o seu perfil em: jogohumano.museudoamanha.org.br`}
                   onClick={playAudio}
                 >
                   <img src={whatsapp} alt="WhatsApp" className={globalStyles.social} />
@@ -84,9 +88,9 @@ const Menu: React.FC<MenuProps> = ({ text, prevStep, prevAction = null, blackIco
               </button>
               <button className={globalStyles.singleIcon}>
                 <TwitterShareButton
-                  title={`Meu humano do amanhã é ${resultAvatar.nome}!`}
+                  title={`Descobri que #HumanodoAmanhã eu serei no futuro! Acesse o novo jogo do Museu do Amanhã e veja qual é o seu perfil em: jogohumano.museudoamanha.org.br`}
                   url={`${window.location.href}`}
-                  hashtags={['#humanodofuturo']}
+                  hashtags={['#HumanodoAmanhã']}
                   onClick={playAudio}
                 >
                   <img src={twitter} alt="Twitter" className={globalStyles.social} />

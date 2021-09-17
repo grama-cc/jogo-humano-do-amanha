@@ -9,7 +9,7 @@
   &.home{
     align-items: center;
   }
-  &.libras{
+  &.other.libras{
     align-items: center;
     height: 100vh;
     @media only screen and (min-width: $small) {
@@ -32,7 +32,7 @@
     height: 100%;
     width: 80vw;
     margin: 0 10vw 0 12vw;
-    &.libras{
+    &.other.libras{
       margin: 0 1vw 0 25vw;
       padding-top: 5vw;
     }
@@ -121,16 +121,16 @@
 }
 
 @keyframes shadowChange {
-  0% {background-image: url('../../../assets/images/09_conesilhu.svg');}
-  15% {background-image: url('../../../assets/images/09_conesilhu.svg');}
-  18% {background-image: url('../../../assets/images/04_apresilhu.svg');}
-  33% {background-image: url('../../../assets/images/04_apresilhu.svg');}
-  36% {background-image: url('../../../assets/images/07_cibsilhu.svg');}
-  51% {background-image: url('../../../assets/images/07_cibsilhu.svg');}
-  54% {background-image: url('../../../assets/images/02_natusilhu.svg');}
-  69% {background-image: url('../../../assets/images/02_natusilhu.svg');}
-  72% {background-image: url('../../../assets/images/03_aliesilhu.svg');}
-  100% {background-image: url('../../../assets/images/03_aliesilhu.svg');}
+  0% {background-image: url('../../../assets/images/09_conesilhu.png');}
+  15% {background-image: url('../../../assets/images/09_conesilhu.png');}
+  18% {background-image: url('../../../assets/images/04_apresilhu.png');}
+  33% {background-image: url('../../../assets/images/04_apresilhu.png');}
+  36% {background-image: url('../../../assets/images/07_cibsilhu.png');}
+  51% {background-image: url('../../../assets/images/07_cibsilhu.png');}
+  54% {background-image: url('../../../assets/images/02_natusilhu.png');}
+  69% {background-image: url('../../../assets/images/02_natusilhu.png');}
+  72% {background-image: url('../../../assets/images/03_aliesilhu.png');}
+  100% {background-image: url('../../../assets/images/03_aliesilhu.png');}
 }
 
 .transition {

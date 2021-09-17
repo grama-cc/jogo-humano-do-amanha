@@ -1,0 +1,21 @@
+@import 'App.scss';
+
+.back{
+  path{
+    fill: $white;
+    transition: fill .5s ease-in-out;
+  }
+  &.black{
+    path{
+      fill: $black;
+    }
+  }
+}
+
+.counter{
+  color: $white;
+  transition: color .5s ease-in-out;
+  &.black{
+    color: $black;
+  }
+}

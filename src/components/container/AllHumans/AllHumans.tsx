@@ -62,16 +62,16 @@ export default function Result() {
                   }
                   <p className={styles.text}>{resultsListHuman.descricao}</p>
                   <p className={styles.cta}>
-                    Role para conhecer os 
+                    Que tal conhecer os outros
                     <span>
                       humanos do amanhã
-                    </span>
+                    </span>?
                   </p> 
                 </>
               ) : (
                 <>
                   <p className={styles.title}>Os humanos do amanhã</p>
-                  <p className={styles.text}>Cada personagem é inspirado na Teoria Humoral do grego Hipócrates – em que a vida seria regulada por “humores” predominantes, resultando em diferentes temperamentos – e em tendências de comportamento sobre inovações de um futuro próximo.</p>
+                  <p className={styles.text}>Cada personagem é inspirado nas tendências de comportamento dos próximos anos e seu temperamento é determinado pelo nível de sociabilidade e coletividade.</p>
                   <p className={styles.cta}>
                     Clique para conhecer os 
                     <span>

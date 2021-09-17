@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Sound  from 'react-sound';
 
 import './App.scss';
@@ -31,6 +31,8 @@ function App() {
   
   const [play, setPlay] = useState<boolean>(false);
 
+  const [volume, setVolume] = useState<number>(100);
+
   const value = { 
     language,
     setLanguage,
@@ -56,18 +58,57 @@ function App() {
     setResultsListHuman,
   };
 
+  const volumeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const reduceVolume = () => {
+    if(volumeTimerRef.current){
+      clearTimeout(volumeTimerRef.current);
+    }
+    if(volume > 0){
+      volumeTimerRef.current = setTimeout(() => {
+        setVolume(prev => prev - 10);
+        reduceVolume();
+      }, 100);
+    }
+  }
+
+  const increaseVolume = () => {
+    if(volumeTimerRef.current){
+      clearTimeout(volumeTimerRef.current);
+    }
+    if(volume < 100){
+      volumeTimerRef.current = setTimeout(() => {
+        setVolume(prev => prev + 10);
+        increaseVolume();
+      }, 100);
+    }
+  }
+
   useEffect(() => {
     if(step !== 'home'){
       setPlay(true);
     }
-  }, [step])
+  }, [step]);
+
+  useEffect(() => {
+    if(step === 'countdown' && libras){
+      if(volume !== 0){
+        reduceVolume();
+      }
+    } else {
+      if(volume !== 100){
+        increaseVolume();
+      }
+    }
+  }, [step, libras, increaseVolume, reduceVolume]);
+
 
   return (
     <SettingsContext.Provider value={value}>
       <div className="App">
         {(step ==="home" || step === "countdown") ? (
-          <Sound autoLoad={true} playStatus={play ? 'PLAYING': 'PAUSED'} url={introAudio.default} loop={true} />
-        ): <Sound autoLoad={true} playStatus={play ? 'PLAYING': 'PAUSED'} url={quizAudio.default} loop={true}/>}
+          <Sound autoLoad={true} playStatus={play ? 'PLAYING': 'PAUSED'} url={introAudio.default} loop={true} volume={volume}  />
+        ): <Sound autoLoad={true} playStatus={play ? 'PLAYING': 'PAUSED'} url={quizAudio.default} loop={true} volume={volume}/>}
         <Home/>
         <Countdown />
         <Quiz />
