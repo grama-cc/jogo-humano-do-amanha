@@ -101,7 +101,7 @@ function App() {
         increaseVolume();
       }
     }
-  }, [step, libras]);
+  }, [step, libras, increaseVolume, reduceVolume]);
 
 
   return (
