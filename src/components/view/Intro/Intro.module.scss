@@ -11,9 +11,6 @@
   }
   &.other{
     align-items: center;
-    @media only screen and (min-width: $small) {
-      align-items: flex-end;
-    }
     &.libras{
       align-items: center;
       height: 100vh;
