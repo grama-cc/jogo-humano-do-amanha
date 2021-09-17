@@ -52,7 +52,6 @@ export default function Result() {
 
 
   useEffect(() => {
-    console.log(avatarReady, resultAvatar,step)
     if(step === 'result' && avatarReady && resultAvatar){
       const humanAudio = humanAudios.find(h => h.name === resultAvatar.nome);
       const audio = new Audio(humanAudio?.audio.default);
