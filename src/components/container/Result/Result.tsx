@@ -89,14 +89,17 @@ export default function Result() {
               <div className={styles.resultContent}>
               </div>
               <div className={styles.resultSidebar}>
-                <ResultText title={resultAvatar.nome} text={''} revealResultMode={true} />
+                <ResultText
+                  title={resultAvatar.nome} text={''}
+                  revealResultMode={true}
+                />
               </div>
             </div>
             <LibrasToggle />
           </div>
           <div 
             className={`${styles.contentWrapper} ${allReady ? styles.reveal : ''}`}
-            style={{ background: `${ window.innerWidth < 640 ? `linear-gradient(180deg, ${resultAvatar.backgroundColor} 0%, #000 90%)` : `${resultAvatar.backgroundColor}`}` }}
+            style={{ background: `${ window.innerWidth < 770 ? `linear-gradient(180deg, ${resultAvatar.backgroundColor} 0%, #000 90%)` : `${resultAvatar.backgroundColor}`}` }}
           >
             <Menu prevStep={'research'} topText={'Seu humano do amanhã é:'} blackIcon={true} />
             <div className={styles.resultContainer}>
@@ -115,7 +118,11 @@ export default function Result() {
                 <ResultText title={resultAvatar.nome}
                   text={resultAvatar.descricao}
                   video={resultAvatar.libras_description.url}/>
-                <ResultShare resultTitle={resultAvatar.nome} resultDescription={resultAvatar.descricao} color={resultAvatar.backgroundColor} />
+                <ResultShare
+                  resultTitle={resultAvatar.nome}
+                  resultDescription={resultAvatar.descricao}
+                  color={resultAvatar.backgroundColor}
+                />
                 <div className={styles.seeMore}>Que tal conhecer os outros <span>humanos do amanhã</span>?</div>
               </div>
             </div>

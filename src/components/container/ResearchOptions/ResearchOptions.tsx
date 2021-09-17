@@ -1,4 +1,4 @@
-import React, { useState,useRef, useEffect, useCallback } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { ProfileOption } from 'types/types';
 
 import {ReactComponent as Star} from 'assets/shapes/Star.svg';
@@ -19,6 +19,7 @@ const ResearchOptions: React.FC<ResearchOptionsProps> = ({ options, onSelect, se
   const [textValue, setTextValue] = useState<string>('');
 
   const buttonsAudioRef = useRef<HTMLAudioElement>(new Audio(buttonsAudio.default));
+  
 
   useEffect(() => {
     setTextValue('');
@@ -88,7 +89,6 @@ const ResearchOptions: React.FC<ResearchOptionsProps> = ({ options, onSelect, se
           <li className={styles.optionContainer}/>
         )
       )}
-      
     </ul>
   );
 }

@@ -23,7 +23,7 @@ const ResultShare: React.FC<ResultShareProps> = ({ resultTitle, resultDescriptio
 
   return (
     <>
-      {window.innerWidth < 640 ? (
+      {window.innerWidth < 770 ? (
         <div className={styles.share}>
           <p className={styles.text}>Compartilhe</p>
           <div className={styles.icons}>
