@@ -9,7 +9,9 @@
   }
   &.libras{
     img{
-      margin-left: 30vw;
+      @media (min-width: $small) {
+        margin-left: 30vw;
+      }
     }
   }
 }
