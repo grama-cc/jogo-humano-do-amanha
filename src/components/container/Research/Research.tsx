@@ -46,7 +46,6 @@ const Research: React.FC = () => {
 
   useEffect(() => {
     Profile.getQuestion().then(res => {
-      console.log(res.questions);
       const currentQuestions = res.questions
         .filter((q: any) => q.api_field !== 'outro_genero')
         .map((q: any) => {
