@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import SettingsContext from 'context/settingsContext';
 
-import BlackLibras from 'assets/icons/libras-black.svg';
-import WhiteLibras from 'assets/icons/libras-white.svg';
+import {ReactComponent as WhiteLibras} from 'assets/icons/libras-white.svg';
 
-import styles from 'globals.module.scss';
+import globalStyles from 'globals.module.scss';
+import styles from './LibrasToggle.module.scss';
 
 type LibrasToggleProps = {
   blackIcon?: boolean;
@@ -21,9 +21,12 @@ const LibrasToggle: React.FC<LibrasToggleProps> = ({ blackIcon }) => {
       <button 
         onClick={toggleLibras}
         data-testid="libras-toggle" 
-        className={`${styles.libras} ${step === 'allhumans' && styles.allhumansLibras}`}
+        className={`${globalStyles.libras} ${step === 'allhumans' && globalStyles.allhumansLibras}`}
       >
-        <img src={blackIcon ? BlackLibras : WhiteLibras} alt="Mostrar vídeo em Libras" />
+        <WhiteLibras
+          title="Mostrar vídeo em Libras"
+          className={`${styles.librasIcon} ${blackIcon ? styles.black : ''}`}
+        />
       </button>
   );
 }
