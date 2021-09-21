@@ -9,7 +9,6 @@
 }
 
 .librasWrapper{
-  
   display: none;
   @media (min-width: $small) {
     display: block;
@@ -18,6 +17,7 @@
     position: fixed;
     bottom: 5px;
     left: 10vw;
+    z-index: 5;
   }
 }
 
