@@ -71,6 +71,7 @@ const IntroSidebar: React.FC<IntroSidebarProps> = ({ aboutText, text, ctaLabel, 
 
       <p className={styles.text}>
         <span className={`${transitionStep && styles.transition}`}>{text}</span>
+        <span className={`${transitionStep && styles.transition} ${styles.smalltext}`}>A versão online do jogo “Humano do amanhã” é uma realização do Museu do Amanhã com patrocínio da EY.</span>
       </p>
 
       {(ctaLabel && ctaAction) && (
@@ -86,7 +87,7 @@ const IntroSidebar: React.FC<IntroSidebarProps> = ({ aboutText, text, ctaLabel, 
           </button>
 
           <button className={styles.endCta} onClick={endCtaActionHome}>
-            <span>{endCtaLabelHome}</span>
+            <span className={styles.smalltext}>{endCtaLabelHome}</span>
           </button>
         </>
       )}

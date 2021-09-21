@@ -9,6 +9,7 @@ import Intro from 'components/view/Intro/Intro';
 import IntroSidebar from 'components/view/IntroSidebar/IntroSidebar';
 
 import globalStyles from 'globals.module.scss';
+import Logos from 'components/view/Logos/Logos';
 
 const playAudio = require('assets/audios/jogar.mp3');
 
@@ -93,6 +94,7 @@ const Home: React.FC = () => {
           />
           {/* <LibrasToggle blackIcon={true} /> */}
           {showAboutPopUp && <About title={aboutContent.title} text={aboutContent.description} /> }
+          <Logos />
         </main>
       )}
     </>

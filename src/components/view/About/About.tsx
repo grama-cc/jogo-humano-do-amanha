@@ -1,6 +1,9 @@
 import React, { useContext } from 'react';
 import SettingsContext from 'context/settingsContext';
 
+import sanitizeHtml from 'sanitize-html';
+
+import Logos from '../Logos/Logos';
 import styles from './About.module.scss';
 
 type AboutProps = {
@@ -15,6 +18,11 @@ const About: React.FC<AboutProps> = ({ text, title }) => {
     setShowAboutPopUp(false);
   };
 
+  const clean = sanitizeHtml(text, {
+    allowedTags: ['b'],
+    allowedAttributes: {}
+  });
+
   return (
     <div className={styles.aboutWrapper}>
       <div className={styles.aboutBox}>
@@ -22,9 +30,11 @@ const About: React.FC<AboutProps> = ({ text, title }) => {
           <p className={styles.title}>{title}</p>
           <button className={styles.close} onClick={closePopUp}>Fechar</button>
         </div>
-        <p className={styles.text}>
-          {text}
-        </p>
+        <p 
+          className={styles.text}
+          dangerouslySetInnerHTML={{__html: clean}}
+        />
+        <Logos about={true} />
       </div>
     </div>
   );

@@ -7,17 +7,18 @@
   height: 100vh;
   z-index: 2;
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 
 .aboutBox {
-  background: $yellow;
-  height: 60vh;
-  width: 60vw;
+  margin-left: 5vw;
+  background: $white;
+  height: 78vh;
+  width: 50vw;
   border: 2px solid $black;
   border-radius: 16px;
   opacity: 1;
+  padding-bottom: 16px;
 }
 
 .header {
@@ -52,9 +53,13 @@
 }
 
 @media (max-width: $small) {
+  .aboutWrapper {
+    justify-content: center;
+  }
   .aboutBox {
     height: 80vh;
     width: 85vw;
     overflow: scroll;
+    margin-left: 0;
   }
 }
