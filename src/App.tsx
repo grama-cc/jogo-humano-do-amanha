@@ -20,7 +20,7 @@ const quizAudio = require('assets/audios/quiz.mp3');
 function App() {
   const [libras, setLibras] = useState<boolean>(false);
   const [language, setLanguage] = useState<string>("pt-br");
-  const [step, setStep] = useState<Step>('home');
+  const [step, setStep] = useState<Step>('research');
   const [loading, setLoading] = useState<boolean>(false);
   const [transitionStep, settransitionStep] = useState<boolean>(false);
   const [allHumanTypes, setAllHumanTypes] = useState<HumanType[]>([]);
