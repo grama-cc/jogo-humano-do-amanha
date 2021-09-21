@@ -30,12 +30,13 @@
       max-height: unset;
       margin: 10px 0;
     }
-    
+    >button{
+      color: $white;
+    }
     > button, input{
       width: 100%;
       height: 100%;
       border: none;
-      color: $white;
       font-weight: bold;
       display: flex;
       justify-content: center;
@@ -146,6 +147,10 @@
         background: none;
         font-size: responsive(20, 30);
         font-weight: bold;
+        color: $black;
+      }
+      input{
+        text-align: center;
       }
       .send{
         position: absolute;
