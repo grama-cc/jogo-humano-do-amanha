@@ -81,6 +81,19 @@ const Research: React.FC = () => {
               answerText: '',
             }
           }
+          if(q.api_field === 'data_aniversario'){
+            return {
+              ...q,
+              options: [
+                {
+                  value: "",
+                  optionType: 'date',
+                }
+              ],
+              answer: '',
+              answerText: '',
+            }
+          }
           if(q.api_field === 'avaliacao_comentario'||
             q.api_field === 'personalizado_text' ||
             q.api_field === 'reflexao_texto'){
@@ -143,10 +156,18 @@ const Research: React.FC = () => {
     }
   }, [currentQuestionIndex, questions, goToQuiz]);
 
+  const formatDate = (date) => {
+    let finalDate = '';
+    const splitedDate = date.split(' / ');
+    finalDate = `${splitedDate[2]}-${splitedDate[1]}-${splitedDate[0]}`;
+    return finalDate;
+  };
+
   const sendAnswers = useCallback(() => {
     Profile.postAnswers({
       genero: questions.find(q => q.api_field === 'genero')?.answer || 'outro', 
       outro_genero: questions.find(q => q.api_field === 'genero')?.answerText || '',
+      data_aniversario: formatDate(questions.find(q => q.api_field === 'data_aniversario')?.answerText),
       faixa_etaria: questions.find(q => q.api_field === 'faixa_etaria')?.answer || '',
       onde_mora: questions.find(q => q.api_field === 'onde_mora')?.answer || '',
       avaliacao_jogo: parseInt((questions.find(q => q.api_field === 'avaliacao_jogo')?.answer || ''), 10) || 0,
