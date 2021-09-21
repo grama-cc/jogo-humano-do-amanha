@@ -92,7 +92,7 @@ function App() {
   }, [step]);
 
   useEffect(() => {
-    if(step === 'countdown' && libras){
+    if((step === 'countdown' && libras) || step === 'preresult'){
       if(volume !== 0){
         reduceVolume();
       }
