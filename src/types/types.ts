@@ -203,6 +203,7 @@ export type ProfileAnswer = {
   genero: string,
   outro_genero?: string,
 	onde_mora: string,
+  data_aniversario: string,
 	avaliacao_jogo:  number,
 	melhoria: string,
 	dispositivo?: string,

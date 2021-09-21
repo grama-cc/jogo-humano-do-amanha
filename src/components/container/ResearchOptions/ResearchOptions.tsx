@@ -38,6 +38,14 @@ const ResearchOptions: React.FC<ResearchOptionsProps> = ({ options, onSelect, se
     onSelect(val, text);
   }, [buttonsAudioRef, onSelect]);
 
+  const maskDate = value => {
+    return value
+      .replace(/\D/g, "")
+      .replace(/(\d{2})(\d)/, "$1 / $2")
+      .replace(/(\d{2})(\d)/, "$1 / $2")
+      .replace(/(\d{4})(\d)/, "$1");
+  };
+
   const renderOption = useCallback((option, multiple) => {
     if(option.optionType === 'input'){
       if(multiple){
@@ -61,6 +69,18 @@ const ResearchOptions: React.FC<ResearchOptionsProps> = ({ options, onSelect, se
           <button disabled={!textValue} className={styles.send} onClick={() => selectOption(option.value, textValue)}><Send/></button>
         </div>);
     } 
+    if(option.optionType === 'date'){
+      return (
+        <div className={styles.singleInputContainer}>
+          <input
+            placeholder="dd / mm / yyyy"
+            maxLength={14}
+            value={textValue}
+            onChange={(e) => setTextValue(maskDate(e.currentTarget.value))}
+          />
+          <button disabled={textValue.length<14} className={styles.send} onClick={() => selectOption(option.value, textValue)}><Send/></button>
+        </div>);
+    }
     if(option.stars){
       return (
         <button className={`${styles.rateButton} ${selected === option.value ? styles.active : ''}`} onClick={() => selectOption(option.value)}>
