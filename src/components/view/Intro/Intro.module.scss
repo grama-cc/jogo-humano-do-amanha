@@ -6,6 +6,7 @@
   justify-content: center;
   width: 100%;
   flex: 1;
+  min-height: 60vh;
   &.home{
     align-items: center;
   }
@@ -64,8 +65,8 @@
 }
 
 .question {
-  font-size: responsive(32, 80);
-  line-height: responsive(40, 74);
+  font-size: responsive(28, 74);
+  line-height: responsive(36, 68);
   width: 120%;
   margin-top: 16px;
 }

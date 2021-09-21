@@ -14,21 +14,11 @@
 
 
 @keyframes colorChange {
-  0% {
-    background-color: $purple;
-  }
-  25% {
-    background-color: $blue;
-  }
-  50% {
-    background-color: $green;
-  }
-  75% {
-    background-color: $yellow;
-  }
-  100% {
-    background-color: $orange;
-  }
+  0% {background-color: $purple;}
+  25% {background-color: $blue;}
+  50% {background-color: $green;}
+  75% {background-color: $yellow;}
+  100% {background-color: $orange;}
 }
 
 .transition {
@@ -41,10 +31,6 @@
 }
 
 @keyframes fadeToBlack {
-  0% {
-    background-color: $blue;
-  }
-  100% {
-    background-color: $black;
-  }
+  0% {background-color: $blue;}
+  100% {background-color: $black;}
 }

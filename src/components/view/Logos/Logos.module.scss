@@ -1,0 +1,30 @@
+@import 'App.scss';
+
+.logosOneLine {
+  position: absolute;
+  bottom: 0;
+  left: responsive(12, 24);
+
+  img {
+    width: responsive(250, 650)
+  }
+}
+
+.logosAbout {
+  position: relative;
+}
+
+@media (max-width: $small) {
+  .logosOneLine {
+    position: static;
+
+    img {
+      width: 100%;
+    }
+  }
+  .logosAbout {
+    img {
+      width: 100%;
+    }
+  }
+}
