@@ -29,10 +29,12 @@ const ResultText: React.FC<ResultTextProps> = ({ title, text, revealResultMode, 
         <div className={styles.librasWrapperMobile}>
           <Video source={video}/>
         </div>}
-      <p
-        className={`${styles.text} ${revealResultMode && styles.revealText}`}
-        dangerouslySetInnerHTML={{__html: clean}}
-      />
+      <div className={`${styles.text} ${revealResultMode && styles.revealText}`}>
+        <p
+          dangerouslySetInnerHTML={{__html: clean}}
+        />
+      </div>
+     
     </>
   );
 }
