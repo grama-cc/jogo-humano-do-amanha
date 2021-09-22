@@ -13,7 +13,6 @@ import Countdown from 'components/container/Countdown/Countdown';
 import PreResult from 'components/container/PreResult/PreResult';
 import AllHumans from 'components/container/AllHumans/AllHumans';
 import EndPage from 'components/container/EndPage/EndPage';
-import HelmetMetaData from 'core/HelmetMetaData';
 
 const introAudio = require('assets/audios/intro.mp3');
 const quizAudio = require('assets/audios/quiz.mp3');
@@ -107,7 +106,6 @@ function App() {
 
   return (
     <SettingsContext.Provider value={value}>
-      <HelmetMetaData></HelmetMetaData>
       <div className="App">
         {(step ==="home" || step === "countdown") ? (
           <Sound autoLoad={true} playStatus={play ? 'PLAYING': 'PAUSED'} url={introAudio.default} loop={true} volume={volume}  />
