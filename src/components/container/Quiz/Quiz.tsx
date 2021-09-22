@@ -129,7 +129,7 @@ const Quiz: React.FC = () => {
         <Menu
           prevStep={'countdown'}
           text={(currentQuestionIndex + 1).toString()}
-          prevAction={currentQuestionIndex ? goToPreviousQuestion : null}
+          prevAction={currentQuestionIndex ? goToPreviousQuestion : undefined}
           blackIcon={!!answerColor}
         />
         <QuestionList questions={questions} currentQuestion={currentQuestionIndex}/>
