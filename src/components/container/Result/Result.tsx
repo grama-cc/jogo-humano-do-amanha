@@ -13,6 +13,7 @@ import ResultsList from 'components/view/ResultsList/ResultsList';
 import styles from './Result.module.scss';
 import Video from 'components/view/Video/Video';
 import humanAudios from 'assets/audios/humans/allHumans';
+import HelmetMetaData from 'core/HelmetMetaData';
 
 export default function Result() {
   const { step, setStep, userId, allHumanTypes, setAllHumanTypes, resultAvatar, setResultAvatar, libras } = useContext(SettingsContext);
@@ -77,10 +78,13 @@ export default function Result() {
 
   if (!resultAvatar) return null;
 
+  const shareTwitter = resultAvatar.social_media[1].image.url;
+
   return (
     <>
       {step === 'result' && (
         <main className={styles.mainWrapper}>
+          <HelmetMetaData image={shareTwitter}></HelmetMetaData>
           <div 
             className={styles.transitionWrapper}
           >

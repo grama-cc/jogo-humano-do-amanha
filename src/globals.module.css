@@ -1,3 +1,27 @@
+@font-face {
+  font-family: 'Calibre';
+  src: url("./assets/fonts/Calibre-BoldItalic.woff2") format("woff2"), url("./assets/fonts/Calibre-BoldItalic.woff") format("woff"), url("./assets/fonts/Calibre-BoldItalic.ttf") format("truetype");
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Calibre';
+  src: url("./assets/fonts/Calibre-Regular.woff2") format("woff2"), url("./assets/fonts/Calibre-Regular.woff") format("woff"), url("./assets/fonts/Calibre-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Calibre';
+  src: url("./assets/fonts/Calibre-Bold.woff2") format("woff2"), url("./assets/fonts/Calibre-Bold.woff") format("woff"), url("./assets/fonts/Calibre-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
 html {
   overflow-x: hidden;
 }
@@ -5,7 +29,7 @@ html {
 html body {
   margin: 0;
   padding: 0;
-  font-family: 'CalibreBold', sans-serif;
+  font-family: 'Calibre';
   overflow-x: hidden;
   position: relative;
   width: 100vw;
@@ -75,6 +99,7 @@ html body button {
   outline: none;
   overflow: visible;
   text-transform: none;
+  font-weight: bold;
 }
 
 html body input, html body textarea {
@@ -253,9 +278,16 @@ html body ::-ms-input-placeholder {
   left: 64px;
 }
 
-.libras img {
+.libras svg {
   width: calc(3.25048vw + 19.59847px);
   height: calc(3.25048vw + 19.59847px);
+}
+
+@media (min-width: 770px) {
+  .libras svg {
+    width: 64px;
+    height: 64px;
+  }
 }
 
 .colorfulBackground {
