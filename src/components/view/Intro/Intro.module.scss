@@ -51,31 +51,68 @@
   position: relative;
 }
 
-.title, .question {
+.title, .question, .homeQuestion {
   font-weight: bold;
   color: $white;
   text-align: center;
-  z-index: 2;
 }
 
 .title {
   text-transform: uppercase;
   font-size: responsive(16, 24);
   line-height: responsive(32, 32);
+  position: relative;
+  z-index: 2;
 }
 
-.question {
-  font-size: responsive(28, 74);
-  line-height: responsive(36, 68);
-  width: 120%;
+.question, .homeQuestion {
+  font-size: responsive(16, 56);
+  line-height: responsive(24, 48);
+  width: 80%;
   margin-top: 16px;
+}
+
+.homeQuestion {
+  width: responsive(215, 450);
+  min-width: responsive(215, 450);
+  height: responsive(215 / 2, 450 / 2);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  &::before {
+    content: 'Já parou para pensar que humano você será amanhã ?';
+    z-index: 2;
+    animation-name: phraseChange;
+    animation-duration: 12s; 
+    animation-timing-function: ease-in-out; 
+    animation-delay: 0;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-fill-mode: none;
+    animation-play-state: running;
+  }
+}
+
+@keyframes phraseChange {
+  0% { content: 'Já parou para pensar que humano você será amanhã?' }
+  15% { content: 'Já parou para pensar que humano você será amanhã?' }
+  18% { content: 'Você gostaria de viajar para Marte?' }
+  33% { content: 'Você gostaria de viajar para Marte?' }
+  36% { content: 'Você experimentaria um corpo que mistura partes artificiais e naturais?' }
+  51% { content: 'Você experimentaria um corpo que mistura partes artificiais e naturais? ' }
+  54% { content: 'Você usa as tecnologias para se aproximar ou se isolar das pessoas?' }
+  69% { content: 'Você usa as tecnologias para se aproximar ou se isolar das pessoas? ' }
+  72% { content: 'Já parou para pensar que humano você será amanhã?' }
+  100% { content: 'Já parou para pensar que humano você será amanhã?' }
 }
 
 .shadow {
   position: absolute;
-  bottom: -15%;
+  bottom: -6rem;
+  left: 3rem;
   width: 80%;
-  z-index: 1;
 }
 
 .welcome {

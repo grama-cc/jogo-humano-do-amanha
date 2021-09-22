@@ -18,7 +18,7 @@ const Question: React.FC<QuestionProps> = ({ question, current }) => {
     if(question){
       return <>
         {libras && current && <div className={styles.librasWrapper}>
-          <Video source={question.libras || question.texto_libras?.url || false}/>
+          <Video source={question.libras || question.texto_libras?.url || ''}/>
         </div>}
         <p className={styles.text}>{question.texto || question.text}</p>
       </>
