@@ -84,7 +84,6 @@ const Home: React.FC = () => {
         <main className={`${globalStyles.container} ${transitionStep ? globalStyles.transition : globalStyles.colorfulBackground}`}>
           <Intro
             title={screenSaver.init_screen_saver.title}
-            question={screenSaver.init_screen_saver.init_question}
             videos={welcome ? [welcome?.pagina_bemvindo_libras_video.url] : null} 
           />
           <IntroSidebar
