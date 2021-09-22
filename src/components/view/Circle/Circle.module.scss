@@ -12,9 +12,10 @@
   overflow: hidden;
   @media (min-width: $small) {
     overflow: visible;
-    width: responsive(215, 500);
-    min-width: responsive(215, 500);
-    height: responsive(215, 500);
+    width: responsive(215, 450);
+    min-width: responsive(215, 450);
+    height: responsive(215, 450);
+    margin-bottom: responsive(0, 76);
     &.libras{
       width: 60vh;
       min-width: 60vh;

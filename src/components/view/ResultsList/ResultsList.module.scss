@@ -5,7 +5,7 @@
     display: none;
   }
   .items {
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     li {
@@ -17,6 +17,7 @@
     }
     .imagesWrapper {
       position: relative;
+      margin: 0 20%;
       .shadow {
         width: 100%;
         z-index: 2;

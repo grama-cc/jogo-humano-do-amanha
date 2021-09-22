@@ -61,9 +61,8 @@ const Countdown: React.FC = () => {
   useEffect(() => {
 		Welcome.getWelcome()
 			.then((data) => {
-        const mockedData = {...data};
-        mockedData['pagina_carregando_contador_libras_video']['url'] = 'http://techslides.com/demos/sample-videos/small.mp4'
-				setWelcome(mockedData);
+				setWelcome(data);
+        console.log(data);
       }).catch((err) => {
 				setIsError(true);
 			});

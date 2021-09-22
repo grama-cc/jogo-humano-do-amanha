@@ -7,6 +7,7 @@ import IntroSidebar from 'components/view/IntroSidebar/IntroSidebar';
 
 import globalStyles from 'globals.module.scss';
 import Menu from '../Menu/Menu';
+import Logos from 'components/view/Logos/Logos';
 
 const playAudio = require('assets/audios/jogar.mp3');
 
@@ -70,6 +71,7 @@ const EndPage: React.FC = () => {
             endCtaActionHome={changeToHome}
           />
           {/* <LibrasToggle blackIcon={true} /> */}
+          <Logos />
         </main>
       )}
     </>

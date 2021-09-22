@@ -18,8 +18,8 @@ const ResultsList: React.FC<ResultListProps> = ({ results, color }) => {
             <button>
               {item.images ? (
                 <div className={styles.imagesWrapper}>
-                  <img src={item.images[2].url} alt={item.nome} className={styles.shadow} style={{ width: '100px' }}/>
-                  <img src={item.images[0].url} alt={item.nome} className={styles.imageBg} style={{ width: '100px' }} />
+                  <img src={item.images[2].url} alt={item.nome} className={styles.shadow} />
+                  <img src={item.images[0].url} alt={item.nome} className={styles.imageBg} />
                 </div>
               ) : (
                 <p className={styles.name}>{item.nome}</p>

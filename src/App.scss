@@ -21,10 +21,34 @@ $lilac: #D591FF;
 // Font
 @font-face {
   font-family: 'Calibre';
-  src:  url('./assets/fonts/Calibre-Regular.woff2') format('woff2'),
-        url('./assets/fonts/Calibre-Bold.woff2') format('woff2'),
-        url('./assets/fonts/Calibre-BoldItalic.woff2') format('woff2');
+  src: url('./assets/fonts/Calibre-BoldItalic.woff2') format('woff2'),
+      url('./assets/fonts/Calibre-BoldItalic.woff') format('woff'),
+      url('./assets/fonts/Calibre-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
 }
+
+@font-face {
+  font-family: 'Calibre';
+  src: url('./assets/fonts/Calibre-Regular.woff2') format('woff2'),
+      url('./assets/fonts/Calibre-Regular.woff') format('woff'),
+      url('./assets/fonts/Calibre-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Calibre';
+  src: url('./assets/fonts/Calibre-Bold.woff2') format('woff2'),
+      url('./assets/fonts/Calibre-Bold.woff') format('woff'),
+      url('./assets/fonts/Calibre-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
 
 // Responsive
 $small: 770px;
@@ -115,6 +139,7 @@ html {
       outline: none;
       overflow: visible;
       text-transform: none;
+      font-weight: bold;
     }
 
     input, textarea {

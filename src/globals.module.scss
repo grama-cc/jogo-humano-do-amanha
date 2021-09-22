@@ -93,6 +93,10 @@
   svg {
     width: responsive(30, 64);
     height: responsive(30, 64);
+    @media (min-width: $small) {
+      width: 64px;
+      height: 64px;
+    }
   }
 }
 
