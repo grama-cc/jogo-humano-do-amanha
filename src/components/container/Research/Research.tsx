@@ -168,7 +168,6 @@ const Research: React.FC = () => {
       genero: questions.find(q => q.api_field === 'genero')?.answer || 'outro', 
       outro_genero: questions.find(q => q.api_field === 'genero')?.answerText || '',
       data_aniversario: formatDate(questions.find(q => q.api_field === 'data_aniversario')?.answerText),
-      faixa_etaria: questions.find(q => q.api_field === 'faixa_etaria')?.answer || '',
       onde_mora: questions.find(q => q.api_field === 'onde_mora')?.answer || '',
       avaliacao_jogo: parseInt((questions.find(q => q.api_field === 'avaliacao_jogo')?.answer || ''), 10) || 0,
       avaliacao_comentario: questions.find(q => q.api_field === 'avaliacao_comentario')?.answer || '',
