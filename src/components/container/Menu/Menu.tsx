@@ -20,12 +20,12 @@ const backAudio = require('assets/audios/voltar.mp3');
 type MenuProps = {
   text?: string,
   prevStep: Step,
-  prevAction?: (() => void) | null
+  prevAction?: (() => void),
   blackIcon?: boolean,
   topText?: string,
 }
 
-const Menu: React.FC<MenuProps> = ({ text, prevStep, prevAction = null, blackIcon, topText }) => {
+const Menu: React.FC<MenuProps> = ({ text, prevStep, prevAction, blackIcon, topText }) => {
   const { setStep, setLoading, resultAvatar } = useContext(SettingsContext);
 
   const backAudioRef = useRef<HTMLAudioElement>(new Audio(backAudio.default));
@@ -70,7 +70,7 @@ const Menu: React.FC<MenuProps> = ({ text, prevStep, prevAction = null, blackIco
               <button className={globalStyles.singleIcon}>
                 <FacebookShareButton
                   url={`${window.location.href}`}
-                  quote={`'Descobri que #HumanodoAmanhã eu serei no futuro! Acesse o novo jogo do Museu do Amanhã e veja qual é o seu perfil em: jogohumano.museudoamanha.org.br'`}
+                  quote={`'Descobri que #HumanodoAmanhã eu serei no futuro! Acesse o novo jogo do Museu do Amanhã e veja qual é o seu perfil em: '`}
                   hashtag={'#HumanodoAmanhã'}
                   onClick={playAudio}
                 >
@@ -80,7 +80,7 @@ const Menu: React.FC<MenuProps> = ({ text, prevStep, prevAction = null, blackIco
               <button className={globalStyles.singleIcon}>
                 <WhatsappShareButton
                   url={`${window.location.href}`}
-                  title={`Descobri que #HumanodoAmanhã eu serei no futuro! Acesse o novo jogo do Museu do Amanhã e veja qual é o seu perfil em: jogohumano.museudoamanha.org.br`}
+                  title={`Descobri que #HumanodoAmanhã eu serei no futuro! Acesse o novo jogo do Museu do Amanhã e veja qual é o seu perfil em: `}
                   onClick={playAudio}
                 >
                   <img src={whatsapp} alt="WhatsApp" className={globalStyles.social} />
@@ -88,7 +88,7 @@ const Menu: React.FC<MenuProps> = ({ text, prevStep, prevAction = null, blackIco
               </button>
               <button className={globalStyles.singleIcon}>
                 <TwitterShareButton
-                  title={`Descobri que #HumanodoAmanhã eu serei no futuro! Acesse o novo jogo do Museu do Amanhã e veja qual é o seu perfil em: jogohumano.museudoamanha.org.br`}
+                  title={`Descobri que #HumanodoAmanhã eu serei no futuro! Acesse o novo jogo do Museu do Amanhã e veja qual é o seu perfil em: `}
                   url={`${window.location.href}`}
                   hashtags={['#HumanodoAmanhã']}
                   onClick={playAudio}

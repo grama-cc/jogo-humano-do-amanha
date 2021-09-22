@@ -6,7 +6,7 @@ import SettingsContext from 'context/settingsContext';
 
 import Intro from 'components/view/Intro/Intro';
 import Options from 'components/view/Options/Options';
-import LibrasToggle from '../LibrasToggle/LibrasToggle';
+//import LibrasToggle from '../LibrasToggle/LibrasToggle';
 import Menu from '../Menu/Menu';
 
 import globalStyles from 'globals.module.scss';
@@ -109,10 +109,11 @@ const Countdown: React.FC = () => {
           <Menu text="0" prevStep={'home'} />
           <Intro
             welcome={showWelcomeMessage ? screenSaverMessage : [counter.toString()]}
-            videos={welcome ? [
+            /* videos={welcome ? [
               welcome?.pagina_inicial_libras_video.url,
               welcome?.pagina_carregando_contador_libras_video.url
-            ] : null} 
+            ] : null} */
+            videos={[]}
             endedVideos={changeStep}
             showWelcomeMessage={showWelcomeMessage}
           />
@@ -128,7 +129,7 @@ const Countdown: React.FC = () => {
             />
           </div>
          
-          <LibrasToggle />
+          {/* <LibrasToggle /> */}
         </main>
       )}
     </>
