@@ -3,10 +3,10 @@
 .logosOneLine {
   position: absolute;
   bottom: 0;
-  left: responsive(12, 24);
+  left: 10rem;
 
   img {
-    width: responsive(250, 650)
+    width: responsive(250, 500)
   }
 }
 
