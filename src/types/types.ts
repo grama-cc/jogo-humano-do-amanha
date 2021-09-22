@@ -210,7 +210,6 @@ export type ProfileAnswer = {
 	resultado_identificacao: string,
 	jogo_sensibilizou: string,
 	recomendar: number,
-	faixa_etaria: string,
 	personalizado: string,
 	avaliacao_comentario: string,
 	personalizado_text: string,
