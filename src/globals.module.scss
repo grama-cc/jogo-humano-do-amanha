@@ -90,12 +90,8 @@
   top: 80vh;
   left: 64px;
   border-radius: 50%;
-  width: responsive(30, 64);
-  height: responsive(30, 64);
-  @media (min-width: $small) {
-    width: 64px;
-    height: 64px;
-  }
+  width: responsive(64, 64);
+  height: responsive(64, 64);
 }
 
 .librasWhite {
@@ -180,12 +176,12 @@
     min-height: 30vh;
     width: 100%;
   }
-  .libras {
+  .librasWhite, .librasBlack {
     position: absolute;
     left: auto;
-    right: 32px;
+    right: 24px;
     bottom: auto;
-    top: 55vh;
+    top: 52vh;
   }
   .allhumansLibras {
     top: 90vh;
