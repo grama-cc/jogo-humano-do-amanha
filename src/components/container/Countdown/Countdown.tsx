@@ -78,18 +78,18 @@ const Countdown: React.FC = () => {
 
   useEffect(() => {
     if(step === 'countdown'){
-      if(!libras){
-        countAudioRef.current.currentTime = 0;
-        countAudioRef.current.play();
-        resetState();
-        timerRef.current = setTimeout(() => {
-          setShowWelcomeMessage(false);
-          setLoading(true);
-          startTimer();
-        }, initialMessageTime);
+      countAudioRef.current.currentTime = 0;
+      countAudioRef.current.play();
+      resetState();
+      timerRef.current = setTimeout(() => {
+        setShowWelcomeMessage(false);
+        setLoading(true);
+        startTimer();
+      }, initialMessageTime);
+/*       if(!libras){
       } else if(timerRef.current){
         clearTimeout(timerRef.current);
-      }
+      } */
     } else {
       if(timerRef.current){
         countAudioRef.current.pause();
@@ -113,8 +113,8 @@ const Countdown: React.FC = () => {
               welcome?.pagina_inicial_libras_video.url,
               welcome?.pagina_carregando_contador_libras_video.url
             ] : null} */
-            videos={[]}
-            endedVideos={changeStep}
+            //videos={[]}
+            //endedVideos={changeStep}
             showWelcomeMessage={showWelcomeMessage}
           />
 
