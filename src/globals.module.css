@@ -272,22 +272,28 @@ html body ::-ms-input-placeholder {
   color: #0d0d0d;
 }
 
-.libras {
+.librasWhite, .librasBlack {
   position: absolute;
   top: 80vh;
   left: 64px;
-}
-
-.libras svg {
+  border-radius: 50%;
   width: calc(3.25048vw + 19.59847px);
   height: calc(3.25048vw + 19.59847px);
 }
 
 @media (min-width: 770px) {
-  .libras svg {
+  .librasWhite, .librasBlack {
     width: 64px;
     height: 64px;
   }
+}
+
+.librasWhite {
+  border: 1px solid #E9E9E9;
+}
+
+.librasBlack {
+  border: 1px solid #0d0d0d;
 }
 
 .colorfulBackground {
