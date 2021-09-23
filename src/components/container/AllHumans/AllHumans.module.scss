@@ -24,7 +24,7 @@
   min-height: inherit;
   
   img {
-    margin-top: responsive(60, 90);
+    margin-top: responsive(30, 90);
   }
 }
 
@@ -95,21 +95,22 @@
 }
 
 .text {
-  font-size: responsive(24, 32);
-  line-height: responsive(32, 40);
+  font-size: responsive(16, 20);
+  line-height: responsive(20, 24);
   font-weight: bold;
   padding: 36px;
-  min-height: 56vh;
+  min-height: 45vh;
   flex: 1;
 }
 
 .cta, .cta > button {
-  font-size: 24px;
-  line-height: 28px;
+  font-size: 32px;
+  line-height: 36px;
   font-weight: bold;
   padding: 16px 20px;
   margin-top: 8px;
   min-height: 16vh;
+  font-family: 'Calibre';
 
   span {
     margin-left: 8px;
