@@ -55,13 +55,10 @@ export default function Result() {
     if(step === 'result' && avatarReady && resultAvatar){
       const humanAudio = humanAudios.find(h => h.name === resultAvatar.nome);
       const audio = new Audio(humanAudio?.audio.default);
-      console.log(audio,humanAudio?.audio.default );
       audio.oncanplaythrough = () => {
-        console.log('on can play');
         audio.play();
       };
       audio.onplay = () => {
-        console.log('playing');
         setAllReady(true);
       }
     } else {
