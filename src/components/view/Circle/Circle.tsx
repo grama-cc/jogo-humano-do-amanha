@@ -15,7 +15,7 @@ const Circle: React.FC = ({ children }) => {
       </div>
     ) : (
       <div 
-        className={`${styles.circleWrapper} ${step === 'home' ? styles.blackBorder : styles.whiteBorder}  ${libras ? styles.libras : ''}`}
+        className={`${styles.circleWrapper} ${step !== 'home' && styles.whiteBorder}  ${libras ? styles.libras : ''}`}
       >
         {children}
       </div>

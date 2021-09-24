@@ -7,6 +7,7 @@ import SettingsContext from 'context/settingsContext';
 import About from 'components/view/About/About';
 import Intro from 'components/view/Intro/Intro';
 import IntroSidebar from 'components/view/IntroSidebar/IntroSidebar';
+import LibrasToggle from '../LibrasToggle/LibrasToggle';
 
 import globalStyles from 'globals.module.scss';
 import Logos from 'components/view/Logos/Logos';
@@ -83,8 +84,7 @@ const Home: React.FC = () => {
         <main className={`${globalStyles.container} ${transitionStep ? globalStyles.transition : globalStyles.colorfulBackground}`}>
           <Intro
             title={screenSaver.init_screen_saver.title}
-            question={screenSaver.init_screen_saver.init_question}
-            videos={welcome ? [welcome?.pagina_bemvindo_libras_video.url] : null} 
+            videos={welcome ? [welcome?.pagina_inicial_libras_video.url] : null} 
           />
           <IntroSidebar
             aboutText={aboutContent.title}
@@ -92,7 +92,7 @@ const Home: React.FC = () => {
             ctaLabel={screenSaver.init_screen_saver.init_button}
             ctaAction={changeStep}
           />
-          {/* <LibrasToggle blackIcon={true} /> */}
+          <LibrasToggle blackIcon={true} />
           {showAboutPopUp && <About title={aboutContent.title} text={aboutContent.description} /> }
           <Logos />
         </main>

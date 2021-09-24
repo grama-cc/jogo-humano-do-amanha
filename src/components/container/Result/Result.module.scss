@@ -106,10 +106,10 @@
   width: 96%;
   border: 1px solid $black;
   border-radius: 16px;
-  font-size: responsive(24, 40);
-  line-height: responsive(28, 48);
+  font-size: responsive(16, 32);
+  line-height: responsive(20, 40);
   font-weight: bold;
-  padding: 60px responsive(20, 30);
+  padding: 24px responsive(20, 30);
   margin-bottom: 8px;
   min-height: 40vh;
   text-align: left;
@@ -129,6 +129,7 @@
   margin-bottom: 8px;
   display: block;
   width: 96%;
+  font-family: 'Calibre';
 }
 
 .cta {
@@ -137,7 +138,8 @@
 }
 
 .endGame {
-  border: 1px solid $white;
+  background: $black;
+  border: 1px solid $black;
   color: $white;
 }
 .researchInvite{

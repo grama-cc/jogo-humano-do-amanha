@@ -15,7 +15,7 @@
   background: $white;
   height: 78vh;
   width: 50vw;
-  border: 2px solid $black;
+  border: 1px solid $black;
   border-radius: 16px;
   opacity: 1;
   padding-bottom: 16px;
@@ -26,7 +26,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid $black;
+  border-bottom: 1px solid $black;
 }
 
 .close {
@@ -36,8 +36,10 @@
   padding: 12px;
   font-size: 16px;
   line-height: 28px;
-  font-style: italic;
   font-weight: bold;
+  &:active{
+    font-style: italic;
+  }
 }
 
 .title {

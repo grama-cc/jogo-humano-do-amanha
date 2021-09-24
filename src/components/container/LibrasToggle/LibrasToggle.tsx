@@ -21,7 +21,7 @@ const LibrasToggle: React.FC<LibrasToggleProps> = ({ blackIcon }) => {
       <button 
         onClick={toggleLibras}
         data-testid="libras-toggle" 
-        className={`${globalStyles.libras} ${step === 'allhumans' && globalStyles.allhumansLibras}`}
+        className={`${globalStyles.librasWhite} ${blackIcon ? globalStyles.librasBlack : ''} ${step === 'allhumans' && globalStyles.allhumansLibras}`}
       >
         <WhiteLibras
           title="Mostrar vídeo em Libras"

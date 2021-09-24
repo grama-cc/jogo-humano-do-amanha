@@ -3,11 +3,11 @@ import React, { useRef, useEffect } from 'react';
 import styles from './Video.module.scss';
 
 type VideoProps = {
-  source: string | false;
-  onEnded?: (() => void ) | false ;
+  source: string | '';
+  onEnded?: (() => void );
 }
 
-const Video: React.FC<VideoProps> = ({ source = false, onEnded = false }) => {
+const Video: React.FC<VideoProps> = ({ source, onEnded }) => {
 
   const videoRef = useRef<HTMLVideoElement>(null);
 

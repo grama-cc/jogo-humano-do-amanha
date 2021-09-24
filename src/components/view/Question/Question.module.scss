@@ -16,7 +16,6 @@
       bottom: -26vh;
       left: -16vw;
     }
-    
   }
 
   .text{
@@ -31,6 +30,9 @@
     width: 80%;
     @media (min-width: $small) {
       padding-top: 35vh;
+      &.libras{
+        padding-top: 30vh;
+      }
     }
   }
 }

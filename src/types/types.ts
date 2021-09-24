@@ -175,6 +175,7 @@ export type ProfileOption = {
   order: number,
   text: string,
   value: string,
+  canScape?: boolean,
   __v: number,
   __id: string,
 }
@@ -207,7 +208,7 @@ export type ProfileAnswer = {
 	avaliacao_jogo:  number,
 	melhoria: string,
 	dispositivo?: string,
-	resultado_identificacao: string,
+	// resultado_identificacao: string,
 	jogo_sensibilizou: string,
 	recomendar: number,
 	personalizado: string,

@@ -16,7 +16,7 @@
   
 
   .optionContainer{
-    border: 2px solid $white;
+    border: 1px solid $white;
     border-radius: 32px;
     overflow: hidden;
     flex: 1;
@@ -25,13 +25,18 @@
     align-items: center;
     min-height: 73px;
     max-height: 150px;
+
     @media (min-width: $small) {
       min-height: unset;
       max-height: unset;
       margin: 10px 0;
+      &.scape{
+        max-height: 150px;
+      }
     }
     >button{
       color: $white;
+      font-family: 'Calibre';
     }
     > button, input{
       width: 100%;
@@ -148,6 +153,10 @@
         font-size: responsive(20, 30);
         font-weight: bold;
         color: $black;
+        line-height: 10px;
+        @media (min-width: $small) {
+          line-height: unset;
+        }
       }
       input{
         text-align: center;

@@ -1,6 +1,10 @@
 @import 'App.scss';
 
 .librasIcon{
+  @media (max-width: $small) {
+    width: responsive(22, 56);
+    height: responsive(22, 56);
+  }
   path{
     fill: $white;
     transition: fill .5s ease-in-out;

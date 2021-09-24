@@ -30,8 +30,8 @@ const ResultShare: React.FC<ResultShareProps> = ({ resultTitle, resultDescriptio
               <div style={{ backgroundColor: `${color}` }} className={styles.singleIcon}>
                 <FacebookShareButton
                   url={`${window.location.href}`}
-                  quote={`Meu humano do amanhã é ${resultTitle}! ${resultDescription}`}
-                  hashtag={'#humanodofuturo'}
+                  quote={`Descobri que #HumanodoAmanhã eu serei no futuro! Acesse o novo jogo do Museu do Amanhã e veja qual é o seu perfil em: `}
+                  hashtag={'#HumanodoAmanhã'}
                 >
                   <img src={facebook} alt="Facebook" />
                 </FacebookShareButton>
@@ -39,16 +39,16 @@ const ResultShare: React.FC<ResultShareProps> = ({ resultTitle, resultDescriptio
               <div style={{ backgroundColor: `${color}` }} className={styles.singleIcon}>
                 <WhatsappShareButton
                   url={`${window.location.href}`}
-                  title={`Meu humano do amanhã é ${resultTitle}`}
+                  title={`Descobri que #HumanodoAmanhã eu serei no futuro! Acesse o novo jogo do Museu do Amanhã e veja qual é o seu perfil em: `}
                 >
                   <img src={whatsapp} alt="WhatsApp" />
                 </WhatsappShareButton>
               </div>
               <div style={{ backgroundColor: `${color}` }} className={styles.singleIcon}>
                 <TwitterShareButton
-                  title={`Meu humano do amanhã é ${resultTitle}!`}
+                  title={`Descobri que #HumanodoAmanhã eu serei no futuro! Acesse o novo jogo do Museu do Amanhã e veja qual é o seu perfil em: `}
                   url={`${window.location.href}`}
-                  hashtags={['#humanodofuturo']}
+                  hashtags={['#HumanodoAmanhã']}
                 >
                   <img src={twitter} alt="Twitter" />
                 </TwitterShareButton>
