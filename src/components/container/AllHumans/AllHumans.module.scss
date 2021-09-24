@@ -101,6 +101,8 @@
   padding: 36px;
   min-height: 45vh;
   flex: 1;
+  display: flex;
+  align-items: center;
 }
 
 .cta, .cta > button {

@@ -95,8 +95,22 @@ const Research: React.FC = () => {
             }
           }
           if(q.api_field === 'avaliacao_comentario'||
-            q.api_field === 'personalizado_text' ||
-            q.api_field === 'reflexao_texto'){
+            q.api_field === 'personalizado_text'){
+            return {
+              ...q,
+              options: [
+                {
+                  value: "",
+                  text: "Responda aqui...",
+                  optionType: 'input',
+                  canScape: true
+                }
+              ],
+              answer: '',
+              answerText: '',
+            }
+          }
+          if(q.api_field === 'reflexao_texto'){
             return {
               ...q,
               options: [
@@ -175,7 +189,7 @@ const Research: React.FC = () => {
       personalizado: questions.find(q => q.api_field === 'personalizado')?.answer || '',
       personalizado_text: questions.find(q => q.api_field === 'personalizado_text')?.answerText || '',
       personalizado_options: questions.find(q => q.api_field === 'personalizado_options')?.answer || '',
-      resultado_identificacao: questions.find(q => q.api_field === 'resultado_identificacao')?.answer || '',
+      // resultado_identificacao: questions.find(q => q.api_field === 'resultado_identificacao')?.answer || '',
       jogo_sensibilizou: questions.find(q => q.api_field === 'jogo_sensibilizou')?.answer || '',
       reflexao_texto: questions.find(q => q.api_field === 'reflexao_texto')?.answerText || '',
       recomendar: parseInt(questions.find(q => q.api_field === 'recomendar')?.answer || '', 10) || 0 ,

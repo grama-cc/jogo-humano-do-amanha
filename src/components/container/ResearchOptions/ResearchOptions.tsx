@@ -61,6 +61,7 @@ const ResearchOptions: React.FC<ResearchOptionsProps> = ({ options, onSelect, se
           </div>
         )
       } return (
+      
         <div className={styles.singleInputContainer}>
           <textarea placeholder={option.text}
             value={textValue}
@@ -108,6 +109,13 @@ const ResearchOptions: React.FC<ResearchOptionsProps> = ({ options, onSelect, se
         Array(6).fill(
           <li className={styles.optionContainer}/>
         )
+      )}
+      {options[0] && options[0].canScape && (
+        <li className={`${styles.optionContainer} ${styles.scape}`}>
+          <button onClick={() => selectOption('')}>
+            Não, prefiro não personalizar
+          </button>
+        </li>
       )}
     </ul>
   );
