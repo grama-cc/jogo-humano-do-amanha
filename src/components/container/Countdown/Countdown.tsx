@@ -62,7 +62,6 @@ const Countdown: React.FC = () => {
 		Welcome.getWelcome()
 			.then((data) => {
 				setWelcome(data);
-        console.log(data);
       }).catch((err) => {
 				setIsError(true);
 			});

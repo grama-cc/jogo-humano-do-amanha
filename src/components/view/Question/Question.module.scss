@@ -30,6 +30,9 @@
     width: 80%;
     @media (min-width: $small) {
       padding-top: 35vh;
+      &.libras{
+        padding-top: 30vh;
+      }
     }
   }
 }

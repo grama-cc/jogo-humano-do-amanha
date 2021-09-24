@@ -17,6 +17,11 @@ type ResultTextProps = {
 const ResultText: React.FC<ResultTextProps> = ({ title, text, revealResultMode, video }) => {
   const { libras } = useContext(SettingsContext);
 
+  const cleanedTitle = sanitizeHtml(title, {
+    allowedTags: ['br'],
+    allowedAttributes: {}
+  });
+
   const clean = sanitizeHtml(text, {
     allowedTags: ['b'],
     allowedAttributes: {}
@@ -24,7 +29,7 @@ const ResultText: React.FC<ResultTextProps> = ({ title, text, revealResultMode, 
 
   return (
     <>
-      <h1 className={`${styles.title} ${revealResultMode && styles.revealTitle}`}><span>{title}</span></h1>
+      <h1 className={`${styles.title} ${revealResultMode && styles.revealTitle}`}><span dangerouslySetInnerHTML={{__html: cleanedTitle}}/></h1>
       {libras && !!video &&
         <div className={styles.librasWrapperMobile}>
           <Video source={video}/>

@@ -37,6 +37,11 @@ export default function Result() {
 
   if (!allHumanTypes) return null;
 
+  const cleanedTitle = sanitizeHtml(resultsListHuman.nome, {
+    allowedTags: ['br'],
+    allowedAttributes: {}
+  });
+
   const clean = sanitizeHtml(resultsListHuman.descricao, {
     allowedTags: ['b'],
     allowedAttributes: {}
@@ -65,7 +70,7 @@ export default function Result() {
             <div className={styles.resultSidebar}>
               {resultsListHuman.nome !== '' ? (
                 <>
-                  <p className={styles.title}>{resultsListHuman.nome}</p>
+                  <p className={styles.title} dangerouslySetInnerHTML={{__html: cleanedTitle}}/>
                   {libras && !!resultsListHuman?.libras_description?.url &&
                     <div className={styles.librasWrapperMobile}>
                       <Video source={resultsListHuman.libras_description.url}/>

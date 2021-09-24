@@ -49,6 +49,9 @@
   .semicircle{
     width: 80vw;
     height: auto;
+    path{
+      stroke-width: 1px;
+    }
     @media only screen and (min-width: $small) {
       width: auto;
       height: 35vh;
@@ -58,6 +61,9 @@
     width: 80vw;
     height: auto;
     transform: rotate(180deg);
+    path{
+      stroke-width: 1px;
+    }
     @media only screen and (min-width: $small) {
       height: 35vh;
       width: auto;

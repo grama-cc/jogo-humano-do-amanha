@@ -25,10 +25,14 @@
     align-items: center;
     min-height: 73px;
     max-height: 150px;
+
     @media (min-width: $small) {
       min-height: unset;
       max-height: unset;
       margin: 10px 0;
+      &.scape{
+        max-height: 150px;
+      }
     }
     >button{
       color: $white;
@@ -149,6 +153,10 @@
         font-size: responsive(20, 30);
         font-weight: bold;
         color: $black;
+        line-height: 10px;
+        @media (min-width: $small) {
+          line-height: unset;
+        }
       }
       input{
         text-align: center;
