@@ -63,6 +63,10 @@ type settingsType = {
   setResultAvatar: (value: HumanType) => void,
   resultsListHuman: HumanType,
   setResultsListHuman: (value: HumanType) => void,
+  needIOSPermission: boolean,
+  setNeedIOSSoundPermission: (value: boolean) => void,
+  iosSoundPermission: boolean,
+  setIosSoundPermission: (value: boolean) => void,
 }
 
 export const defaultSettings: settingsType = {
@@ -88,6 +92,10 @@ export const defaultSettings: settingsType = {
   setResultAvatar: () => {},
   resultsListHuman: defaultHuman,
   setResultsListHuman: () => {},
+  needIOSPermission: false,
+  setNeedIOSSoundPermission: () => {},
+  iosSoundPermission: false,
+  setIosSoundPermission: () => {},
 };
 
 const SettingsContext = createContext(defaultSettings);
