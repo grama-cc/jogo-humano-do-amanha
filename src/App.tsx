@@ -108,8 +108,8 @@ function App() {
     <SettingsContext.Provider value={value}>
       <div className="App">
         {(step ==="home" || step === "countdown") ? (
-          <Sound autoLoad={true} playStatus={play ? 'PLAYING': 'PAUSED'} url={introAudio.default} loop={true} volume={volume}  />
-        ): <Sound autoLoad={true} playStatus={play ? 'PLAYING': 'PAUSED'} url={quizAudio.default} loop={true} volume={volume}/>}
+          <Sound onError={() => {console.error('playing error')}} autoLoad={true} playStatus={play ? 'PLAYING': 'PAUSED'} url={introAudio.default} loop={true} volume={volume}  />
+        ): <Sound onError={() => {console.error('playing error')}} autoLoad={true} playStatus={play ? 'PLAYING': 'PAUSED'} url={quizAudio.default} loop={true} volume={volume}/>}
         <Home/>
         <Countdown />
         <Quiz />
