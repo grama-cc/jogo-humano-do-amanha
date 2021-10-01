@@ -36,10 +36,10 @@ const IntroSidebar: React.FC<IntroSidebarProps> = ({ aboutText, text, ctaLabel, 
     }
   }, []);
 
-  const aboutPopUp = () => {
+  const aboutPopUp = async () => {
     openAboutRef.current.currentTime = .6;
     try{
-      openAboutRef.current.play();
+      await openAboutRef.current.play();
     }catch(err){
       console.error(err);
     }
@@ -53,20 +53,24 @@ const IntroSidebar: React.FC<IntroSidebarProps> = ({ aboutText, text, ctaLabel, 
   };
 
   useEffect(() => {
-    if(openedAbout && !showAboutPopUp){
-      setOpenedAbout(false);
-      closeAboutRef.current.currentTime = .6;
-      try{
-        closeAboutRef.current.play();
-      }catch(err){
-        console.error(err);
-      }
-      setTimeout(() => {
-        closeAboutRef.current.pause();
+    async function closeAboutAudio(){
+      if(openedAbout && !showAboutPopUp){
+        setOpenedAbout(false);
         closeAboutRef.current.currentTime = .6;
-        closeAboutRef.current.load();
-      }, 1500);
+        try{
+          await closeAboutRef.current.play();
+        }catch(err){
+          console.error(err);
+        }
+        setTimeout(() => {
+          closeAboutRef.current.pause();
+          closeAboutRef.current.currentTime = .6;
+          closeAboutRef.current.load();
+        }, 1500);
+      }
     }
+    closeAboutAudio();
+    
   }, [openedAbout, showAboutPopUp])
 
   return (

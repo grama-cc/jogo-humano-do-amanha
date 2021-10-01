@@ -31,10 +31,10 @@ const EndPage: React.FC = () => {
     setStep('home');
   }, [setStep])
 
-  const changeToResult = useCallback(() => {
+  const changeToResult = useCallback(async () => {
     playRef.current.currentTime = .2;
     try{
-      playRef.current.play();
+      await playRef.current.play();
     }catch(err){
       console.error(err);
     }
@@ -47,10 +47,10 @@ const EndPage: React.FC = () => {
     setTimeout(goToResult, 2500);
   }, [goToResult]);
 
-  const changeToHome = useCallback(() => {
+  const changeToHome = useCallback(async () => {
     playRef.current.currentTime = .2;
     try{
-      playRef.current.play();
+      await playRef.current.play();
     }catch(err){
       console.error(err);
     }

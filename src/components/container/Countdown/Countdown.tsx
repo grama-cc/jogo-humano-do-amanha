@@ -76,32 +76,36 @@ const Countdown: React.FC = () => {
 	}, []);
 
   useEffect(() => {
-    if(step === 'countdown'){
-      countAudioRef.current.currentTime = 0;
-      try{
-        countAudioRef.current.play();
-      }catch(err){
-        console.error(err);
-      }
-      
-      resetState();
-      timerRef.current = setTimeout(() => {
-        setShowWelcomeMessage(false);
-        setLoading(true);
-        startTimer();
-      }, initialMessageTime);
-/*       if(!libras){
-      } else if(timerRef.current){
-        clearTimeout(timerRef.current);
-      } */
-    } else {
-      if(timerRef.current){
-        countAudioRef.current.pause();
+    async function startCountDown() {
+      if(step === 'countdown'){
         countAudioRef.current.currentTime = 0;
-        countAudioRef.current.load();
+        try{
+          await countAudioRef.current.play();
+        }catch(err){
+          console.error(err);
+        }
+        
         resetState();
+        timerRef.current = setTimeout(() => {
+          setShowWelcomeMessage(false);
+          setLoading(true);
+          startTimer();
+        }, initialMessageTime);
+  /*       if(!libras){
+        } else if(timerRef.current){
+          clearTimeout(timerRef.current);
+        } */
+      } else {
+        if(timerRef.current){
+          countAudioRef.current.pause();
+          countAudioRef.current.currentTime = 0;
+          countAudioRef.current.load();
+          resetState();
+        }
       }
-    }
+    };
+    startCountDown();
+    
   }, [step, libras, startTimer, resetState, setLoading]);
 
   const screenSaverMessage = [`${screenSaver?.init_screen_saver.wellcome.title}`, `${screenSaver?.init_screen_saver.wellcome.subtitle}`];

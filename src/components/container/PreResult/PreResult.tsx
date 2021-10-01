@@ -35,10 +35,10 @@ const PreResult: React.FC = () => {
     setStep('result');
   }, [setStep])
 
-  const changeStep = useCallback(() => {
+  const changeStep = useCallback(async () => {
     discoverAudioRef.current.currentTime = .2;
     try{
-      discoverAudioRef.current.play();
+      await discoverAudioRef.current.play();
     }catch(err){
       console.error(err);
     }

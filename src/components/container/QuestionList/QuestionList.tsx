@@ -28,15 +28,19 @@ const QuestionList: React.FC<QuestionListProps> = ({questions, currentQuestion }
   }, []);
 
   useEffect(() => {
-    if(currentQuestion + 1 && questions[currentQuestion] && questions.length > 1){
-      transitionAudioRef.current.pause();
-      transitionAudioRef.current.currentTime = 0;
-      try{
-        transitionAudioRef.current.play();
-      }catch(err){
-        console.error(err);
+    async function transitionAudioPlay(){
+      if(currentQuestion + 1 && questions[currentQuestion] && questions.length > 1){
+        transitionAudioRef.current.pause();
+        transitionAudioRef.current.currentTime = 0;
+        try{
+          await transitionAudioRef.current.play();
+        }catch(err){
+          console.error(err);
+        }
       }
-    }
+    } 
+    transitionAudioPlay();
+    
   }, [currentQuestion, questions]);
 
   const shapesStrokeColor = useMemo(() => {

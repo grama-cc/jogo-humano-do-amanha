@@ -32,10 +32,10 @@ const ResearchOptions: React.FC<ResearchOptionsProps> = ({ options, onSelect, se
     }
   }, []);
 
-  const selectOption = useCallback((val: any, text?: string) => {
+  const selectOption = useCallback(async (val: any, text?: string) => {
     buttonsAudioRef.current.currentTime = 0.5;
     try{
-      buttonsAudioRef.current.play();
+      await buttonsAudioRef.current.play();
     }catch(err){
       console.error(err);
     }

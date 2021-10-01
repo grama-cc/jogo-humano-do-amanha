@@ -37,10 +37,15 @@ const Menu: React.FC<MenuProps> = ({ text, prevStep, prevAction, blackIcon, topT
     }
   }, []);
 
-  const goBack = () => {
+  const goBack = async () => {
     setLoading(false);
     backAudioRef.current.currentTime = 0.6;
-    backAudioRef.current.play();
+    try{
+      await backAudioRef.current.play();
+    }catch(err){
+      console.error(err);
+    }
+    
     if(prevAction){
       prevAction();
     } else {
@@ -48,10 +53,10 @@ const Menu: React.FC<MenuProps> = ({ text, prevStep, prevAction, blackIcon, topT
     }
   };
   
-  const playAudio = () => {
+  const playAudio = async () => {
     buttonsAudioRef.current.currentTime = 0.3;
     try{
-      buttonsAudioRef.current.play();
+      await buttonsAudioRef.current.play();
     }catch(err){
       console.error(err);
     }
