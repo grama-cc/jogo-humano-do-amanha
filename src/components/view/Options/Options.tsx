@@ -42,27 +42,27 @@ const Options: React.FC<OptionsProps> = ({ options, onSelect, selected}) => {
     }, 500);
   }, [libras])
 
-  const selectItem = (value: string) => {
+  const selectItem = async (value: string) => {
 
     if(selected === value || !selected){
       if(value === 'SIM'){
         yesAudioRef.current.currentTime=0.4;
         try{
-          yesAudioRef.current.play();
+          await yesAudioRef.current.play();
         }catch(err){
           console.error(err);
         }
       } else if(value === 'TALVEZ'){
         maybeAudioRef.current.currentTime=0.4;
         try{
-          maybeAudioRef.current.play();
+         await maybeAudioRef.current.play();
         }catch(err){
           console.error(err);
         }
       } else {
         noAudioRef.current.currentTime=0.4;
         try{
-          noAudioRef.current.play();
+          await noAudioRef.current.play();
         }catch(err){
           console.error(err);
         }

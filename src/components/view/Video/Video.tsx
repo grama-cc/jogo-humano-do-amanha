@@ -18,24 +18,28 @@ const Video: React.FC<VideoProps> = ({ source, onEnded }) => {
   }, [source]);
 
   useEffect(() => {
-    if(videoRef.current){
-      videoRef.current.currentTime = 0;
-      try{
-        videoRef.current.play();
-      }catch(err){
-        console.error(err);
+    async function videoPlay(){
+      if(videoRef.current){
+        videoRef.current.currentTime = 0;
+        try{
+          await videoRef.current.play();
+        }catch(err){
+          console.error(err);
+        }
       }
     }
+    videoPlay();
+   
   }, [source]);
 
-  const endedVideo = () => {
+  const endedVideo = async () => {
     if(onEnded){
       onEnded();
     } else {
       if(videoRef.current){
         videoRef.current.currentTime = 0;
         try{
-          videoRef.current.play();
+          await videoRef.current.play();
         }catch(err){
           console.error(err);
         }

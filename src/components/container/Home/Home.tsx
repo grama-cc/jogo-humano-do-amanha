@@ -62,10 +62,10 @@ const Home: React.FC = () => {
     setStep('countdown');
   }, [setStep])
 
-  const changeStep = useCallback(() => {
+  const changeStep = useCallback(async () => {
     playRef.current.currentTime = .2;
     try{
-      playRef.current.play();
+      await playRef.current.play();
     }catch(err){
       console.error(err);
     }

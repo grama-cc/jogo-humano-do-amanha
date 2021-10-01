@@ -52,24 +52,27 @@ export default function Result() {
 
 
   useEffect(() => {
-    if(step === 'result' && avatarReady && resultAvatar){
-      const humanAudio = humanAudios.find(h => h.name === resultAvatar.nome);
-      const audio = new Audio(humanAudio?.audio.default);
-      audio.oncanplaythrough = () => {
-        try{
-          audio.play();
-        }catch(err){
-          console.error(err);
+    function humanAudioPlay(){
+      if(step === 'result' && avatarReady && resultAvatar){
+        const humanAudio = humanAudios.find(h => h.name === resultAvatar.nome);
+        const audio = new Audio(humanAudio?.audio.default);
+        audio.oncanplaythrough = async () => {
+          try{
+            await audio.play();
+          }catch(err){
+            console.error(err);
+          }
+          
+        };
+        audio.onplay = () => {
+          setAllReady(true);
         }
-        
-      };
-      audio.onplay = () => {
-        setAllReady(true);
+      } else {
+        setAllReady(false);
+        setAvatarReady(false);
       }
-    } else {
-      setAllReady(false);
-      setAvatarReady(false);
     }
+    humanAudioPlay();
   }, [avatarReady, resultAvatar, step]);
   
   const goToResearch = useCallback(() => {
