@@ -31,7 +31,11 @@ const QuestionList: React.FC<QuestionListProps> = ({questions, currentQuestion }
     if(currentQuestion + 1 && questions[currentQuestion] && questions.length > 1){
       transitionAudioRef.current.pause();
       transitionAudioRef.current.currentTime = 0;
-      transitionAudioRef.current.play();
+      try{
+        transitionAudioRef.current.play();
+      }catch(err){
+        console.error(err);
+      }
     }
   }, [currentQuestion, questions]);
 

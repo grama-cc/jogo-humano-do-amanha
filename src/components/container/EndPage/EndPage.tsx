@@ -33,7 +33,11 @@ const EndPage: React.FC = () => {
 
   const changeToResult = useCallback(() => {
     playRef.current.currentTime = .2;
-    playRef.current.play();
+    try{
+      playRef.current.play();
+    }catch(err){
+      console.error(err);
+    }
     setTimeout(() => {
       playRef.current.pause();
       playRef.current.currentTime = .2;
@@ -45,7 +49,11 @@ const EndPage: React.FC = () => {
 
   const changeToHome = useCallback(() => {
     playRef.current.currentTime = .2;
-    playRef.current.play();
+    try{
+      playRef.current.play();
+    }catch(err){
+      console.error(err);
+    }
     setTimeout(() => {
       playRef.current.pause();
       playRef.current.currentTime = .2;

@@ -56,7 +56,12 @@ export default function Result() {
       const humanAudio = humanAudios.find(h => h.name === resultAvatar.nome);
       const audio = new Audio(humanAudio?.audio.default);
       audio.oncanplaythrough = () => {
-        audio.play();
+        try{
+          audio.play();
+        }catch(err){
+          console.error(err);
+        }
+        
       };
       audio.onplay = () => {
         setAllReady(true);

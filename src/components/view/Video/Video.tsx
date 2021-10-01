@@ -20,7 +20,11 @@ const Video: React.FC<VideoProps> = ({ source, onEnded }) => {
   useEffect(() => {
     if(videoRef.current){
       videoRef.current.currentTime = 0;
-      videoRef.current.play();
+      try{
+        videoRef.current.play();
+      }catch(err){
+        console.error(err);
+      }
     }
   }, [source]);
 
@@ -30,7 +34,11 @@ const Video: React.FC<VideoProps> = ({ source, onEnded }) => {
     } else {
       if(videoRef.current){
         videoRef.current.currentTime = 0;
-        videoRef.current.play();
+        try{
+          videoRef.current.play();
+        }catch(err){
+          console.error(err);
+        }
       }
     }
   };
