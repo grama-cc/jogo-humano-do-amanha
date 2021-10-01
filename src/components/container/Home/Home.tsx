@@ -16,7 +16,7 @@ const playAudio = require('assets/audios/jogar.mp3');
 
 
 const Home: React.FC = () => {
-  const { step, setStep, showAboutPopUp, transitionStep, settransitionStep } = useContext(SettingsContext);
+  const { step, setStep, showAboutPopUp, transitionStep, settransitionStep, setIosSoundPermission } = useContext(SettingsContext);
 
   const [welcome, setWelcome] = useState<WelcomeContent>();
   const [aboutContent, setAboutContent] = useState<AboutText>();
@@ -63,6 +63,7 @@ const Home: React.FC = () => {
   }, [setStep])
 
   const changeStep = useCallback(async () => {
+    setIosSoundPermission(true);
     playRef.current.currentTime = .2;
     try{
       await playRef.current.play();
@@ -77,7 +78,7 @@ const Home: React.FC = () => {
 
     settransitionStep(true);
     setTimeout(goToCountdown, 2500);
-  }, [goToCountdown, settransitionStep]);
+  }, [goToCountdown, settransitionStep, setIosSoundPermission]);
 
   if (!aboutContent || !screenSaver) return null;
 

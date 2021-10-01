@@ -29,6 +29,8 @@ function App() {
   const [userId, setUserId] = useState<string>('');
   const [resultAvatar, setResultAvatar] = useState<HumanType|null>(null);
   const [resultsListHuman, setResultsListHuman] = useState<HumanType>(defaultHuman);
+  const [needIOSPermission, setNeedIOSSoundPermission] = useState<boolean>(false);
+  const [iosSoundPermission, setIosSoundPermission] = useState<boolean>(false);
   
   const [play, setPlay] = useState<boolean>(false);
 
@@ -57,6 +59,10 @@ function App() {
     setResultAvatar,
     resultsListHuman,
     setResultsListHuman,
+    needIOSPermission,
+    setNeedIOSSoundPermission,
+    iosSoundPermission,
+    setIosSoundPermission
   };
 
   const volumeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -86,6 +92,25 @@ function App() {
   }
 
   useEffect(() => {
+    function isIOS() {
+      return [
+        'iPad Simulator',
+        'iPhone Simulator',
+        'iPod Simulator',
+        'iPad',
+        'iPhone',
+        'iPod'
+      ].includes(navigator.platform)
+      // iPad on iOS 13 detection
+      || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+    }
+
+   if(isIOS()){
+     setNeedIOSSoundPermission(true);
+   }
+  }, [step]);
+
+  useEffect(() => {
     if(step !== 'home'){
       setPlay(true);
     }
@@ -107,9 +132,13 @@ function App() {
   return (
     <SettingsContext.Provider value={value}>
       <div className="App">
-        {(step ==="home" || step === "countdown") ? (
-          <Sound autoLoad={true} playStatus={play ? 'PLAYING': 'PAUSED'} url={introAudio.default} loop={true} volume={volume}  />
-        ): <Sound autoLoad={true} playStatus={play ? 'PLAYING': 'PAUSED'} url={quizAudio.default} loop={true} volume={volume}/>}
+        {((!needIOSPermission) || (needIOSPermission && iosSoundPermission)) && (
+          <>
+          {(step ==="home" || step === "countdown") ? (
+            <Sound autoLoad={true} playStatus={play ? 'PLAYING': 'PAUSED'} url={introAudio.default} loop={true} volume={volume}  />
+          ): <Sound autoLoad={true} playStatus={play ? 'PLAYING': 'PAUSED'} url={quizAudio.default} loop={true} volume={volume}/>}
+          </>
+        )}
         <Home/>
         <Countdown />
         <Quiz />
