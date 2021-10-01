@@ -78,7 +78,12 @@ const Countdown: React.FC = () => {
   useEffect(() => {
     if(step === 'countdown'){
       countAudioRef.current.currentTime = 0;
-      countAudioRef.current.play();
+      try{
+        countAudioRef.current.play();
+      }catch(err){
+        console.error(err);
+      }
+      
       resetState();
       timerRef.current = setTimeout(() => {
         setShowWelcomeMessage(false);

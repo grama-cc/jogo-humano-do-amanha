@@ -37,7 +37,11 @@ const PreResult: React.FC = () => {
 
   const changeStep = useCallback(() => {
     discoverAudioRef.current.currentTime = .2;
-    discoverAudioRef.current.play();
+    try{
+      discoverAudioRef.current.play();
+    }catch(err){
+      console.error(err);
+    }
     settransitionStep(true);
     setTimeout(goToResult, 2500);
   }, [goToResult, settransitionStep, discoverAudioRef]);

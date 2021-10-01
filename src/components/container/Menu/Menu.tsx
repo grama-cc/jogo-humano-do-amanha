@@ -50,7 +50,11 @@ const Menu: React.FC<MenuProps> = ({ text, prevStep, prevAction, blackIcon, topT
   
   const playAudio = () => {
     buttonsAudioRef.current.currentTime = 0.3;
-    buttonsAudioRef.current.play();
+    try{
+      buttonsAudioRef.current.play();
+    }catch(err){
+      console.error(err);
+    }
   }
 
   return (

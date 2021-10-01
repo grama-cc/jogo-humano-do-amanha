@@ -47,13 +47,25 @@ const Options: React.FC<OptionsProps> = ({ options, onSelect, selected}) => {
     if(selected === value || !selected){
       if(value === 'SIM'){
         yesAudioRef.current.currentTime=0.4;
-        yesAudioRef.current.play();
+        try{
+          yesAudioRef.current.play();
+        }catch(err){
+          console.error(err);
+        }
       } else if(value === 'TALVEZ'){
         maybeAudioRef.current.currentTime=0.4;
-        maybeAudioRef.current.play();
+        try{
+          maybeAudioRef.current.play();
+        }catch(err){
+          console.error(err);
+        }
       } else {
         noAudioRef.current.currentTime=0.4;
-        noAudioRef.current.play();
+        try{
+          noAudioRef.current.play();
+        }catch(err){
+          console.error(err);
+        }
       }
     }
     onSelect(value);

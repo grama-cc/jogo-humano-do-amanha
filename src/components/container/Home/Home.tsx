@@ -64,7 +64,11 @@ const Home: React.FC = () => {
 
   const changeStep = useCallback(() => {
     playRef.current.currentTime = .2;
-    playRef.current.play();
+    try{
+      playRef.current.play();
+    }catch(err){
+      console.error(err);
+    }
     setTimeout(() => {
       playRef.current.pause();
       playRef.current.currentTime = .2;

@@ -38,7 +38,11 @@ const IntroSidebar: React.FC<IntroSidebarProps> = ({ aboutText, text, ctaLabel, 
 
   const aboutPopUp = () => {
     openAboutRef.current.currentTime = .6;
-    openAboutRef.current.play();
+    try{
+      openAboutRef.current.play();
+    }catch(err){
+      console.error(err);
+    }
     setTimeout(() => {
       openAboutRef.current.pause();
       openAboutRef.current.currentTime = .6;
@@ -52,7 +56,11 @@ const IntroSidebar: React.FC<IntroSidebarProps> = ({ aboutText, text, ctaLabel, 
     if(openedAbout && !showAboutPopUp){
       setOpenedAbout(false);
       closeAboutRef.current.currentTime = .6;
-      closeAboutRef.current.play();
+      try{
+        closeAboutRef.current.play();
+      }catch(err){
+        console.error(err);
+      }
       setTimeout(() => {
         closeAboutRef.current.pause();
         closeAboutRef.current.currentTime = .6;
