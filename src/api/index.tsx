@@ -37,7 +37,7 @@ export const QuizQuestions = {
 		resposta: string|null = null,
 		id: string|null = null,
 		alternativa: string|null = null
-	) => requests.get(`/quizz/?pergunta=${pergunta}&resposta=${resposta}&id=${id}&alterantiva=${alternativa}`),
+	) => requests.get(`/quizz/?pergunta=${pergunta}&resposta=${resposta}&id=${id}&alternativa=${alternativa}`),
 };
 
 export const Profile = {
